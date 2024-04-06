@@ -1,0 +1,55 @@
+<view>
+  <!-- 商品信息 -->
+  <view class="chooseDescribe">
+    <view class="item-con">
+      <view class="item-con-left">
+        <image src="{{goodsInfo.image}}" mode="widthFix" />
+      </view>
+      <view class="item-con-right">
+        <view class="title">{{goodsInfo.goodsName}}</view>
+        <view class="sku">规格：{{goodsInfo.specification}}</view>
+        <view class="total">总租金：¥{{goodsInfo.price}}</view>
+        <view class="tags" a:if="{{goodsInfo.xinyongzuDepositBean.creditAmount}}">芝麻信用·免押金</view>
+      </view>
+    </view>
+  </view>
+  <!-- 租金信息 -->
+  <view class="rentInfo">
+    <view class="rent-price">
+      <view class="rent-price-item">
+        <view class="price-num">{{goodsInfo.price}}</view>
+        <view class="price-describe">应还租金(元)</view>
+      </view>
+      <view class="rent-price-item">
+        <view class="price-num">{{hasPaid}}</view>
+        <view class="price-describe">已还租金(元)</view>
+      </view>
+      <view class="rent-price-item">
+        <view class="price-num">{{remainPaid}}</view>
+        <view class="price-describe">待还租金(元)</view>
+      </view>
+    </view>
+  </view>
+  <!-- 还款信息 -->
+  <view class="payforInfo">
+    <block a:for="{{paymentInfo}}">
+      <view class="payforInfo-item {{item.paymentState=='paid'?'payoff':''}}">
+        <view class="payforInfo-item-row1">
+          <view class="payfor-time">{{item.billStage}}期</view>
+          <view class="payfor-status" a:if="{{item.paymentState=='paid'}}">已还款</view>
+          <view class="payfor-status" a:if="{{item.paymentState=='waiting'}}">待还款</view>
+        </view>
+        <view class="payforInfo-item-row2" a:if="{{item.paymentState=='paid'}}"> <!-- 如果还过 -->
+          <view class="payfor-price"><text style="font-size:22rpx;">¥</text>{{item.paidAmount1}}.<text>{{item.paidAmount2}}</text></view>
+          <view class="payfor-describe">{{item.paidTime}}</view>
+        </view>
+        <view class="payforInfo-item-row2" a:if="{{item.paymentState=='waiting'}}">  <!-- 如果没还 -->
+          <view class="payfor-price"><text style="font-size:22rpx;">¥</text>{{item.totalAmount1}}.<text>{{item.totalAmount2}}</text></view>
+          <view class="payfor-describe">请于{{item.billStartTime}}前还款</view>
+          
+        </view>
+      </view>
+    </block>
+  </view>
+
+</view>

@@ -1,0 +1,24 @@
+<import-sjs name="filters" from="/sjs/filter.sjs"/>
+<view class="series-goods" catchTap="handleGoodsDetail">
+  <view class="goods-img">
+    <image mode="scaleToFill" src="{{goods.imgPro}}" />
+  </view>
+  <text class="goods-tag">{{goods.oldLevelStr}}</text>
+  <view class="service-tag">信用免押</view>
+  <view class="goods-name">{{goods.name}}</view>
+  <view class="flex-space">
+    <view class="goods-price">
+      <text>￥</text>
+      <text class="rent">
+        <block a:if="{{item.discount}}">
+          {{filters.parsePrice(goods.displayRent * (goods.discount/100))}}
+        </block>
+        <block a:else>
+          {{item.activityStatus?filters.parsePrice(goods.promotionRent) : filters.parsePrice(goods.displayRent)}}
+        </block>
+      </text>
+      <text class="unit">/天</text>
+    </view>
+    <view class="price-tag">抢租</view>
+  </view>
+</view>

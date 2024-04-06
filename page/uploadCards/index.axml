@@ -1,0 +1,105 @@
+<view class="container">
+  <view class="main" a:if="{{onLoad}}">
+    <view class="license-wrapper">
+      <view class="h2">
+        <text class="upload-info-uploadtext">上传身份证</text>
+      </view>
+      <view class="license-img-wrapper">
+        <view class="license-img-inner-wrapper">
+          <upload-cards a:if="{{!shareData.idcardPros}}" imgSrc="{{sfzLicenseInfo.frontImg}}" type="sfzLicense_front"
+            onClick="onUpLoadImageFromCamera" />
+            <view class="image-container" 
+            a:else>
+              <view class="close" data-name="idcardPros" catchTap="clear" a:if="{{upload}}">
+                <image
+                  class="closeImage"
+                  src="/image/icon/ico-clear.png"
+                />
+              </view>
+              <image
+                src="{{shareData.idcardPros}}"
+                class="camera_avatar"
+              />
+            </view>
+          <upload-cards a:if="{{!shareData.idcardCons}}" imgSrc="{{sfzLicenseInfo.backImg}}" type="sfzLicense_back" onClick="onUpLoadImageFromCamera" />
+          <view class="image-container" 
+            a:else>
+              <view class="close" data-name="idcardCons" catchTap="clear" a:if="{{upload}}">
+                <image
+                  class="closeImage"
+                  src="/image/icon/ico-clear.png"
+                />
+              </view>
+              <image
+                src="{{shareData.idcardCons}}"
+                class="camera_avatar"
+              />
+            </view>
+        </view>
+      </view>
+    </view>
+    <view class="license-wrapper sec">
+      <view class="h2">
+        <text class="upload-info-uploadtext">上传手持身份证正面照</text>
+      </view>
+      <view class="license-img-wrapper">
+        <view class="license-img-inner-wrapper">
+          <upload-cards a:if="{{!shareData.handheldIdCard}}" imgSrc="{{userInfoInfo.contractImg}}" type="userInfo_contract" onClick="onUpLoadImageFromCamera" />
+          <view class="image-container" 
+            a:else>
+              <view class="close" data-name="handheldIdCard" catchTap="clear" a:if="{{upload}}">
+                <image
+                  class="closeImage"
+                  src="/image/icon/ico-clear.png"
+                />
+              </view>
+              <image
+                src="{{shareData.handheldIdCard}}"
+                class="camera_avatar"
+              />
+            </view>
+        </view>
+      </view>
+    </view>
+    <view class="license-wrapper sec">
+      <view class="h2">
+        <text class="upload-info-uploadtext">上传银行卡</text>
+      </view>
+      <view class="license-img-wrapper">
+        <view class="license-img-inner-wrapper">
+          <upload-cards a:if="{{!shareData.bankCard}}" type="userInfo_bankCard" onClick="onUpLoadImageFromCamera" />
+          <view class="image-container" 
+            a:else>
+              <view class="close" data-name="bankCard" catchTap="clear" a:if="{{upload}}">
+                <image
+                  class="closeImage"
+                  src="/image/icon/ico-clear.png"
+                />
+              </view>
+              <image
+                src="{{shareData.bankCard}}"
+                class="camera_avatar"
+              />
+            </view>
+        </view>
+      </view>
+    </view>
+    <!-- <view class="license-wrapper scc">
+      <view class="connect-title">其他联系人信息（需添加三个）</view>
+      <view class="connect-item"  a:for="{{connectInfo}}" a:key="index">
+        <view class="connect-name">
+          <view class="connect-label">真实姓名</view>
+          <view class="connect-text">{{item.name}}</view>
+        </view>
+        <view class="connect-phone">
+          <view class="connect-label">手机号</view>
+          <view class="connect-text">{{item.mobile}}</view>
+        </view>
+      </view>
+      <view class="add-connect" catchTap="choosePhoneContact">点击添加联系人</view>
+    </view> -->
+  </view>
+  <view class="bottom" a:if="{{upload}}">
+    <button type="primary" class="confirm-btn" disabled="{{!shareData.idcardPros||!shareData.idcardCons}}" onTap="submit">确认提交</button>
+  </view>
+</view>

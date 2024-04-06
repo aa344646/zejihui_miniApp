@@ -1,0 +1,17 @@
+<view class="series-goods-list">
+  <view class="series-header">
+    <text class="title">{{gather.title}}</text>
+    <view class="aside">
+      <block a:for="{{gather.subTitle.split(',')}}" a:key="{{index}}">
+         <view class="tag">{{item}}</view>
+      </block>
+      <!-- <view class="tag">性价比之王</view>
+      <view class="tag">品质保障</view> -->
+    </view>
+  </view>
+  <view class="series-body">
+    <block a:for="{{gather.goodsList}}" a:key="{{index}}">
+      <series-goods goods="{{item}}"></series-goods>
+    </block>
+  </view>
+</view>

@@ -1,0 +1,124 @@
+{
+  "pages": [
+    "page/lease/index",
+    "page/mine/index",
+    "page/order/orderList/signupPages/signupPages",    
+    "page/order/orderList/orderList",
+    "page/order/orderList/signUp/signUp",
+    "page/5g/search/index",
+    "page/category/index",
+    "page/uploadCards/index",
+    "page/rent/index",
+    "page/addressList/index",
+    "page/addressEdit/index",
+    "page/ai-camera/index",
+    "page/order/orderDetail/orderDetail",
+    "page/detail/index",
+    "page/lease/collect/index",
+    "page/lease/collectIndex/index",
+    "page/store/index",
+    "page/search/search",
+    "page/order/orderPay/index",
+    "page/order/comment/index",
+    "page/order/returnBack/returnBack",
+    "page/order/orderLogistics/orderLogistics",
+    "page/order/orderResult/orderResult",
+    "page/order/orderResultFail/orderResultFail",
+    "page/order/reletBuyOut/tip/index",
+    "page/order/reletBuyOut/apply/index",
+    "page/order/reletBuyOut/orderProgress/index",
+    "page/order/reletBuyOut/list/index",
+    "page/order/compensateApply/compensateApply",
+    "page/afterReceive/index",
+    "page/afterService/index",
+    "page/afterService/afterServiceList/index",
+    "page/afterService/afterServiceReturn/index",
+    "page/afterService/afterServiceApply/index",
+    "page/afterService/afterServiceDetail/index",
+    "page/webView/index",
+    "page/bills/bills",
+    "page/bills/billDetail/billDetail",
+    "page/help/helpCenter/helpCenter",
+    "page/help/helpagreement/helpagreement",
+    "page/coupon/index",
+    "page/realName/index",
+    "page/bindingPhone/index",
+    "page/mapArea/index",
+    "page/kplan/index",
+    "page/5g/index",
+    "page/brandHall/index",
+    "page/you/index",
+    "page/subscribe/index",
+    "page/order/orderList/signupPages/signupPages"
+  ],
+  "subPackages": [
+    {
+      "root": "subPage",
+      "pages": [
+        "getStoreCoupon/index"
+      ]
+    }
+  ],
+  "window": {
+    "enableWK": "YES",
+    "enableDSL": true,
+    "defaultTitle": "择机汇",
+    "titleBarColor": "#fff",
+    "backgroundColor": "#F5F5F9",
+    "pullRefresh": true,
+    "allowsBounceVertical": true,
+    "enableInPageRender": "YES"
+  },
+  "tabBar": {
+    "textColor": "#999999",
+    "selectedColor": "#108ee9",
+    "backgroundColor": "#ffffff",
+    "items": [
+      {
+        "pagePath": "page/lease/index",
+        "icon": "image/icon/home.png",
+        "activeIcon": "image/icon/home_active.png",
+        "name": "租赁"
+      },
+      {
+        "pagePath": "page/category/index",
+        "icon": "image/icon/category.png",
+        "activeIcon": "image/icon/category_active.png",
+        "name": "分类"
+      },
+      {
+        "pagePath": "page/you/index",
+        "icon": "image/icon/icon_you.png",
+        "activeIcon": "image/icon/icon_you_active.png",
+        "name": "严选"
+      },
+      {
+        "pagePath": "page/subscribe/index",
+        "icon": "image/icon/nobrand.png",
+        "activeIcon": "image/icon/brand.png",
+        "name": "品牌"
+      },
+      {
+        "pagePath": "page/mine/index",
+        "icon": "image/icon/mine.png",
+        "activeIcon": "image/icon/mine_active.png",
+        "name": "我的"
+      }
+    ]
+  },
+  "plugins": {
+    "shulientry": {
+      "version": "*",
+      "provider": "2021002109669336"
+    },
+    "conversion-sdk": {
+      "version": "*",
+      "provider": "2021003155615190"
+    },
+    "couponPlugin": {
+      "version": "*",
+      "provider": "2021002172680015"
+    }
+  },
+  "debug": false
+}

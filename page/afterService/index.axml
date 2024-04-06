@@ -1,0 +1,11 @@
+<view class="afterService">
+    <block a:for="{{options}}" a:key="index">
+        <view class="option" catchTap="toSaleAfterList" data-type="{{item.type}}">
+            <view class="left">
+                <image src="{{item.image}}"></image>
+                <text>{{item.name}}</text>
+            </view>
+            <image src="/image/icon/icon-before.png" class="right"></image>
+        </view>
+    </block>
+</view>

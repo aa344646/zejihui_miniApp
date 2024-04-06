@@ -1,0 +1,15 @@
+{
+  "defaultTitle": "",
+  "transparentTitle": "always",
+  "titlePenetrate": "YES",
+  "usingComponents": {
+    "empty": "/components/empty/index",
+    "component-search": "/components/search/index",
+    "component-hometitle": "/components/homeTitle/index",
+    "component-homegoods": "/components/homeGoods/index",
+    "component-fashionbrand": "/components/fashionBrand/index",
+    "component-hotgoods": "/components/hotGoods/index",
+    "adwelcome": "plugin://shulientry/adwelcome",
+    "modal": "antd-mini/es/Modal/index"
+  }
+}

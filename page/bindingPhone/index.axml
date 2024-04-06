@@ -1,0 +1,51 @@
+<scroll-view scroll-y="{{true}}" class = "bindPhone">
+    <scroll-view scroll-y="{{true}}" class="scrollview">
+      <view class = "header">
+            <view class = "msg-title">请确保该手机号能联系到您本人</view>
+            <view class = "msg-cont">请务必保证填写信息正确</view>
+        </view>
+        <view class = "content">
+            <view class = "main-cont">
+                <view class = "phone-ipt">
+                    <view class = "title">
+                        手机号
+                    </view>
+                    <input type = "number" maxlength = "11" onFocus="hideSubmit" onConfirm = "showSubmit" onInput="iptPhone" class = "phone ipt-more" placeholder = "请输入手机号">
+                    <input type = "number" maxlength = "11" onInput="iptPhone" class = "phone ipt-more" placeholder = "请输入手机号">
+                </view>
+                <view class = "code-ipt" hidden = "{{!showCaptcha}}">
+                  <view class = "fl main-cont">
+                      <view class = "title">
+                          图片验证码
+                      </view>
+                      <input type = "number" onInput="inputCaptcha" class = "verlificacode ipt-more" maxlength = "5" placeholder = "请输入右侧验证码">
+                  </view>
+                   <view class = "fr content">
+                      <image onTap = "getCaptcha" mode = "scaleToFill"
+                          src = "{{captchaUrl}}" class = "pic-code"/>
+                   </view>
+                </view>
+                <view class = "verlifica-ipt">
+                    <view class = "fl main-cont">
+                        <view class = "title">
+                            手机验证码
+                        </view>
+                        <input type = "number" onInput="inputSmsCode" class = "verlifica ipt-more"
+                            placeholder = "请输入验证码">
+                    </view>
+                    <view class = "fr btn">
+                        <text class = "btn getcode" onTap = "sendSmsCode">{{smsTime>0?smsTime+'秒后再次获取':'获取验证码'}}</text>
+                    </view>
+                </view>
+            </view>
+            <view class = "main-text">
+                注：绑定手机号方便支付宝小程序预同步信息，你可以通过该手机号在择机汇APP中直接登录查看订单信息。
+            </view>
+        </view>
+    </scroll-view>
+    <view class = "bottom">
+        <button class = "btn confrim {{submitBtnStatus?'disabled':''}}" onTap = "submit">
+            立即绑定
+        </button>
+    </view>
+</scroll-view>

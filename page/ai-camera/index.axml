@@ -1,0 +1,7 @@
+<view>
+  <camera
+    onExitCameraHandle="onExitCameraHandle"
+    onUploadFileSuccessful="onUploadFileSuccessful"
+    type="{{cameraType}}"
+/>
+</view>

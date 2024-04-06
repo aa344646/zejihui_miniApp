@@ -1,0 +1,77 @@
+<import-sjs name="filters" from="/sjs/filter.sjs"/><view>
+<view class="wp">
+    <after-service-detail afterServiceDetail="{{afterServiceDetail}}"></after-service-detail>
+    <view class="tip">
+        售后信息
+    </view>
+    <view class="center">
+        <view class="top">
+            <view class="serverOrder">{{afterServiceDetail.category=='repair'?'维修':afterServiceDetail.category=='exchange'?'换货':'退货'}}单号：{{afterServiceDetail.serviceOrderNumber}}</view>
+            <view class="copy" catchTap="copy">复制</view>
+        </view>
+        <view class="time">申请时间：{{afterServiceDetail.stateProgress[afterServiceDetail.stateProgress.length-1].applyTime}}</view>
+        <view class="type">服务类型：<text class="status">{{afterServiceDetail.category=='repair'?'维修':afterServiceDetail.category=='exchange'?'换货':'退货'}}</text></view>
+    </view>
+    <view class="bottom">
+        <view class="tab">
+            <view class="progress flex1 {{type == 'progress'?'current':''}}" catchTap="changeTab" data-type="progress">
+                {{afterServiceDetail.category=='repair'?'维修':afterServiceDetail.category=='exchange'?'换货':'退货'}}进程
+                <view class="b_line" a:if="{{type == 'progress'}}"></view>
+            </view>
+            <view class="line"></view>
+            <view class="info flex1 {{type == 'info'?'current':''}}" catchTap="changeTab" data-type="info">
+                申请详情
+                <view class="b_line" a:if="{{type == 'info'}}"></view>
+            </view>
+        </view>
+    </view>
+    <view class="body" a:if="{{type == 'progress'}}">
+        <block a:for="{{afterServiceDetail.stateProgress}}" a:key="index">
+            <view class="address addDetail">
+                <view class="progressLine">
+                    <view class='progressLine-con'>
+                    <view class="line">
+                        <view class='line1'></view>
+                        <view class='line2'></view>
+                    </view>
+                    <view class="point">
+                        <text class="icon iconfont {{index==0?'icon-ico_select_pre':'icon-ico_select'}} "></text>
+                    </view>
+                    </view>
+                </view>
+                <view class="addCon">
+                    <text>{{item.state}}</text>
+                    <text>{{item.stateDesc}}</text>
+                    <text>{{item.applyTime}}</text>
+                </view>
+            </view>
+        </block>
+    </view>
+    <view class="applyDetail" a:if="{{type == 'info'}}">
+        <view class="detail">
+            <view class="title">
+                {{afterServiceDetail.category=='repair'?'维修':afterServiceDetail.category=='exchange'?'换货':'退货'}}原因描述
+            </view>
+            <view class="content">
+                <view class="desc">
+                    <view>{{afterServiceDetail.category=='repair'?'维修':afterServiceDetail.category=='exchange'?'换货':'退货'}}原因 : {{afterServiceDetail.reason}}</view>
+                    <view>详情说明 : {{afterServiceDetail.explanation}}</view>
+                </view>
+                <view class="pics">
+                    <block a:for="{{afterServiceDetail.images}}" a:key="index">
+                        <view catchTap="previewImg" data-index = "{{index}}">
+                            <image mode="aspectFill" src="{{item}}"></image>
+                        </view>
+                    </block> 
+                </view>
+            </view>
+        </view>
+        <view class="contactOrder" catchTap="toOrderDetail">
+            <view class="left">关联订单</view>
+            <view class="right">
+                <text>{{afterServiceDetail.orderNumber}}</text>
+                <image class="icon-before" src="/image/icon/icon-before.png"></image>
+            </view>
+        </view>
+    </view>
+</view>

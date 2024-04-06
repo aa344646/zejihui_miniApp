@@ -1,0 +1,7 @@
+<import src='/components/wxParse/wxParse.axml' />
+<view class="lease-view">
+    <!-- 《择机汇用户租赁及服务协议》 -->
+    <view class="wxParse">
+        <template is="wxParse" data="{{wxParseData:bindData.htmlStr.nodes}}" />
+    </view>
+</view>

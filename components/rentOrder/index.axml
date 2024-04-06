@@ -1,0 +1,468 @@
+<import-sjs name="filters" from="/sjs/filter.sjs" />
+
+<template name='RentOrder'>
+  <view class="rentOrder rentAll">
+    <view class="address-wp">
+      <view class="address" catchTap="selectAddress" a:if="{{ filters.ifAddressFlag(kipe.address)}}">
+        <image mode="scaleToFill" src="../../image/order/address.png" class="address_addimg" />
+        <view class="address_harvest">
+          添加收货地址
+        </view>
+        <image mode="scaleToFill" src="../../image/order/infobottom.png" class="address_lineimg" />
+      </view>
+      <view class="address" catchTap="selectAddress" a:else>
+        <view class="address_fullandmobile">
+          <text class="address_fullandmobile_fullname">{{kipe.address.fullname }}</text>
+          <text class="address_fullandmobile_mobilePhone">{{kipe.address.mobilePhone}}</text>
+          <image mode="scaleToFill" src="../../image/order/qianbi.png" class="address_fullandmobile_img" />
+        </view>
+        <view class="address_desc">
+          {{kipe.address.prov}}{{kipe.address.city}}{{kipe.address.area}}{{kipe.address.street}}{{kipe.address.address}}
+        </view>
+        <image mode="scaleToFill" src="../../image/order/infobottom.png" class="address_lineimg" />
+
+      </view>
+    </view>
+    <view class='goods-detail'>
+      <view class='goods-rentDetail'>
+        <view class='imgSrc'>
+          <image src='{{kipe.goodsImageSrc}}' mode="widthFix" class="imgSrc_imgs" />
+        </view>
+        <view class='goods-content'>
+          <view class='goods-title'>
+            <text>{{kipe.pageInfo.detail.title}}{{kipe.pageInfo.detail.subtitle}}</text>
+          </view>
+          <view class='goods-sentName'>
+            <text>已选：</text>
+            <text a:for="{{kipe.pageInfo.specification}}" a:key="{{item.key}}">{{item.value}}
+              <text a:if="{{item.key==='leaseDay'}}">天</text>
+              <text a:if="{{index!==kipe.pageInfo.specification.length-1}}">/</text></text>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="lease-time">
+      <view class="lease-time_box">
+        <text class="lease-time_box_text1"> 租期</text>
+        <text class="lease-time_box_text2">{{kipe.nowtime}}-{{kipe.arrtime}}</text>
+      </view>
+      <view class="lease-time_text">
+        提示：快递运输期间不算租期，实际起租日为快递签收当天
+      </view>
+    </view>
+    <view class='sent-goods-pay'>
+      <view class='goods-pay-content'>
+        <view class='rent-datePay goods-rent goods-pay-item'>
+          <text class="pay-title rent-pay-firstmoney">首付实付租金</text>
+          <text class="goods-pay-data payonce">
+            <text class="payonce">¥</text>{{kipe.shouyue}}
+          </text>
+        </view>
+
+
+
+
+
+        <!-- 折扣券展示 -->
+        <view class='rent-datePay goods-rent goods-pay-item' a:if="{{kipe.currentCouponInfo.voucherType === 'DISCOUNT_VOUCHER'}}">
+          <text class="pay-title">首月租金</text>
+          <!-- 有优惠券租期大于30天 -->
+          <text class="goods-pay-data" a:if="{{kipe.pageInfo.currentCoupon.couponPrice && kipe.leaseDay>=30 }}"> 
+            ¥{{(kipe.yuezu*(kipe.pageInfo.currentCoupon.couponPrice/10)).toFixed(2)}}
+            <text class="goods-pay-data-yuezu"> ¥{{kipe.yuezu }}</text>
+          </text>
+           <!-- 没有优惠券租期大于30天 -->
+          <text class="goods-pay-data" a:elif="{{!kipe.pageInfo.currentCoupon.couponPrice && kipe.leaseDay>=30 }}">
+            ¥{{kipe.yuezu}}
+          </text>
+             <!-- 有优惠券租期小于30天 -->
+          <text class="goods-pay-data" a:elif="{{ kipe.pageInfo.currentCoupon.couponPrice && kipe.leaseDay<30  }}">
+         
+            ¥{{((kipe.yuezu*(kipe.pageInfo.currentCoupon.couponPrice)/10)).toFixed(2)}}
+            <text class="goods-pay-data-yuezu">¥{{kipe.yuezu }}</text>
+          </text>
+           <!-- 没有有优惠券租期小于30天 -->
+          <text class="goods-pay-data" a:elif="{{ !kipe.pageInfo.currentCoupon.couponPrice && kipe.leaseDay < 30  }}">
+            ¥{{kipe.leaseDay*kipe.pageInfo.detail.chooseRent}}
+          </text>
+
+        </view>
+
+        <!-- 特价券展示 -->
+        <view class='rent-datePay goods-rent goods-pay-item' a:elif="{{kipe.currentCouponInfo.voucherType === 'SPECIAL_VOUCHER'}}">
+          <text class="pay-title">首月租金</text>
+          <!-- 有优惠券租期大于30天 -->
+          <text class="goods-pay-data" a:if="{{kipe.pageInfo.currentCoupon.couponPrice && kipe.leaseDay>=30 }}"> 
+            ¥{{kipe.pageInfo.currentCoupon.couponPrice}}
+            <text class="goods-pay-data-yuezu"> ¥{{kipe.yuezu }}</text>
+          </text>
+           <!-- 没有优惠券租期大于30天 -->
+          <text class="goods-pay-data" a:elif="{{!kipe.pageInfo.currentCoupon.couponPrice && kipe.leaseDay>=30 }}">
+            ¥{{kipe.yuezu}}
+          </text>
+             <!-- 有优惠券租期小于30天 -->
+          <text class="goods-pay-data" a:elif="{{ kipe.pageInfo.currentCoupon.couponPrice && kipe.leaseDay<30  }}">
+            ¥{{kipe.pageInfo.currentCoupon.couponPrice}}
+            <text class="goods-pay-data-yuezu">¥{{kipe.yuezu}}</text>
+          </text>
+           <!-- 没有有优惠券租期小于30天 -->
+          <text class="goods-pay-data" a:elif="{{ !kipe.pageInfo.currentCoupon.couponPrice && kipe.leaseDay < 30  }}">
+            ¥{{kipe.leaseDay*kipe.pageInfo.detail.chooseRent}}
+          </text>
+
+        </view>
+
+        <!-- 其他优惠券 -->
+        <view class='rent-datePay goods-rent goods-pay-item' a:else>
+          <text class="pay-title">首月租金</text>
+          <!-- 有优惠券租期大于30天 -->
+          <text class="goods-pay-data" a:if="{{kipe.pageInfo.currentCoupon.couponPrice && kipe.leaseDay>=30 }}"> 
+            ¥{{filters.parseIntPrice(kipe.yuezu,kipe.pageInfo.currentCoupon.couponPrice).toFixed(2)}}
+            <text class="goods-pay-data-yuezu"> ¥{{kipe.yuezu }}</text>
+          </text>
+           <!-- 没有优惠券租期大于30天 -->
+          <text class="goods-pay-data" a:elif="{{!kipe.pageInfo.currentCoupon.couponPrice && kipe.leaseDay>=30 }}">
+            ¥{{kipe.yuezu}}
+          </text>
+             <!-- 有优惠券租期小于30天 -->
+          <text class="goods-pay-data" a:elif="{{ kipe.pageInfo.currentCoupon.couponPrice && kipe.leaseDay<30  }}">
+            ¥{{(kipe.leaseDay*filters.parseIntPrice(kipe.pageInfo.detail.chooseRent,kipe.pageInfo.currentCoupon.couponPrice)).toFixed(2)}}
+            <text class="goods-pay-data-yuezu">¥{{kipe.yuezu }}</text>
+          </text>
+           <!-- 没有有优惠券租期小于30天 -->
+          <text class="goods-pay-data" a:elif="{{ !kipe.pageInfo.currentCoupon.couponPrice && kipe.leaseDay < 30  }}">
+            ¥{{kipe.leaseDay*kipe.pageInfo.detail.chooseRent}}
+          </text>
+
+        </view>
+
+
+
+        <view class='rent-datePay goods-rent goods-pay-item' a:if="{{kipe.leaseDay>30}}">
+          <text class="pay-title">剩余月租金</text>
+          <text class="goods-pay-data">
+            ¥{{`${kipe.yuezu}*${ (kipe.leaseDay/30) -1}`}}
+          </text>
+        </view>
+        <view class='rent-datePay goods-rent goods-pay-item'>
+          <text class="pay-title">租金</text>
+          <text class="goods-pay-data ">
+            ¥{{kipe.pageInfo.detail.chooseRent}}/天
+          </text>
+        </view>
+        <view class='rent-pay-allMoney goods-rent goods-pay-item'>
+          <!--<tips-dialog show="true" className="dialog" type="dialog"> -->
+          <text class="pay-title">总租金</text>
+          <text class="goods-pay-data" a:if="{{ !kipe.pageInfo.currentCoupon.couponPrice }}">
+            ¥{{kipe.totalRentMoney}}
+          </text>
+
+
+          <text class="goods-pay-data" a:elif="{{ kipe.currentCouponInfo.voucherType === 'SPECIAL_VOUCHER' }}">
+            ¥{{kipe.totalRentMoney - (kipe.pageInfo.detail.chooseRent*30 - kipe.pageInfo.currentCoupon.couponPrice) }}
+            <text class="goods-pay-data-curr">¥{{kipe.totalRentMoney}}</text>
+          </text>
+
+          <text class="goods-pay-data" a:elif="{{ kipe.currentCouponInfo.voucherType === 'DISCOUNT_VOUCHER' }}">
+            ¥{{(kipe.totalRentMoney -(kipe.yuezu - kipe.yuezu*(kipe.pageInfo.currentCoupon.couponPrice/10))).toFixed(2)}}
+            <text class="goods-pay-data-curr">¥{{kipe.totalRentMoney}}</text>
+          </text>
+
+
+
+          <text class="goods-pay-data" a:else>
+            ¥{{(filters.parseIntPrice(kipe.totalRentMoney,kipe.pageInfo.currentCoupon.couponPrice)).toFixed(2) }}
+            <text class="goods-pay-data-curr">¥{{kipe.totalRentMoney}}</text>
+          </text>
+
+
+
+
+
+
+        </view>
+        <view class='rent-date-time  goods-pay-item'>
+          <text class="pay-title">租期</text>
+          <text class="goods-pay-data">
+            {{kipe.leaseDay}}天
+          </text>
+        </view>
+
+        <view class='border-h2 border-h3'></view>
+
+        <view class='rent-pay-safe goods-rent goods-pay-item' a:if="{{kipe.pageInfo.insuranceServer.insuranceMandatory || kipe.pageInfo.insuranceServer.insuranceChoose}}">
+          <text class="pay-title">保障服务</text>
+          <text class="goods-pay-data">
+            ¥{{kipe.pageInfo.insuranceServer.rentPrice}}
+          </text>
+        </view>
+
+        <view class="rents goods-rent goods-pay-item">
+          <text class="pay-title ptCol">平台优惠</text>
+          <text class="goods-pay-data goods-pay-item-canuse" a:if="{{kipe.pageInfo.coupon.content.length}}">
+
+            <text class="goods-price goods-pay-item-canuse" catchTap="controlCoupon" a:if="{{filters.returnFlag(kipe.currentCouponInfo) === 1 }}" >
+              {{kipe.pageInfo.currentCoupon.couponPrice ?`-¥${(kipe.pageInfo.detail.chooseRent*30 - kipe.pageInfo.currentCoupon.couponPrice).toFixed(2)} ` : `共${kipe.pageInfo.coupon.content.length}张可用优惠券 ` }}
+              <text class="goods-pay-item-canuse-jt">
+                >
+              </text>
+            </text>
+            
+            <text class="goods-price goods-pay-item-canuse" catchTap="controlCoupon"  a:elif="{{ filters.returnFlag(kipe.currentCouponInfo) === 2}}">
+              {{kipe.pageInfo.currentCoupon.couponPrice ?`-¥${(kipe.yuezu - kipe.yuezu*(kipe.pageInfo.currentCoupon.couponPrice/10)).toFixed(2)} ` : `共${kipe.pageInfo.coupon.content.length}张可用优惠券 ` }}
+              <text class="goods-pay-item-canuse-jt">
+                >
+              </text>
+            </text>
+
+            <text class="goods-price goods-pay-item-canuse" catchTap="controlCoupon" a:else>
+              {{kipe.pageInfo.currentCoupon.couponPrice ?`-¥${kipe.pageInfo.currentCoupon.couponPrice} ` : `共${kipe.pageInfo.coupon.content.length}张可用优惠券 ` }}
+              <text class="goods-pay-item-canuse-jt">
+                >
+              </text>
+            </text>
+            
+          </text>
+          <text class="goods-pay-data goods-pay-item-nouse" a:else>
+            暂无可用优惠券
+          </text>
+        </view>
+   
+        <view a:if="{{kipe.pageInfo.accessoriesList.length}}">
+          <view class='rent-pay-safe goods-rent goods-pay-item' a:if="{{filters.handleParts(kipe.pageInfo.accessoriesList)}}">
+            <text class="pay-title">配件</text>
+            <text class="goods-pay-data">
+              ¥{{filters.handleParts(kipe.pageInfo.accessoriesList).toFixed(2)}}
+            </text>
+          </view>
+          <view class='border-h2'></view>
+        </view>
+ 
+        <view class="rent-datePay goods-rent goods-pay-item">
+          <text class="pay-title"> 配送方式</text>
+          <text class="goods-pay-data">
+            快递配送
+          </text>
+        </view>
+
+        <view class="rent-datePay  goods-pay-item">
+          <text class="pay-title"> 买断尾款</text>
+          <text class="goods-pay-data">
+            <block a:if="{{kipe.buyoutMoney}}">¥ {{(kipe.buyoutMoney/100).toFixed(2)}}</block>
+            <block a:else>此商品不支持买断</block>
+          </text>
+        </view>
+        <!--<view class='rent-pay-payment goods-pay-item' onTap="desk" data-index="1"><text class="pay-title">租金付款方式</text><text class="goods-pay-data"><text>支付宝免密支付</text><image class="iconHelp" src="/image/icon/ico-help.png"></image></text></view> -->
+        <!-- 第一个iconfont -->
+
+        <!--<view class='rent-zfb-payHelp'>
+                    如未完成订单，支付宝免密支付将在30分钟后自动取消</view> -->
+
+      </view>
+
+
+
+      <!--<view class="popup-coupon" a:if="{{!kipe.pageInfo.allData.whiteListed}}"><view class="coupon" catchTap="controlCoupon"><view class="coupon-title"><text class="coupon-num">
+                            {{kipe.pageInfo.coupon.content.length || 0}}</text><text>张可用优惠券</text></view><view class="coupon-cont" hidden="{{kipe.pageInfo.currentCoupon.couponPrice}}"><image class="iconBefore icon1 icon" src="/image/icon/icon-before.png"></image></view><view class="coupon-cont" hidden="{{!kipe.pageInfo.currentCoupon.couponPrice}}"><text class="text">优惠券：省<text style="color: #F5533A;padding:2rpx;padding-right: 2rpx;"> {{(kipe.pageInfo.currentCoupon.couponPrice)}}</text> 元</text><image class="iconBefore icon1 icon" src="/image/icon/icon-before.png"></image></view></view></view> -->
+      <view class="popup-coupon" a:if="{{kipe.pageInfo.allData.whiteListed}}">
+        <view class="coupon" catchTap="controlCoupon">
+          <view class="coupon-title">
+            <text>优惠券</text>
+          </view>
+          <view class="coupon-cont">
+            <text class="text">
+              <text>
+                抱歉 ! 此商品无法使用优惠券
+              </text>
+            </text>
+            <image class="iconBefore icon1 icon" src="/image/icon/icon-before.png"></image>
+          </view>
+        </view>
+      </view>
+
+    </view>
+    <!-- allMoney内容 -->
+    <view class='goods-pay-zfbHonor'>
+      <tips-dialog className="dialog" type="rectangle" show="{{kipe.showTips}}">
+        <view class="content" slot="content" catchTap='handleCloseTips'>
+          99.12%用户可全免
+        </view>
+      </tips-dialog>
+      <view class='rent-pay-allMoney' a:if='{{kipe.pageInfo.detail.originPrice}}'>
+        <text class="pay-title once_title">凭芝麻信用最高可减免押金
+          <text class="mofangtishi"></text>
+        </text>
+        <text class="goods-pay-data goods-pay-origin-price">
+
+          <text class="pay-sent">¥</text>
+          {{kipe.pageInfo.detail.originPrice}}
+        </text>
+      </view>
+      <view class='rent-pay-allMoney-tip' a:if='{{kipe.pageInfo.detail.originPrice}}'>
+        <text class="goods-pay-data rent-pay-allMoney-tip-text">
+          点击免押租赁,授权成功最高免¥{{kipe.pageInfo.detail.originPrice}}元商品押金
+        </text>
+      </view>
+      <view class='rent-pay-allMoney' a:if='{{kipe.pageInfo.detail.originPrice}}'>
+        <text class="pay-title">押金冻结方式</text>
+        <text class="goods-pay-data pay-authorize">
+          支付宝资金授权
+        </text>
+      </view>
+      <!--<view class='pay-rent-honor' a:if='{{kipe.ZmRentMoneyFlag}}'><text class="pay-title">芝麻信用免押金</text><text class="goods-pay-data"><text class="pay-sent">-¥</text>
+                        {{kipe.goodsZfbPay.rentZfbRemit}}</text></view> -->
+
+      <!--<view class='pay-rent-frozendeposit'><text class="pay-title">需冻结押金</text><text class="goods-pay-data"><text class="pay-sent">¥</text>
+                        {{kipe.goodsZfbPay.rentSentMoney}}</text></view> -->
+      <!--<view class='pay-rent-frozenRemit' onTap="desk" data-index="2" a:if='{{kipe.rentToastFlag}}'><text class="pay-title">押金冻结方式</text><text class="goods-pay-data"><text>支付宝资金授权</text><image class="iconHelp" src="/image/icon/ico-help.png"></image></text></view> -->
+    </view>
+
+    <!--<view class="connect-item" a:for="{{kipe.contact}}" a:key="index"><view class="connect-name"><view class="connect-label">真实姓名</view><view class="connect-text">{{item.name}}</view></view><view class="connect-phone"><view class="connect-label">手机号</view><view class="connect-text">{{item.mobile}}</view></view></view> -->
+
+    <!--<view class="add-connect" catchTap="choosePhoneContact">点击添加联系人</view> -->
+    <!--<view class="license-wrapper scc"><view class="connect-title">添加紧急联系人</view><input class="input" value="{{kipe.contacts.name}}" onInput="iptContact" style="width:100%" enableNative="{{false}}" placeholder="请输入紧急联系人姓名" /><input style="margin-top:10rpx;width:100%" class="input" value="{{kipe.contacts.mobile}}" enableNative="{{false}}"  onInput="iptPhone" placeholder="请输入紧急联系人手机号" /></view> -->
+    <view class="license-wrapper scc last">
+      <view class="connect-title">添加邮箱</view>
+      <input
+        class="last-inputs"
+        placeholder-class='license-wrapper-input'
+        enableNative="{{false}}"
+        value="{{kipe.email}}"
+        onInput="iptEmail"
+        style="width:100%"
+        placeholder="请输入邮箱" />
+    </view>
+
+
+
+    <view class="rent-pay-text">
+      <text onTap='radioChecked'>
+        <radio checked="{{kipe.radioChecked}}" class="rent-pay-text-radio" />
+      </text>
+      <text onTap='radioChecked' class="rent-pay-text-argee-text">我已阅读并同意</text>
+      <text onTap='helpAgreement' class="rent-pay-text-contract">《择机汇用户租赁及服务协议》</text>
+    </view>
+
+
+
+    <!-- 提交部分 -->
+    <view class='rent-pay-submit'>
+      <view class='rent-pay-radio'>
+
+        <text class="rent-pay-text-subtxt">
+          <text onTap='radioChecked'>首付实付:</text>
+          <text onTap='helpAgreement' class="rent-pay-text-subtxt-my">
+            <text class="rent-pay-text-subtxt-my-fuh">¥</text>{{kipe.shouyue}}</text>
+        </text>
+      </view>
+      <view class='rent-pay-sku'>
+        <button class="rent-pay-btn {{kipe.rent_checkBtn}}" onTap='submitBtn'>提交订单</button>
+      </view>
+    </view>
+    <text class='rent-pay-radioChecked' a:if='{{!kipe.helpToastHidden}}'>
+      <text>请先阅读并同意协议</text>
+      <text class="triangle"></text>
+    </text>
+  </view>
+  <view a:if="{{kipe.modelShow}}" class="pick-wp" onTap="handleModelShow"></view>
+  <view class="modal" hidden="{{kipe.pageControl.couponShow}}">
+    <!-- <view class="modal-mask" catchTap='controlCoupon' animation="{{kipe.pageControl.animMaskData}}" /> -->
+    <view class="modal-container" animation="{{kipe.pageControl.animContentData}}">
+      <!-- <view class="modal-close" catchTap="controlCoupon">×</view> -->
+      <view class="modal-content">
+        <view class="grid-child">
+          <view class="grid-child-title">
+            <text class="c-title">平台优惠</text>
+            <image  class="c-chacha"  onTap="handleModelShow" mode="scaleToFill" src="../../image/closedchacha.png" />
+          </view>
+          <view class="clist">
+            <view
+              a:for="{{kipe.pageInfo.coupon.content}}"
+              a:for-item="val"
+              a:for-index="i"
+              class="clist-item"
+              a:key="i"
+              data-index="{{i}}"
+              onTap='selectCoupon'
+              data-index = "{{i}}">
+              <view class="clist-item-content clist-content">
+                <view class="fl">
+                  <radio checked="{{kipe.pageInfo.coupon.content[i].couponflag}}" />
+                </view>
+                <view class="fr {{kipe.pageInfo.coupon.content[i].couponflag?'choose':''}}">
+                  <view class="fr-price" style="background: {{ !val.voucherType ?'url(../../image/home/couponbg.png)' :'url(../../image/jusebg.png)'}}">
+                    <view class="price" a:if="{{ !val.voucherType }}">
+                      {{(val.price/100).toFixed(2)}}
+                    </view>
+                    <view class="price" a:else>
+                      {{filters.returnPrice(val)}}
+                    </view>
+                    <view class="coupon-title"  a:if="{{ !val.voucherType }}">
+                      {{val.bonusModelTypeStr}}
+                    </view>
+                    <view class="coupon-title" a:else>
+                      {{filters.txtformat(val)}}
+                    </view>
+                  </view>
+                  <view class="fr-content">
+                    <view class="item item-title">
+                      <text class="clist-item-text">{{val.bonusModelName}}</text>
+                    </view>
+                    <view class="item item-content">
+                      <view class="cont cont1">
+                        <text class="clist-item-cont">适用商品：{{val.bonusModelNote}}</text>
+                      </view>
+                      <view class="cont cont1" a:if="{{ !val.voucherType }}">
+                        <text class="clist-item-cont">使用门槛：{{val.bonusModelMoneyOffRole < 0?'无门槛': '满'+ (val.bonusModelMoneyOffRole/100).toFixed(2) +'元可用'}}</text>
+                      </view>
+
+                      <view class="cont cont1" a:else>
+                        <text class="clist-item-cont">使用门槛：{{filters.txtformat(val)}}</text>
+                      </view>
+                      
+                      <view class="cont cont2">
+                        <text class="clist-item-cont" a:if="{{ !val.voucherType }}">有效日期：{{val.effectiveTimeStr}}</text>
+
+                        <text class="clist-item-cont" a:else>有效日期：{{`${val.publishStartTime.slice(0,val.publishEndTime.length-6)} 至 ${val.publishEndTime.slice(0,val.publishStartTime.length-6)}`}}</text>
+                        
+                      </view>
+                    </view>
+                  </view>
+                </view>
+              </view>
+            </view>
+            <view class="unchoose-coupon" onTap='selectCoupon' data-index="no">
+              <view class="unCouponSku-item-content clist-item-content">
+                <radio checked="{{!kipe.pageInfo.currentCoupon.couponId}}" />
+                <text class="uncouponSku-text clist-item-text"> 不使用优惠券</text>
+              </view>
+            </view>
+            <view class='serverIns-btn serverIns-btn2'>
+              <view class='color-ban'>
+              </view>
+              <button size="primary" class="serverIns-sku-btn" catchTap='controlCoupon'>确定</button>
+            </view>
+            <view
+              a:for="{{list.subs}}"
+              class="clist-item"
+              key="{{item.entitle}}"
+              onTap="{{onChildItemTap}}"
+              data-page="{{item.page}}">
+              <view class="clist-item-content">
+                <text class="clist-item-content-title">{{item.title}}</text>
+                <text class="clist-item-content-subtitle">{{item.entitle}}</text>
+              </view>
+              <view class="clist-item-extra">
+                <image
+                  aria-hidden="true"
+                  class="c-list-item-arrow"
+                  src="/image/arrowright.png"
+                  mode="aspectFill" />
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</template>

@@ -1,0 +1,147 @@
+<view class="category-page" style="padding-top:{{systemInfo.titleBarHeight + systemInfo.statusBarHeight  + 'px'}}">
+  <view class="titleBar" style="height:{{systemInfo.titleBarHeight}}px;top:{{systemInfo.statusBarHeight}}px" catchTap="toSearch">
+    择机汇
+    <view class="searchWp">
+      <view class="search">
+        <text class="iconfont icon-sousuo"></text>
+        <text class="text">租好物</text>
+      </view>
+    </view>
+  </view>
+  <!-- <view class="category-l1">
+    <scroll-view class="category-l1-scroll" scroll-x="{{true}}" scroll-into-view="{{toL1View}}" scroll-with-animation="{{true}}" 
+      scroll-animation-duration="{{300}}">
+      <view class="menu {{categoryId==item.id?'active':''}}" a:for="{{categoryL1}}" catchTap="categoryClick" data-cid="{{item.id}}" 
+        id="{{'category' + item.id}}">
+        <view class="img-wp">
+          <image src="{{item.src}}"></image>
+        </view>
+        <view class="text">{{item.name}}</view>
+      </view>
+    </scroll-view>
+  </view> -->
+  <view class="category-main">
+    <view class="category-menu" style="top:{{systemInfo.titleBarHeight + systemInfo.statusBarHeight + 'px'}}">
+      <scroll-view class="menu-scroll" scroll-y="{{true}}" scroll-into-view="{{toL2View}}" scroll-with-animation="{{true}}" 
+        scroll-animation-duration="{{300}}">
+        <view class="menu {{currTop && (currTop.id==1)?'activeTop': ''}} {{categoryId==1?'active':''}}" catchTap="categoryClick" data-cid="{{1}}">
+          <text>推荐</text>
+        </view>
+         <view class="menu {{currTop && (currTop.id==item.id)?'activeTop': ''}} {{currBottom && (currBottom.id==item.id)?'activeBottom': ''}} {{categoryId==item.id?'active':''}}" a:for="{{categoryL1}}" catchTap="categoryClick" data-cid="{{item.id}}" 
+        id="{{'category' + item.id}}" data-item="{{item}}" data-tp="{{categoryL1[index-1]}}" data-btm="{{categoryL1[index+1]}}" data-index="{{index}}">
+          <text>{{item.name}}</text>
+        </view>
+      </scroll-view>
+    </view>
+    <view class="category-content" style="top:{{systemInfo.titleBarHeight + systemInfo.statusBarHeight + 'px'}}">
+      <block a:if="{{categoryId!=1}}">
+        <swiper class="swiperWrapper" indicator-dots="{{false}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" 
+            circular="{{circular}}" a:if="{{currentCate1.bannerList && currentCate1.bannerList.length}}">
+            <block a:for="{{currentCate1.bannerList}}" a:key="index">
+                <swiper-item class="swiperItem">
+                    <view class="swiper-content" 
+                                catchTap="bannerClick" data-item="{{item}}">
+                      <image class="swiperImg" src="{{item.img}}" />
+                    </view>
+                </swiper-item>
+            </block>
+        </swiper>
+        <view class="cateL2Wrap">
+          <view class="cateL2 {{open?'open':''}}">
+            <view class="cateL2Item {{typeId==item.id?'active':''}}" a:for="{{categoryL2}}" catchTap="categoryClick" data-tid="{{item.id}}">{{item.name}}</view>
+          </view>
+          <view class="action {{open?'open':''}}" catchTap="open" a:if="{{categoryL2.length>1}}">{{open?'收起':'展开'}}<image class="more" src="/image/more.png"/></view>
+        </view>
+        <scroll-view class="scroll-list-other" scroll-y="{{true}}" lower-threshold="100" onScrollToLower="loadMore">
+          <block a:if="{{products.length>0}}">
+            <view class="list">
+            <view class="goods" a:for="{{products}}" catchTap="modelSearch" data-item="{{item}}">
+              <image class="goodsImage" src="{{item.icon}}"/>
+              <view class="goodsName">{{
+                item.name
+              }}</view>
+            </view>
+            </view>
+            <view class="no-more" a:if="{{!hasMore}}">- 宝贝虽有底线，生活无限可能 -</view>
+          </block>
+          <block a:if="{{products.length <=0}}">
+            <view class="empty-wp">
+              <view class="empty-bg"></view>
+              <text>该类目下暂无商品</text>
+            </view>
+          </block>
+        </scroll-view>
+      </block>
+      <scroll-view a:else class="scroll-list" scroll-y="{{true}}" lower-threshold="100" onScrollToLower="loadMore">
+      <swiper class="swiperWrapper" indicator-dots="{{false}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}" 
+            circular="{{circular}}" a:if="{{recommentBanner.length}}">
+            <block a:for="{{recommentBanner}}" a:key="index">
+                <swiper-item class="swiperItem">
+                    <view class="swiper-content" 
+                                catchTap="bannerClick" data-item="{{item}}">
+                      <image class="swiperImg" src="{{item.img}}" />
+                    </view>
+                </swiper-item>
+            </block>
+        </swiper>
+        <block a:if="{{recommentList.length>0}}">
+          <view class="list">
+            <view class="goods" a:for="{{recommentList}}" catchTap="goodsClick" data-gid="{{item.id}}">
+              <view class="left">
+                <view class="img">
+                  <image src="{{item.imgPro}}"></image>
+                </view>
+              </view>
+              <view class="right">
+                <text class="name">{{item.name}}</text>
+                <view class="tag">
+                  <view class="tag-item blue">
+                      {{item.labelList[0]}}
+                  </view>
+                  <view class="tag-item orange" a:if="{{item.labelList[1]}}"> 
+                      {{item.labelList[1]}}
+                  </view>
+                  <view class="tag-item red" a:if="{{item.labelList[2]}}"> 
+                      {{item.labelList[2]}}
+                  </view>
+                </view>
+                <view class="aside">
+                  <view class="aside-left">
+                    <text class="text2">￥</text>
+                    <block a:if="{{item.discount}}">
+                      <block a:if="{{item.leaseType=='MONTHLY'}}">
+                        <text class="price">{{((item.displayRent/100) * (item.discount/100) *30).toFixed(2)}}</text>
+                        <text class="unit">/月起</text>
+                      </block>
+                      <block a:else>
+                        <text class="price">{{((item.displayRent/100) * (item.discount/100)).toFixed(2)}}</text>
+                        <text class="unit">/天起</text>
+                      </block>
+                    </block>
+                    <block a:if="{{!item.discount}}">
+                      <block a:if="{{item.leaseType=='MONTHLY'}}">
+                        <text class="price">{{(item.displayRent/100*30).toFixed(2)}}</text>
+                        <text class="unit">/月起</text>
+                      </block>
+                      <block a:else>
+                        <text class="price">{{(item.displayRent/100).toFixed(2)}}</text>
+                        <text class="unit">/天起</text>
+                      </block>
+                    </block>
+                  </view>
+                  <view class="qizu">{{item.displayLeaseDay}}</view>
+                </view>
+              </view>
+            </view>
+          </view>
+          <view class="no-more">- 宝贝虽有底线，生活无限可能 -</view>
+        </block>
+        <block a:if="{{recommentList.length <=0}}">
+          <view class="empty-wp">
+            <view class="empty-bg"></view>
+            <text>该类目下暂无商品</text>
+          </view>
+        </block>
+      </scroll-view>
+    </view>
+</view>

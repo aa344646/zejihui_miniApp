@@ -1,0 +1,46 @@
+<!--pages/personal/addressEdit/addressEdit.wxml-->
+<view class="content">
+<!-- https://openhome.alipay.com/platform/mas.htm#/templateDetail/comps/9 --> 
+  <form bindsubmit="addrFormSubmit" report-submit="true">
+    <view class="form-top">
+      <view class="item">
+        <label>收件人</label>
+        <input placeholder="请输入收件人姓名" onInput="inputName" value='{{address.name}}' maxlength='10'/>
+      </view>
+      <view class="item">
+        <label>联系电话</label>
+        <input placeholder="请输入联系电话" value='{{address.phone}}' onInput="inputPhone" maxlength='12'/>
+      </view>
+      <view class="item">
+        <label>收货地址</label>
+        <!-- <picker value="{{region}}" mode="region" onChange="bindRegionChange">
+          <view wx:if="{{address.provice && address.city && address.regoin}}" class="mn">
+            <text class='show_region_text'>{{address.provice}}-{{address.city}}-{{address.regoin}}</text>
+          </view>
+          <text wx:else class="area">请选择所在地区</text>
+          <text class="iconfont icon-ico_back-copy"></text>
+        </picker> -->
+        <view class="address" catchTap="showPicker">
+          <text class="holder" a:if="{{!address.provice}}">请选择收货地址</text>
+          <text class="address-text">{{address.provice}}{{address.city}}{{address.regoin}}</text>
+          <image class="address-select" src="../../image/common/arrowright.png"/>
+        </view> 
+      </view>
+    </view>
+    <view class="form-center" a:if="{{!selectShow}}">
+      <textarea class="detail" placeholder="请输入详细地址" maxlength='80' value='{{address.text}}' onInput="inputAddr" />
+    </view>
+    <view class="tip">
+      <text>温馨提示:</text>
+      <text>填写完整的收货地址可以提高您的信用审核通过率及物流速度，建议详细至具体的门牌号；</text>
+    </view>
+    <view class="default">
+      <text>设置为默认地址</text>
+      <switch class='addr_switch' checked="{{address.defaulted}}" onChange="switchChangeEvent" />
+    </view>
+    <multi-select selectShow="{{selectShow}}" selectValue="{{''}}" list="{{region}}" onSelectSuccess="onSelectSuccess" onClose="closeSelect"/>
+    <view class="submit" a:if="{{!selectShow}}">
+      <button onTap="addrFormSubmit" disabled="{{btnDisabled}}">立即保存</button>
+    </view>
+  </form>
+</view>

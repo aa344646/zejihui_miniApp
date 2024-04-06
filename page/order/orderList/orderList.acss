@@ -1,0 +1,253 @@
+.order {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  width: 100%;
+  top: 0;
+}
+.order .customTitleBar {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  padding: 0 34rpx;
+  z-index: 1000;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  color: #333333;
+  margin-left: 20rpx;
+}
+.order .customTitleBar .customTitleBar-arrow {
+  width: 40rpx;
+  height: 40rpx;
+  position: fixed;
+  left: 28rpx;
+}
+.order .customTitleBar .customTitleBar-text {
+  font-size: 36rpx;
+  color: #333333;
+  line-height: 50rpx;
+  margin-left: 13rpx;
+}
+.order .customTitleBar .titleLogo {
+  width: 64rpx;
+  height: 64rpx;
+  margin-right: 8rpx;
+}
+.order .tabs {
+  margin-bottom: 20rpx;
+  height: 70rpx;
+  display: flex;
+  background: #f6f6f8;
+  position: fixed;
+  width: 100%;
+  overflow: hidden;
+  font-size: 32rpx;
+  color: #333333;
+}
+.order .tabs .tab-item {
+  height: 100%;
+  flex-shrink: 0;
+  flex-grow: 0;
+  font-size: 24rpx;
+  color: #666666;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  line-height: 44rpx;
+  margin-left: 30rpx;
+}
+.order .tabs .tab-item.active {
+  color: #558bfd;
+  overflow: hidden;
+}
+.order .tabs .tab-item.active .tab-text {
+  line-height: 30rpx;
+  margin-top: 4rpx;
+  border-bottom: 6rpx solid #558bfd;
+  overflow: hidden;
+  border-top-left-radius: 3rpx;
+  border-top-right-radius: 3rpx;
+  border-bottom-left-radius: 3rpx;
+  border-bottom-right-radius: 3rpx;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+.order .tabs .tab-item .tab-text {
+  height: 40rpx;
+  line-height: 40rpx;
+  color: #333333;
+  font-size: 32rpx;
+}
+/*S 列表为空 */
+.no-list {
+  padding-top: 270rpx;
+  text-align: center;
+}
+.no-list image {
+  width: 280rpx;
+  margin: 0 auto;
+  display: block;
+  margin-bottom: 40rpx;
+}
+.no-list .tips {
+  font-family: "PingFangSC-Regular";
+  font-size: 32rpx;
+  color: #666666;
+  text-align: center;
+  margin-bottom: 60rpx;
+}
+.no-list button {
+  width: 690rpx;
+  border-radius: 100rpx;
+  margin: 0 auto;
+}
+/*E 列表为空 */
+/*S 订单列表 */
+.wrapper {
+  position: fixed;
+  left: 0;
+  top: 280rpx;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
+}
+.scroll-list {
+  height: 100%;
+  overflow: scroll;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.order-item {
+  background: #fff;
+  overflow: hidden;
+  margin-bottom: 24rpx;
+  width: 686rpx;
+  border-radius: 16rpx;
+}
+.order-item .item-top {
+  height: 56rpx;
+  padding: 0 30rpx;
+  display: flex;
+  justify-content: space-between;
+}
+.order-item .item-top view {
+  height: 90rpx;
+  line-height: 90rpx;
+  color: #5c5c5c;
+  font-size: 28rpx;
+}
+.order-item .item-con {
+  box-sizing: border-box;
+  display: flex;
+  width: 686rpx;
+  margin-top: 16rpx;
+}
+.order-item .item-con-left {
+  width: 192rpx;
+  height: 192rpx;
+  overflow: hidden;
+  margin-right: 20rpx;
+  background: #f6f6f6;
+  margin-left: 20rpx;
+}
+.order-item .item-con-left image {
+  width: 192rpx;
+  height: 192rpx;
+}
+.order-item .item-con-right {
+  width: 510rpx;
+}
+.order-item .item-con-right .title {
+  font-size: 28rpx;
+  line-height: 40rpx;
+  color: #333333;
+  margin-bottom: 12rpx;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  font-weight: 600;
+  margin-top: 44rpx;
+}
+.order-item .item-con-right .sku {
+  font-size: 24rpx;
+  color: #8a8a8a;
+  margin-bottom: 12rpx;
+}
+.order-item .item-con-right .total {
+  font-size: 28rpx;
+  color: #333;
+  margin-bottom: 24rpx;
+  margin-top: 16rpx;
+  display: flex;
+  align-items: center;
+  width: 440rpx;
+}
+.order-item .item-con-right .total_all {
+  color: #8a8a8a;
+  font-size: 24rpx;
+  width: 100rpx;
+  text-align: left;
+}
+.order-item .item-con-right .total_mon {
+  color: #ce0000;
+  font-size: 28rpx;
+  display: inline-block;
+  width: 150rpx;
+}
+.order-item .item-con-right .total_periods {
+  color: #5c5c5c;
+  font-size: 28rpx;
+  width: 190rpx;
+  text-align: right;
+}
+.order-item .item-con-right .tags {
+  width: 170rpx;
+  padding: 6rpx 0;
+  border: 1rpx solid #1ccfc9;
+  text-align: center;
+  font-size: 20rpx;
+  color: #1ccfc9;
+}
+.order-item .operation-area {
+  padding: 0 30rpx;
+  display: flex;
+  margin-top: 16rpx;
+  align-items: center;
+  margin-bottom: 20rpx;
+}
+.order-item .operation-area .tips {
+  height: 48rpx;
+  line-height: 48rpx;
+  font-size: 28rpx;
+  color: #333;
+}
+.order-item .operation-area-flexEnd {
+  display: flex;
+  margin-top: 16rpx;
+  justify-content: flex-end;
+  margin-bottom: 24rpx;
+  margin-right: 24rpx;
+}
+.order-item .operation-area button,
+.order-item .operation-area-flexEnd button {
+  display: block;
+  width: 176rpx;
+  height: 64rpx;
+  line-height: 64rpx;
+  border-radius: 38rpx;
+  font-size: 28rpx;
+  margin-left: 16rpx;
+  box-sizing: content-box;
+}
+.no-more {
+  text-align: center;
+  font-size: 24rpx;
+  color: #b5b5b5;
+  padding: 30rpx 0;
+}
+/*E 订单列表 */

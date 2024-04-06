@@ -1,0 +1,114 @@
+<import-sjs name="filters" from="/sjs/filter.sjs"/>
+<view class="wp">
+    <view class="top">
+        <view class="merchant">
+            <view class="name">{{pageInfo.shopName}}</view>
+            <view class="contact" catchTap="callphone">
+              <image src="/image/afterService/ico-contact.png"></image>
+            </view>
+        </view>
+        <view class="con" catchTap="goOrderDetail" data-item="{{item}}">
+            <view class="con-left">
+                <view class="img">
+                <image src="{{pageInfo.goodsImage}}" mode="aspectFill"></image>
+                </view>
+            </view>
+            <view class="con-right">
+                <view class="name">{{pageInfo.goodsName}}</view>
+                <view class="sku">{{pageInfo.standard}}</view>
+            </view>
+        </view>
+    </view>
+    <view class="chooseDay" a:if="{{status == 0}}">
+        <view class="title">请{{pageInfo.customLease?'输入':'选择'}}续租期数</view>
+        <view class="day" a:if="{{!pageInfo.customLease}}">
+            <block  a:for="{{pageInfo.leaseDays}}" a:key="index">
+                <view catchTap="selectDays" data-index="{{index}}" class="button {{index==selectIndex?'select':'default'}}">{{item}}天</view>
+            </block>
+        </view>
+        <view class="lease_day" a:if="{{pageInfo.customLease}}">
+            <text class="left">续租天数: </text>
+            <input type="number" placeholder="请输入租赁天数 (最少{{pageInfo.minLease}}天，最多{{pageInfo.maxLease}}天)" value="{{inputDays?inputDays+'天':''}}" onBlur="iptDay"/>
+            <!-- <text class="mod_day" catchTap="getFocus">修改租期</text>-->
+        </view>
+    </view>
+    <view class="tip1" a:if="{{status==0}}">
+        如与商户协商金额，可让其为您修改价格后再提交订单
+    </view>
+    <view class="center">
+        <!-- <view class="title">
+            <view>续租应付款总额</view>
+            <view><text>￥</text>999.99</view>
+        </view> -->
+        <view class="priceInfo" a:if="{{status==0}}">
+
+            <view class="tip" a:if="{{pageInfo.customLease}}">{{inputDays>30?'首期应付款总额':'总租金'}}</view>
+            <view class="tip" a:if="{{!pageInfo.customLease}}">{{selectDays>30?'首期应付款总额':'总租金'}}</view>
+            <view class="price">￥<text class="strong">{{filters.parsePrice(totalPrice)}}</text>
+            </view>
+        </view>
+        <view class="detail" a:if="{{inputDays || selectDays || baseRent || status==1}}">
+            <view class="item" a:if="{{inputDays || selectIndex>=0}}">
+                <view class="left">租赁天数</view>
+                <view class="right">{{pageInfo.customLease?inputDays:selectDays}}天</view>
+            </view>
+            <view class="item" a:if="{{baseRent}}">
+                <view class="left">当前租金</view>
+                <view class="right">{{filters.parsePrice(baseRent)}}元/天</view>
+            </view>
+            <view class="item" a:if="{{pageInfo.accidentInsurance}}">
+                <view class="left">租赁保障<text class="clGrey">(只需首期支付)</text></view>
+                <view class="right">{{filters.parsePrice(pageInfo.accidentInsurance)}}元</view>
+            </view>
+            <view class="item" a:if="{{status==1}}">
+                <view class="left">商品价格</view>
+                <view class="right">{{filters.parsePrice(pageInfo.price)}}元</view>
+            </view>
+            <view class="item" a:if="{{status==1}}">
+                <view class="left">已付租金</view>
+                <view class="right">{{filters.parsePrice(pageInfo.paidAmount)}}元</view>
+            </view>
+        </view>
+        <!-- <view class="dis_coupon" bindtap="chooseCoupon">
+            <view class="left">优惠礼券</view>
+            <view class="right">
+                <text a:if="{{couponList.length==0}}">无优惠券</text>
+                <text a:if="{{couponList.length>0}}" hidden="{{params.coupon.price}}">{{couponList.length}}张优惠券</text>
+                <text a:if="{{couponList.length>0}}" hidden="{{!params.coupon.price}}" >-￥{{filters.parsePrice(params.coupon.price)}}</text>
+                <text class="iconfont icon-ico_back-copy"></text>
+            </view>
+        </view> -->
+    </view>
+    <view class="liuyan" a:if="{{status == 1}}">
+        <view class="type">
+            留言备注
+        </view>
+        <view class="comment-wp">
+            <view class="textarea">
+                <textarea placeholder="请描述具体详情" value="{{content}}" placeholder-class="pc" onInput="setContent"></textarea>
+            </view>
+        </view>
+    </view>
+    
+    <view class="tip2">
+        <view class="title">
+            温馨提示：
+        </view>
+        <view class="text">
+            {{status==0?'您所续租的商品将在您当前订单到期后继续进行租赁，当前如与商户议价，可让其更改价格后确认提交':'实际所需费用以商家给出价格为准，具体情况可与商家过行沟通处理。'}}
+        </view>
+    </view>
+    <view class="fixed">
+        <view class="submit {{disabled?'disabled':''}}" catchTap="submit">提交申请</view>
+    </view>
+</view>
+<view class="pick-wp" a:if="{{!hideModal}}" catchTap="hideModal"></view>
+<view class="tipInfo" a:if="{{!hideModal}}" animation="{{animationData}}">
+    <view class="result" slot="bottom">
+        <view class="icon iconfont {{result?'icon-ico_payment':'icon-shibaibiaoqing'}}"></view>
+        <view class="status">
+            {{status==0?'续租':'买断'}}申请提交{{result?'成功':'失败'}}
+        </view>
+        <view class="return" catchTap="returnOrder">返回我的订单<text class="iconfont icon-ico_right1"></text></view>
+    </view>
+</view>

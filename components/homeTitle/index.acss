@@ -1,0 +1,25 @@
+@import "../../iconfont/iconfont.acss";
+.title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.title .sectionName {
+  font-size: 36rpx;
+  line-height: 1;
+  font-weight: 600;
+  color: #000;
+}
+.title .sectionDesc {
+  margin-top: 6rpx;
+  font-size: 24rpx;
+  color: #BFC5C9;
+}
+.title .right {
+  display: flex;
+  align-items: center;
+  font-size: 24rpx;
+}
+.title .right .more {
+  margin-right: 6rpx;
+}

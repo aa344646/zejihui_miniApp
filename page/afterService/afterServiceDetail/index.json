@@ -1,0 +1,5 @@
+{ 
+    "usingComponents": {
+        "after-service-detail":"/components/afterServiceCommon/index"
+    }
+}

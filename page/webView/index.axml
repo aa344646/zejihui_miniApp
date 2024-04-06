@@ -1,0 +1,6 @@
+<view>
+  <web-view a:if="{{canUseWebView}}" src="{{url}}" onMessage="receiveMessage"></web-view>
+  <view class="tip" a:if="{{!canUseWebView}}">
+    <view>当前支付宝版本过低，无法使用此功能，请升级最新版本的支付宝</view>
+  </view>
+</view>

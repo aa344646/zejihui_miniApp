@@ -1,0 +1,7 @@
+{
+  "defaultTitle": "择机汇",
+  "usingComponents": {
+    "empty":"/components/empty/index",
+    "goods-list":"/components/goodsList/index"
+  }
+}

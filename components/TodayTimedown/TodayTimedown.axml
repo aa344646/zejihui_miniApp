@@ -1,0 +1,14 @@
+<view class="today-timedown">
+  <!-- <view class="value">{{dd.split('')[0]}}</view>
+  <view class="value">{{dd.split('')[1]}}</view> -->
+  <view class="unit">倒计时</view>
+  <view class="value">{{hh.split('')[0]}}</view>
+  <view class="value">{{hh.split('')[1]}}</view>
+  <view class="unit">时</view>
+  <view class="value">{{mm.split('')[0]}}</view>
+  <view class="value">{{mm.split('')[1]}}</view>
+  <view class="unit">分</view>
+  <view class="value">{{ss.split('')[0]}}</view>
+  <view class="value">{{ss.split('')[1]}}</view>
+  <view class="unit">秒</view>
+</view>

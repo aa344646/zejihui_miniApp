@@ -1,0 +1,107 @@
+<view class="order">
+  <view class="customTitleBar"  catchTap="goMine" style="height:{{systemInfo.titleBarHeight + systemInfo.statusBarHeight}}px;padding-top:{{systemInfo.statusBarHeight}}px;background-color:#F6F6F8">
+   <image mode="scaleToFill" src="../../../image/arrow.png" class="customTitleBar-arrow" catchTap="goMine" />
+    <text class="customTitleBar-text">我的订单</text>
+  </view>
+  <scroll-view class="tabs"  scroll-x style="top:{{systemInfo.titleBarHeight + systemInfo.statusBarHeight}}px;">
+    <view class="tab-item {{tabIndex===0?'active':''}}" catchTap="changeOrderType" data-type="all" data-index="0">
+      <view class="tab-text">全部</view>
+    </view>
+    <view class="tab-item {{tabIndex===1?'active':''}}" catchTap="changeOrderType" data-type="dai_shen_he" data-index="1">
+      <view class="tab-text">待审核</view>
+    </view>
+    <view class="tab-item {{tabIndex===2?'active':''}}" catchTap="changeOrderType" data-type="dai_qian_yue" data-index="2">
+      <view class="tab-text">待签约</view>
+    </view>
+    <view class="tab-item {{tabIndex===3?'active':''}}" catchTap="changeOrderType" data-type="dai_fa_huo" data-index="3">
+      <view class="tab-text">待发货</view></view>
+    <view class="tab-item {{tabIndex===4?'active':''}}" catchTap="changeOrderType" data-type="yi_fa_huo" data-index="4">
+      <view class="tab-text">已发货</view></view>
+    <view class="tab-item {{tabIndex===5?'active':''}}" catchTap="changeOrderType" data-type="zu_lin_zhong" data-index="5">
+      <view class="tab-text">租赁中</view></view>
+      <view class="tab-item {{tabIndex===6?'active':''}}" catchTap="changeOrderType" data-type="dai_gui_huan" data-index="6">
+        <view class="tab-text">待归还</view></view>
+        <view class="tab-item {{tabIndex===7?'active':''}}" catchTap="changeOrderType" data-type="yi_wan_cheng" data-index="7">
+          <view class="tab-text">已完成</view></view>
+          <view class="tab-item {{tabIndex===8?'active':''}}" catchTap="changeOrderType" data-type="yi_qu_xiao" data-index="8">
+            <view class="tab-text">已取消</view></view>
+  </scroll-view>
+
+  <block a:if="{{showCon}}">
+    <view class="wrapper">
+      <scroll-view class="scroll-list" scroll-y="{{true}}" onScrollToLower="loadMore" scroll-top="{{scrollTop}}">
+        <!-- S- 订单列表 -->
+        <block a:if="{{orderList && orderList.length > 0}}">
+          <view class="order-list-wrapper">
+            <!-- S item -->
+            <view class="order-item" a:for="{{orderList}}" catchTap="goOrderDetail" data-id='{{item.id}}' data-state="{{item.state}}">
+              <view class="item-top">
+                <view class="item-top-time">{{item.processTime}}</view>
+                <view class="item-top-state">{{item.stateStr}}</view>
+              </view>
+              <view class="item-con">
+                <view class="item-con-left">
+                  <image src="{{item.goodsImage}}" mode="widthFix" />
+                </view>
+                <view class="item-con-right">
+                  <view class="title">{{item.goodsName}}</view>
+                  <view class="sku">规格：{{item.standard}}</view>
+                  <view class="total">
+                    <text class="total_all">总租金：</text>
+                    <text class="total_mon"> ¥{{(item.totalRent - (item.discount)/100).toFixed(2)}}</text>
+                    <text class="total_periods">共{{item.payNum}}期</text>
+                  </view>
+                  
+                  <view class="tags" a:if="{{item.xinyongzuCreditAmount}}">芝麻信用·免押金</view>
+                </view>
+              </view>
+              <!-- 申请 -->
+              <!--<view a:if="{{item.state=='pending_submit'}}" class="operation-area-flexEnd"><button type="default" plain catchTap="nextSubmit" data-item="{{item}}">继续申请</button></view> -->
+              <!-- 待签署 -->
+              <view a:if="{{item.state=='pending_sign'}}" class="operation-area-flexEnd">
+                <button type="default" plain catchTap="sign" data-id="{{item.id}}">立即签署</button>
+              </view>
+              <!-- 待发货 -->
+              <!-- 待收货 -->
+              <view a:if="{{item.state=='pending_receive_goods'}}" class="operation-area-flexEnd">
+                <button type="default" plain catchTap="confirmReceipt" data-id="{{item.id}}">确认收货</button>
+                <button type="default" plain catchTap="goLogistics" a:if="{{item.deliveryWay!='PRIVATE_STORE'}}" data-state="{{item.state}}" 
+                  data-id="{{item.id}}">订单跟踪</button>
+              </view>
+              <!-- 待开始 -->
+              <view a:if="{{item.state=='pending_running'}}" class="operation-area-flexEnd">
+                <button type="default" plain catchTap="goLogistics" a:if="{{item.deliveryWay!='PRIVATE_STORE'}}" data-state="{{item.state}}" 
+                  data-id="{{item.id}}">订单跟踪</button>
+              </view>
+
+              
+              <!-- <view a:if="{{item.state=='running'||item.state=='running_overdue'}}" class="operation-area">
+                <view class="tips" a:if="{{item.nextPayTime}}">下期支付租金时间：{{item.nextPayTime}}</view>
+                <button a:if="{{item.state=='running_overdue'}}" type="default" plain catchTap="goOverduePay" data-id="{{item.id}}">逾期支付</button>
+              </view>
+              <view a:if="{{item.state=='pending_return'||item.state=='return_overdue'}}" class="operation-area">
+                <view class="tips" a:if="{{item.backTime}}">归还时间：{{item.backTime}}</view>
+                <button type="default" plain catchTap="goReturnBack" a:if="{{item.paid}}" data-id="{{item.id}}">立即归还</button>
+              </view> -->
+              <!-- 退还中 -->
+              <!-- 已取消 -->
+              <!-- 已完成 -->
+              <!-- 交易关闭 -->
+            </view>
+            <!-- E item -->
+          </view>
+          <view class="no-more" a:if="{{!hasMore}}">- 没有更多订单了 -</view>
+        </block>
+        <!-- E- 订单列表 -->
+        <!-- S 订单为空 -->
+        <block a:else>
+          <view class="no-list">
+            <image src="../../../image/order/empty.png" mode="widthFix" />
+            <view class="tips">目前暂无订单</view>
+            <button type="primary" onTap="backHome">返回首页</button>
+          </view>
+        </block>
+      </scroll-view>
+    </view>
+  </block>
+</view>

@@ -1,0 +1,26 @@
+.receive{
+    position: relative;
+}
+.receive image{
+  width: 100%;
+}
+.a-image{
+  display: block;
+}
+.btn{
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  width: 556rpx;
+  height: 118rpx;
+  margin-left:-278rpx;
+  background: url("https://img.zejihui.com.cn/static/ali/btn.png") center no-repeat;
+  background-size:100% 100%; 
+  font-size:30rpx;
+  text-align:center;
+  line-height:118rpx;
+  color:#6f3700;
+  font-weight:bold;
+  cursor: pointer;
+  letter-spacing: 2rpx;
+}

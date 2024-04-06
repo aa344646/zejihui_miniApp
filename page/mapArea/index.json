@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "pop-up":"/components/pop-up/index",
+    "adwelcome": "plugin://shulientry/adwelcome"
+  }
+}

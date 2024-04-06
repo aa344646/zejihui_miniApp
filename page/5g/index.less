@@ -1,0 +1,374 @@
+.container {
+  width: 100%;
+  position: relative;
+  padding-bottom: 48rpx;
+  background: #0d2467;
+  height: 100vh;
+
+  .bg-image {
+    position: absolute;
+    width: 100%;
+    height: auto;
+  }
+
+  .content {
+    position: relative;
+    left: 0;
+    top: 0;
+    z-index: 10;
+    width: 100%;
+    padding-top: 800rpx;
+
+    .logo {
+      position: absolute;
+      width: 164rpx;
+      height: 50rpx;
+      top: 20rpx;
+      left: 10rpx;
+    }
+
+    .image1 {
+      width: 710rpx;
+      height: 160rpx;
+      margin: 0 auto;
+      display: block;
+    }
+
+    .image2 {
+      width: 710rpx;
+      height: 175rpx;
+      margin: 0 auto;
+      display: block;
+      margin-top: 20rpx;
+    }
+
+    .phone {
+      width: 710rpx;
+      height: 660rpx;
+      background: url('https://img.zejihui.com.cn/unicom/kplan/1.png') no-repeat;
+      background-size: 100% 100%;
+      border-radius: 20rpx;
+      padding: 25rpx;
+      box-sizing: border-box;
+      margin: 0 auto;
+      display: block;
+
+      .title {
+        display: flex;
+        align-items: center;
+        font-size: 28rpx;
+        font-weight: 300;
+        color: #666666;
+
+        .deng {
+          width: 38rpx;
+          height: 42rpx;
+          margin-right: 16rpx;
+        }
+      }
+
+      .con {
+        margin-top: 58rpx;
+        font-size: 28rpx;
+        position: relative;
+
+        .item {
+          display: flex;
+          align-items: center;
+          height: 80rpx;
+          width: 100%;
+        }
+
+        .label {
+          width: 182rpx;
+          height: 80rpx;
+          line-height: 80rpx;
+          color: #290642;
+        }
+
+        .select {
+          flex: 1;
+          color: #29064236 !important;
+          font-size: 28rpx;
+          border-bottom: 1.5rpx solid #2906422b;
+          line-height: 80rpx;
+          width: 493rpx;
+          word-break: keep-all;
+          /* 不换行 */
+
+          white-space: nowrap;
+          /* 不换行 */
+
+          overflow: hidden;
+          /* 内容超出宽度时隐藏超出部分的内容 */
+
+          text-overflow: ellipsis;
+          /*溢出时显示省略标记...；需与overflow:hidden；一起使用*/
+        }
+
+        .selectinpt {
+          height: 80rpx;
+        }
+
+        .select-cen {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          overflow: hidden;
+          height: 77rpx;
+        }
+
+        .selectColor {
+          color: #290642 !important;
+          font-size: 28rpx;
+        }
+
+        .select2 {
+          color: #29064236 !important;
+          font-size: 28rpx;
+        }
+
+        .arrow {
+          width: 30rpx;
+          height: 30rpx;
+          color: #290642;
+          background: url(../../image/mine//arrow.png) no-repeat;
+          background-size: 30rpx 30rpx;
+          position: absolute;
+          right: 0;
+        }
+
+      }
+
+      .btn {
+        margin-top: 40rpx;
+        height: 73rpx;
+        background-image: linear-gradient(right, #780CC7, #9F1CFF, #780CC7);
+        border-radius: 40rpx;
+        font-size: 32rpx;
+        color: #fff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 658rpx;
+      }
+
+      .arg {
+        display: flex;
+        margin-top: 32rpx;
+
+        .img {
+          margin-right: 20rpx;
+          flex: 0 0 36rpx;
+          width: 36rpx;
+          height: 36rpx;
+
+          .select-image {
+            width: 100%;
+            height: 100%;
+          }
+        }
+
+        .arg-r {
+          flex: 1;
+          color: #999;
+          font-size: 26rpx;
+          line-height: 38rpx;
+
+          .argt {
+            color: #290642;
+          }
+        }
+      }
+    }
+
+    .text1 {
+      width: 100%;
+      font-size: 44rpx;
+      line-height: 46rpx;
+      color: #FFF;
+      margin: 0 auto;
+      display: block;
+      margin-top: 40rpx;
+      text-align: center;
+    }
+
+    .coll {
+      width: 710rpx;
+      height: 617rpx;
+      background: url('https://img.zejihui.com.cn/unicom/kplan/bg2.png') no-repeat;
+      background-size: 100% 100%;
+      border-radius: 20rpx;
+      padding: 20rpx;
+      box-sizing: border-box;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0 auto;
+      margin-top: 30rpx;
+
+      &-box {
+        width: 635rpx;
+        height: 432rpx;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        flex-wrap: wrap;
+        .collItem {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          flex-direction: column;
+          width: 107rpx;
+          height: 182rpx;
+          margin-top: 25rpx;
+
+          .collImage {
+            width: 80rpx;
+            height: 100rpx;
+          }
+
+          .collName {
+            width: 107rpx;
+            font-size: 20rpx;
+            line-height: 26rpx;
+            height: 52rpx;
+            color: #290642;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 2;
+            word-break: break-all;
+            margin-top: 17rpx;
+          }
+        }
+
+      }
+
+
+    }
+
+    .text2 {
+      width: 100%;
+      font-size: 44rpx;
+      line-height: 46rpx;
+      color: #FFF;
+      display: block;
+      text-align: center;
+      margin-top: 20rpx;
+    }
+
+    .image3 {
+      width: 710rpx;
+      height: 484rpx;
+      display: block;
+      margin: 0 auto;
+      margin-top: 20rpx;
+    }
+
+    .text3 {
+      width: 100%;
+      font-size: 44rpx;
+      line-height: 46rpx;
+      color: #FFF;
+      display: block;
+      text-align: center;
+      margin-top: 20rpx;
+    }
+
+    .image4 {
+      width: 710rpx;
+      height: 643rpx;
+      display: block;
+      margin: 0 auto;
+      margin-top: 20rpx;
+    }
+
+    .text4 {
+      width: 100%;
+      font-size: 44rpx;
+      line-height: 46rpx;
+      color: #FFF;
+      display: block;
+      text-align: center;
+      margin-top: 40rpx;
+    }
+
+    .image5 {
+      width: 710rpx;
+      height: 538rpx;
+      display: block;
+      margin: 0 auto;
+      margin-top: 20rpx;
+    }
+
+    .image6 {
+      width: 710rpx;
+      height: 142rpx;
+      display: block;
+      margin: 0 auto;
+      margin-top: 20rpx;
+    }
+  }
+}
+
+.pop-content {
+  .title {
+    padding: 24rpx;
+    height: 80rpx;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+.ipt {
+  width: 493rpx;
+  height: 87rpx;
+  background: none !important;
+  color: #290642 !important;
+  font-size: 28rpx;
+  padding: unset;
+}
+
+.am-popup-mask {
+  z-index: 12;
+}
+
+.am-popup-content {
+  z-index: 13;
+  background: #fff;
+  border-radius: 12rpx 12rpx 0 0;
+}
+
+.choosePhone {
+  padding: 20rpx 20rpx 40rpx 20rpx;
+  display: flex;
+  flex-wrap: wrap;
+
+  .phone {
+    margin: 15rpx;
+    font-size: 27rpx;
+    width: 170rpx;
+    height: 40rpx;
+    line-height: 40rpx;
+    padding: 4rpx 16rpx;
+    border: 1px solid #999;
+    border-radius: 6rpx;
+
+    &.active {
+      border: 1px solid #1187f7;
+      color: #1187f7;
+    }
+  }
+}
+
+.phoneTitle {
+  padding: 24rpx;
+  height: 80rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

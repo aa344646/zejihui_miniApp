@@ -1,0 +1,27 @@
+<!-- <loading hidden="{{loadingHide}}" a:if="{{position=='top'}}">
+    加载中...
+</loading> -->
+<view class="pick-wp" hidden="{{hideModal}}" catchTap="hideModal"></view>
+<!--关闭按钮在下方 -->
+<view class="pop-wrap" hidden="{{hideModal}}" a:if="{{position=='top'}}">
+
+    <slot name="top">
+
+    </slot>
+
+    <view class="close" catchTap="hideModal" hidden="{{closeHide}}">
+        <image class="icon-close" src="/image/icon/ico-close.png"></image>
+    </view>
+</view>
+<view class="pop-wrap pop-wrap-middle" hidden="{{hideModal}}" a:if="{{position=='middle'}}">
+    <slot name="middle">
+
+    </slot>
+    <view class="close" catchTap="hideModal" hidden="{{closeHide}}">
+        <image class="icon-close" src="/image/icon/ico-close.png"></image>
+    </view>
+</view>
+<!--从底下慢慢弹出-->
+<view class="shareInfo" hidden="{{hideModal}}" animation="{{animationData}}" a:if="{{position=='bottom'}}">
+    <slot name="bottom"></slot>
+</view>

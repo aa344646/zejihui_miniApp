@@ -1,0 +1,9 @@
+{
+  "defaultTitle": "优惠券",
+  "pullRefresh": true,
+  "allowsBounceVertical":"NO",
+  "usingComponents": {
+    "collapse": "mini-ali-ui/es/collapse/index",
+    "collapse-item": "mini-ali-ui/es/collapse/collapse-item/index"
+  }
+}

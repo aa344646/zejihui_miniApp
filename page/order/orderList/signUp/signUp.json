@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "handwriting-board":"/components/signUp/signUp"
+},
+  "styleIsolation": "apply-shared",
+  "allowsBounceVertical":"NO"
+}

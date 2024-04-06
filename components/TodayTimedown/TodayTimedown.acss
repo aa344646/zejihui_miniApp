@@ -1,0 +1,31 @@
+.today-timedown {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-left: 50rpx;
+}
+
+.today-timedown .value {
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 30rpx;
+  height: 30rpx;
+  background: #3901B5;
+  border-radius: 3rpx;
+  font-weight: 100;
+  font-size: 24rpx;
+  color: #fff;
+  font-family: PingFang SC;
+  margin-right: 8rpx;
+}
+
+.today-timedown .unit {
+  font-size: 24rpx;
+  font-family: PingFang SC;
+  font-weight: 400;
+  color: #ffffff;
+  margin-right: 8rpx;
+}

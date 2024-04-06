@@ -1,0 +1,62 @@
+<view class="compensateApply">
+    <view class="order-product-wp">
+        <after-service-detail afterServiceDetail="{{goodsInfo}}"></after-service-detail>
+    </view>
+
+    <view class="compensateReason-wp">
+        <view class="title">
+            请在下列原因中选择您维权理由
+        </view>
+       <view class="choose">
+           <view class="left">
+           <picker range="{{array}}" onChange="bindPickerChange" range-key="{{'name'}}" value="{{index}}">
+               <view class="picker">
+                   {{array[index].name?array[index].name:'请选择你拒绝赔偿的原因'}}
+               </view>
+           </picker>
+           </view>
+           <view class="right">
+               <text class="iconfont icon-ico-qianjin"></text>
+           </view>
+
+       </view>
+    </view>
+    <view class="pro-comment-wp">
+      <view class="type">
+          举证描述
+      </view>
+      <view class="comment-wp">
+          <view class="textarea">
+              <textarea maxlength="200" placeholder="请添加描述(200字以内)" value="{{content}}" placeholder-class="pc" onInput="setContent"></textarea>
+          </view>
+          <view class="imgcomment">
+              <block a:for="{{apFilePaths}}" a:key="index">
+                  <view class="image-item" catchTap="previewImage" data-index="{{index}}">
+                      <image src="{{item}}" class="item"></image>
+                      <image class="icon" src="/image/icon/ico-del.png" catchTap="delPhote" data-index="{{index}}"></image>
+                  </view>
+              </block>
+              <view class="upload" catchTap="chooseImage" hidden="{{apFilePaths.length>=4}}">
+                  <image class="image" src="/image/icon/ico-add.png"></image>
+              </view>
+          </view>
+      </view>
+    </view>
+
+    <view class="note">
+        <view>注：请提供为您所选择的理由添加有效力的凭证</view>
+        <view>订单提交成功后，会有商家、客服与您联系，请保持电话畅通。</view>
+    </view>
+    <view class="submit">
+        <button catchTap="submit">立即提交</button>
+    </view>
+    <view class="pick-wp" a:if="{{!hideModal}}" catchTap="hideModal"></view>
+    <view class="successContent" a:if="{{!hideModal}}">
+        <text class="iconfont icon-ico_apply"></text>
+        <view class="line1" >赔偿申诉提交成功</view>
+        <view class="line2">
+            客服人员会与您联系，请保持电话畅通
+        </view>
+        <view class="backToHome" catchTap="backToOrder"> 订单详情 <text class="iconfont icon-ico_right1"></text> </view>
+    </view>
+</view>

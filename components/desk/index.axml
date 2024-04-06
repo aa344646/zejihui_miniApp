@@ -1,0 +1,15 @@
+<template name='Desk'>
+<view class="desk" a:if='{{!deskData.deskhidden}}' onTap='undesk'>
+        <view class='desk-content'>
+            <view class='desk-alert'>
+                <text>{{deskData.title}}</text>
+                <text>{{deskData.content}}</text>
+            </view>
+            <view class='icon' onTap='undesk'>
+                <!-- <text class="iconfont {{deskData.iconfont}}"></text> -->
+                <image class="iconClose" src="../../image/icon/ico-close.png"></image>
+                
+            </view>
+        </view>
+    </view>
+</template>

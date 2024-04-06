@@ -1,0 +1,275 @@
+//out:index.acss,sourceMap:false
+.product-header-normal{
+  background: #ffffff;
+  margin: 20rpx 0;
+  .order-product{
+    overflow: hidden;
+    padding: 10rpx 20rpx;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+    .img{
+      position: relative;
+      width: 130rpx;
+      height: 130rpx;
+      .image{
+        width: 100%;
+        height:100%;
+      }
+    }
+
+    .des{
+      height: 100%;
+      padding-left: 20rpx;
+      flex: 1;
+      .title{
+        font-size: 28rpx;
+        color: #000000;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+      }
+      .param{
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        justify-content: flex-start;
+        font-size: 22rpx;
+        padding-top: 10rpx;
+        color: #434343;
+        .one-param{
+          text{
+            color: #434343;
+          }
+          .line{
+            margin: 0 10rpx;
+          }
+          &:last-of-type{
+            .line{
+              display: none;
+            }
+
+          }
+        }
+      }
+    }
+    //租赁数量在右方
+    .rentNum{
+      flex:1;
+      text-align:center;
+      height: 160rpx;
+      line-height: 160rpx;
+      font-size: 28rpx;
+      color: #000000;
+    }
+  }
+}
+.comment{
+  .pro-rater-wp{
+    background: #FFFFFF;
+    display: flex;
+    flex-direction: row;
+    padding: 0 30rpx;
+    height: 100rpx;
+    align-items: center;
+    position: relative;
+    &:before{
+      content: '';
+      position: absolute;
+      width: 690rpx;
+      height: 2rpx;
+      bottom: 0;
+      left: 30rpx;
+      background: #EAEAEA;
+    }
+    .type{
+      text{
+        font-size: 28rpx;
+        color: #000000;
+      }
+    }
+    .comment-wp{
+      flex: 1;
+      padding-left: 40rpx;
+      background: #fff;
+      .xx-wp{
+        display: inline-flex;
+        padding: 15rpx;
+        justify-content: center;
+        align-items: center;
+      }
+      .icon{
+        width: 32rpx;
+        height: 32rpx;
+      }
+    }
+  }
+
+  .pro-comment-wp{
+    padding: 0 30rpx;
+    padding-bottom: 40rpx;
+    background: #FFFFFF;
+    display: flex;
+    flex-direction: column;
+    .type{
+      height: 88rpx;
+      line-height: 88rpx;
+      font-size: 28rpx;
+      color: #000000;
+    }
+    .comment-wp{
+      padding: 20rpx;
+      background: #F7F7F7;
+      .textarea{
+        height: 200rpx;
+        .pc{
+          font-size: 26rpx;
+          color: #9B9B9B;
+        }
+        textarea{
+          padding: 10rpx;
+          font-size: 26rpx;
+          height: 100%;
+          color: #9B9B9B;
+          width:100%;
+          box-sizing: border-box;
+        }
+      }
+      .imgcomment{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        margin-top: 20rpx ;
+        .image-item{
+          width: 23%;
+          padding-bottom: 23% ;
+          height: 0;
+          margin-right:2%;
+          margin-bottom: 20rpx;
+          position: relative;
+          .item{
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: 10rpx;
+            width: 100%;
+            height: 100%;
+          }
+          .icon{
+            position: absolute;
+            right: -14rpx;
+            top: -14rpx;
+            width: 28rpx;
+            height: 28rpx;
+            z-index: 99;
+          }
+        }
+        .upload{
+          width: 23%;
+          padding-bottom: 23%;
+          height: 0;
+          position: relative;
+          background: #EFEFEF;
+          border-radius: 10rpx;
+          .image{
+            position: absolute;
+            width: 60rpx;
+            height: 60rpx;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+          }
+        }
+      }
+
+    }
+
+    .comment-cnt{
+      padding: 24rpx 0;
+      .content{
+        font-size: 26rpx;
+        color: #434343;
+      }
+
+      .imgList{
+        padding: 20rpx 0;
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        justify-content: flex-start;
+        .img{
+          border:1rpx solid #eaeaea;
+          box-sizing:border-box;
+          width: 33.333%;
+          height: 216rpx;
+          text-align: center;
+          image{
+            width: 216rpx;
+            height: 100%;
+          }
+        }
+      }
+    }
+
+  }
+
+  .submit{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 120rpx;
+    padding: 20rpx;
+    box-sizing: border-box;
+    button{
+      height: 100%;
+      text-align: center;
+      background: #2395FF;
+      border-radius: 66rpx;
+      color: #FFFFFF;
+      width: 100%;
+      font-size: 32rpx;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

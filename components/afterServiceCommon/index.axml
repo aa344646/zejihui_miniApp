@@ -1,0 +1,34 @@
+<view class="top_wp">
+    <view class="merchant">
+        <view class="name">
+            {{afterServiceDetail.shopName}}
+        </view>
+        <view class="contact" catchTap="callphone">
+            <image src="/image/afterService/ico-contact.png"></image>
+        </view>
+    </view>
+    <view class="order-product-wp">
+        <view class="orderProduct-num">
+            <view class="order-product">
+                <view class="img">
+                    <image src="{{afterServiceDetail.goodsImage}}" class="image"></image>
+                </view>
+                <view class="des">
+                    <view class="title">
+                        {{afterServiceDetail.goodsName}}
+                    </view>
+                    <view class="param">
+                        <text>{{afterServiceDetail.standard}}</text>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>
+
+
+
+
+
+
+

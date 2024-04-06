@@ -1,0 +1,6 @@
+{
+  "defaultTitle": "",
+  "usingComponents": {
+    "camera": "/components/camera/index"
+  }
+}

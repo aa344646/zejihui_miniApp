@@ -1,0 +1,27 @@
+{
+  "name": "ant-mini-program-demo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "antd-mini": "^1.0.0-beta.8",
+    "compare-versions": "^5.0.1",
+    "dayjs": "^1.11.3",
+    "mashi-open-snippets": "0.0.9",
+    "mini-ali-ui": "^1.4.1",
+    "mini-antui": "^0.5.2",
+    "moment": "^2.29.4",
+    "umtrack-alipay": "^2.7.5"
+  },
+  "devDependencies": {
+    "css-loader": "^6.7.1",
+    "less": "^4.1.3",
+    "less-loader": "^11.1.0",
+    "style-loader": "^3.3.1"
+  }
+}

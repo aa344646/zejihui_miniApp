@@ -1,0 +1,21 @@
+<view class="view">
+    <view class="pic">
+        <image src="{{current.pic}}"></image>
+    </view>
+    <view class="desc">
+        <view class="title">{{current.title}}</view>
+        <view class="text">{{current.desc}}</view>
+    </view>
+    <view class="process_pic_wp">
+        <view class="pic">
+            <image src="{{current.processPic}}"></image>
+        </view>
+    </view>
+    <view class="fixed">
+        <view class="submit" catchTap="toList">{{current.buttonText}}</view>
+        <view class="control" catchTap="controlTipShow">
+            <text class="iconfont {{!hideTip?'icon-xuanzekuang':'icon-selected1'}}"></text>
+            <text class="text">不再提示此页面</text>
+        </view>
+    </view>
+</view>

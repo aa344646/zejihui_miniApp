@@ -1,0 +1,183 @@
+<!-- <import src="/templates/orderProduct/index.wxml" /> -->
+<import-sjs name="filters" from="/sjs/filter.sjs"/><view>
+
+<view class="wp">
+    <after-service-detail afterServiceDetail="{{afterServiceDetail}}"></after-service-detail>
+    <view class="tip">
+        商家收货地址
+    </view>
+    <view class="address-wp">
+        <view class="address">
+            <view class="line merchantName">
+                <view class="left">
+                   商户名称
+                </view>：
+                <view class="right">{{afterServiceDetail.shopName}}</view>
+            </view>
+            <view class="line userName">
+                <view class="left">
+                   收件人
+                </view>：
+                <view class="right">{{merchantInfo.contactName}}</view>
+            </view>
+            <view class="line phone">
+                <view class="left">
+                    联系电话
+                </view>：
+                <view class="right">{{merchantInfo.contactNumber}}</view>
+            </view>
+            <view class="line content">
+                <view class="left">
+                    收件地址
+                </view>：
+                <view class="right">
+                    {{merchantInfo.address}}
+                </view>
+                <view class="control" catchTap="copy">
+                    <text class="iconfont icon-ico_apply"></text>
+                    <text>复制地址</text>
+                </view>
+            </view>
+        </view>
+    </view>
+    
+    <view class="tip" a:if="{{expressAddress.length || selectExpressAddress.name &&afterServiceDetail.category!='return'}}">
+        用户收货地址 (此地址用于{{text}}成功后寄回)
+    </view>
+    <view class="tip" a:if="{{!expressAddress.length&&afterServiceDetail.category!='return'&&!selectExpressAddress.name}}">
+        暂无用户收货地址 (请添加地址用于{{text}}成功后寄回)
+    </view>
+    <block a:for="{{expressAddress}}" a:key="index">
+        <view class="address-wp" a:if="{{afterServiceDetail.state!='pending_return'}}">
+            <view class="address" data-index="{{index}}" catchTap="selectAddress">
+                <view class="line userName">
+                    <view class="left">
+                    收件人
+                    </view>：
+                    <view class="right">{{item.name}}<text class="isDefault" a:if="{{item.defaulted}}">(默认地址)</text></view>
+                </view>
+                <view class="line phone">
+                    <view class="left">
+                        联系电话
+                    </view>：
+                    <view class="right">{{item.phone}}</view>
+                </view>
+                <view class="line content">
+                    <view class="left">
+                        收件地址
+                    </view>：
+                    <view class="right">
+                        {{item.provice}}{{item.city}}{{item.regoin}}{{item.text}}
+                    </view>
+                    <view class="control" catchTap="aboutAddress" data-type="add" data-index="{{index}}">
+                        <text class="iconfont icon-ico-bianji"></text>
+                        <text>修改地址</text>
+                    </view>
+                </view>
+                <view class="select">
+                    <text class="iconfont {{index==addressIndex?'icon-ico_select_pre':'icon-ico_select'}}"></text>
+                </view>
+            </view>
+        </view>
+    </block>
+    <view class="address-wp" a:if="{{afterServiceDetail.state!='pending_return'&&selectExpressAddress.name&&!expressAddress.length}}">
+        <view class="address">
+            <text class="iconfont icon-ico_close del" catchTap="del"></text>
+            <view class="line userName">
+                <view class="left">
+                收件人
+                </view>：
+                <view class="right">{{selectExpressAddress.name}}</view>
+            </view>
+            <view class="line phone">
+                <view class="left">
+                    联系电话
+                </view>：
+                <view class="right">{{selectExpressAddress.phone}}</view>
+            </view>
+            <view class="line content">
+                <view class="left">
+                    收件地址
+                </view>：
+                <view class="right">
+                    {{selectExpressAddress.provice}}{{selectExpressAddress.city}}{{selectExpressAddress.regoin}}{{selectExpressAddress.text}}
+                </view>
+                <view class="control" catchTap="aboutAddress" data-type="edit">
+                    <text class="iconfont icon-ico-bianji"></text>
+                    <text>修改地址</text>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="logistics-wp">
+        <view class="item company">
+            <view class="title">
+                物流公司
+            </view>
+            <view class="row">
+                <view class="left">
+                    <picker range="{{array}}" onChange="bindPickerChange"  range-key="{{'name'}}" value="{{index}}">
+                        <view class="picker">
+                            {{logisticsId?array[index].name:'请选择物流公司'}}
+                        </view>
+                    </picker>
+                </view>
+                <view class="right">
+                    <text class="iconfont icon-ico-qianjin"></text>
+                </view>
+            </view>
+        </view>
+        <view class="item logisticsNum">
+            <view class="title">
+                物流单号
+            </view>
+            <view class="row">
+                <view class="left">
+                    <input value="{{logisticsNum}}" placeholder="请输入物流单号" placeholder-class="placeholder" onInput="input"/>
+                </view>
+            </view>
+        </view>
+        <view class="item logisticsNum">
+            <view class="title">
+                运费 (元)
+            </view>
+            <view class="row">
+                <view class="left">
+                    <input value="{{freight}}" type="number" placeholder="请输入运费(元)" placeholder-class="placeholder" onInput="inputFreight"/>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="note">
+        你的{{text}}申请已通过，请将您要{{text}}的商品邮寄到商家指定{{text}}地点。
+    </view>
+    <view class="submit" a:if="{{!expressAddress.length&&afterServiceDetail.category!='return'&&!selectExpressAddress.name}}">
+        <button catchTap="aboutAddress" data-type="add">新增我的收货地址</button>
+    </view>
+    <view class="submit" a:else>
+        <button catchTap="confirmReturn">确认寄回</button>
+    </view>
+</view>
+<!-- <pop-up position="bottom" ref="submitSuccess">
+    <view class="result" slot="bottom">
+        <view class="icon iconfont icon-ico_payment"></view>
+        <view class="status">
+            提交成功
+        </view>
+        <view class="time" a:if="{{afterServiceDetail.category=='repair'}}">商家{{text}}好设备后会快递给你</view>
+        <view class="type" a:if="{{afterServiceDetail.category=='repair'}}">请实时关注订单信息</view>
+        <view class="return" catchTap="returnOrder">返回我的订单<text class="iconfont icon-ico_right1"></text></view>
+    </view>
+</pop-up> -->
+<view class="pick-wp" a:if="{{hideResult}}" catchTap="hideModal"></view>
+<view class="tipInfo" a:if="{{hideResult}}" animation="{{animationData}}">
+    <view class="result" slot="bottom">
+        <view class="icon iconfont icon-ico_payment"></view>
+        <view class="status">
+            提交成功
+        </view>
+        <view class="time" a:if="{{afterServiceDetail.category=='repair'}}">商家{{text}}好设备后会快递给你</view>
+        <view class="type" a:if="{{afterServiceDetail.category=='repair'}}">请实时关注订单信息</view>
+        <view class="return" catchTap="returnOrder">返回我的订单<text class="iconfont icon-ico_right1"></text></view>
+    </view>
+</view>

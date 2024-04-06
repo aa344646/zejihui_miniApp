@@ -1,0 +1,6 @@
+<import src="../../components/rentOrder/index.axml"/>
+<import src="../../components/desk/index.axml" />
+<view a:if="{{viewShow}}">
+    <template is='RentOrder' data='{{kipe:kipe,goodsRentOrder:goodsRentOrder}}'/>
+    <template is='Desk' data='{{deskData:deskData}}' />
+</view>

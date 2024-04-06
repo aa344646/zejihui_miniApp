@@ -1,0 +1,6 @@
+<view class="searchWp" catchTap="toSearch">
+    <view class="search">
+        <text class="iconfont icon-sousuo"></text>
+        <text class="text">搜索</text>
+    </view>
+</view>

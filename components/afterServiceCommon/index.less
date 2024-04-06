@@ -1,0 +1,83 @@
+// out:index.acss,sourceMap:false
+.top_wp{
+  background-color: #fff;
+  padding: 0 30rpx;
+  box-sizing: border-box;
+}
+.merchant{
+  display: flex;
+  height: 88rpx;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1rpx solid #EAEAEA;
+  .name{
+    flex: 1;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    font-size: 32rpx;
+    color: #000;
+    font-size: 26rpx;
+    color: #000;
+    font-family: PingFangSC-Regular;
+  }
+  .contact{
+    width: 160rpx;
+    height: 48rpx;
+    image{
+      width: 100%;
+      height: 100%;
+    }
+  }
+}     
+.order-product-wp{
+  background: #FFF;
+} 
+.orderProduct-num{
+  border-radius: 10rpx;
+  background-color: #fff;
+  .order-product{
+    overflow: hidden;
+    border-radius: 10rpx;
+    padding: 10rpx 0;
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+    .img{
+      position: relative;
+      width: 130rpx;
+      height: 130rpx;
+      .image{
+        width: 100%;
+        height:100%;
+      }
+    }
+    .des{
+      padding-left: 20rpx;
+      .title{
+        width: 460rpx;
+        font-size: 28rpx;
+        color: #000000;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+      }
+      .param{
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        justify-content: flex-start;
+        font-size: 22rpx;
+        padding-top: 10rpx;
+        color: #434343;
+        .one-param{
+          text{
+            color: #434343;
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,71 @@
+<view>
+  <!-- 商品描述 -->
+  <view class="chooseDescribe">
+    <view class="item-con">
+      <view class="item-con-left">
+        <image src="{{goodsInfo.image}}" mode="widthFix" />
+      </view>
+      <view class="item-con-right">
+        <view class="title">{{goodsInfo.goodsName}}</view>
+        <view class="sku">规格：{{goodsInfo.specification}}</view>
+      </view>
+    </view>
+  </view>
+  <!-- 收货人信息 -->
+  <view class="personInfo">
+    <view class="personInfo-row1">
+      <view class="name">{{goodsInfo.orderReturnMerchantInfoBean.contact}}</view>
+      <view class="tel">{{goodsInfo.orderReturnMerchantInfoBean.phone}}</view>
+    </view>
+    <view class="personInfo-row2">
+      <view class="addr-detail">
+        <view class="addr-con">
+          <text class="iconfont icon-ico-dingwei iconAddress marign-r10"></text>
+          <text>{{goodsInfo.orderReturnMerchantInfoBean.receiveAddress}}</text>
+        </view>
+        <view class="return-tips">
+          归还须知：请将商品寄回至以上地址完成归还
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="parting-line"></view>
+  <view class="return-info">
+    <!-- 归还方式 -->
+    <view class="return-mode">
+      <picker  value="{{returnModeIndex}}" range="{{returnMode}}" >
+        <view class="row">
+          <view class="row-title">归还方式</view>
+          <view class="row-extra">{{returnMode[returnModeIndex]}}</view>
+          <image class="row-arrow" src="/image/common/arrowright.png" mode="aspectFill" />
+        </view>
+      </picker>
+    </view>
+    <!-- 物流公司 -->
+    <view class="return-delivery">
+      <picker onChange="returnDeliveryChange" value="{{returnDeliveryIndex}}" range="{{returnDelivery}}" range-key="name">
+        <view class="row">
+          <view class="row-title">物流公司</view>
+          <view class="row-extra">
+            <text a:if="{{!deliveryFlag}}" style="color:#999;">请选择</text>
+            {{returnDelivery[returnDeliveryIndex].name}}
+          </view>
+          <image class="row-arrow" src="/image/common/arrowright.png" mode="aspectFill" />
+        </view>
+      </picker>
+    </view>
+    <!-- 物流单号 -->
+    <view class="return-number">
+      <view class="row">
+        <view class="row-label">物流单号</view>
+        <view class="row-content">
+          <input class="input"  onInput='inputChange' placeholder="请输入" />
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- 提交订单 -->
+  <view class="submit-area">
+    <button type="primary" onTap="confirm" class="{{finished?'active':''}}"> 确定 </button>
+  </view>
+</view>

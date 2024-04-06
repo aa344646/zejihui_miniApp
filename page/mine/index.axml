@@ -1,0 +1,309 @@
+<import-sjs name="filters" from="../../sjs/filter.sjs" />
+<view class="mine">
+    <view class="mine-main">
+        <view class="header">
+            <view class="avatar">
+                <image class="avatar-img" src="{{uinfo.headImg || '../../image/ic_youke.png'}}" />
+            </view>
+            <view class="user">
+                <view class="username">{{uinfo.nickName || '游客'}}</view>
+                <view>{{uinfo.mobile || '***********'}}</view>
+            </view>
+            
+        </view>
+        <view class="main-content">
+            <view class="order-section">
+                <view class="order-title" catchTap="listNavigateTo" data-type="all" data-index="0">
+                    <view class="left">我的订单</view>
+                    <view class="right">
+                        <text>查看全部</text>
+                        <view class="a-list-arrow a-list-arrow-horizontal" />
+                    </view>
+                </view>
+                <view class="order-type">
+                    <view class="order-item" catchTap="listNavigateTo" data-type="dai_shen_he" data-index="1">
+                        <image src="/image/mine/dsh.png" />
+                        待审核
+                    </view>
+                    <view class="order-item" catchTap="listNavigateTo" data-type="dai_qian_yue" data-index="2">
+                        <image src="/image/mine/dqy.png" />
+                        待签约
+                    </view>
+                    <view class="order-item" catchTap="listNavigateTo" data-type="yi_fa_huo" data-index="3">
+                        <image src="/image/mine/yfh.png" />
+                       已发货
+                    </view>
+                    <view class="order-item" catchTap="listNavigateTo" data-type="zu_lin_zhong" data-index="4">
+                        <image src="/image/mine/zlz.png" />
+                        租赁中
+                    </view>
+                    <view class="order-item" catchTap="listNavigateTo" data-type="dai_gui_huan" data-index="5">
+                        <image src="/image/mine/dgh.png" />
+                        待归还
+                    </view>
+                </view>
+            </view>
+            <view class="other-section">
+                <view class="other-item" onTap="listNavigateTo" data-link="/page/coupon/index">
+                    <image src="/image/mine/mineIcon/yhq.png" />
+                    优惠券
+                </view>
+                <view class="other-item" onTap="listNavigateTo" data-link="/page/order/reletBuyOut/tip/index?status=0">
+                    <image src="/image/mine/mineIcon/xuzu.png" />
+                    续租服务
+                </view>
+                <view class="other-item" onTap="listNavigateTo" data-link="/page/order/reletBuyOut/tip/index?status=1">
+                    <image src="/image/mine/mineIcon/md.png" />
+                    买断服务
+                </view>
+                <view class="other-item" onTap="listNavigateTo" data-link="/page/afterService/index">
+                    <image src="/image/mine/mineIcon/shouhou.png" />
+                    售后服务
+                </view>
+                <view class="other-item"  data-link="/page/kplan/index" onTap="listNavigateTo">
+                    <image src="https://img.zejihui.com.cn/static/ali/kplan.png" />
+                    联通K计划
+                </view>
+                <view class="other-item" onTap="listNavigateTo" data-link="/page/addressList/index">
+                    <image src="/image/mine/mineIcon/dz.png" />
+                    收货地址
+                </view>
+                <view class="other-item" onTap="showServer">
+                    <image src="/image/mine/mineIcon/kefu.png" />
+                    联系客服
+                </view>
+                <view class="other-item" data-link="/page/help/helpCenter/helpCenter" onTap="listNavigateTo">
+                    <image src="https://img.zejihui.com.cn/static/ali/about.png" />
+                    关于我们
+                </view>
+                <view class="other-item" data-link="/page/5g/index" onTap="listNavigateTo">
+                    <image src="https://img.zejihui.com.cn/static/ali/5G.png" />
+                    联通5G
+                </view>
+                <view class="other-item" catchTap="listNavigateTo" data-link="/page/uploadCards/index?url=/page/mine/index">
+                    <image src="/image/mine/mineIcon/shenfen.png" />
+                    身份信息
+                </view>
+            </view>
+            <view class="ad-section">
+                <ad unit-id="ad_tiny_2021002189690874_202112232200028929" />
+            </view>
+        </view>
+        <view class="zjh-section" onTap="handleGetCoup">
+                <get-coupon
+                onBeforeGetCoupon="onBeforeGetCoupon"
+                onGetCouponSuccess="onGetCouponSuccess"
+                onGetCouponFail="onGetCouponFail"
+                onUseImmediately="onUseImmediately"
+                onClose="onClose"
+                params="{{scParams}}"
+                dialogBtnType="{{dialogBtnType}}"
+                dialogBtnStyle="{{dialogBtnStyle}}"
+                zIndex="{{9999}}"
+                extraData="{{'Any Data'}}"
+                class="entry"
+              >
+              <image class="entry-image" src="../../image/home/get-coupon.png"></image>
+
+              </get-coupon>
+          
+          
+            <view class="buy" catchTap="merchantBuy">
+                <image class="buy-image" src="../../image/home/rz-zjh.png"></image>
+            </view>
+        </view>
+        <view class="hot-section">
+            <image mode="scaleToFill" src="../../image/tapbg.png"  class="hot_tapbg"/>
+            <view class="hot">
+                <view class="title">
+                    <view class="title-zhuzi">
+                    </view>
+                    本月热销
+                </view>
+                <scroll-view scroll-x class="goodsHotScroll">
+                    <view class="goodsHot">
+                        <block a:for="{{hotList}}" a:key="index">
+                            <view class="goodsItem" data-id="{{item.id}}" catchTap="goodsClick">
+                                <image class="tag" a:if="{{index === 0}}" src="../../image/n1.png" />
+                                <image class="tag" a:if="{{index === 1}}" src="../../image/n2.png" />
+                                <image class="tag" a:if="{{index === 2}}" src="../../image/n3.png" />
+                                <view class="goodsPicWrap">
+                                    <image class="goodsPic" src="{{item.src[0]}}" />
+                                </view>
+                                <view class="goodsName">
+                                    {{item.name}}
+                                </view>
+                                <view a:if="{{item.discount}}">
+                                    <view class="price">
+                                        <text class="unit">￥</text>
+                                        <text class="bigFont">{{filters.parsePrice(item.displayRent * (item.discount/100))}}</text>/天起</view>
+                                </view>
+                                <view a:if="{{!item.discount}}">
+                                    <view class="price">
+                                        <text class="unit">￥</text>
+                                        <text class="bigFont">{{item.activityStatus?filters.parsePrice(item.promotionRent):filters.parsePrice(item.displayRent)}}</text>/天起</view>
+                                </view>
+                            </view>
+                        </block>
+                    </view>
+                </scroll-view>
+            </view>
+        </view>
+        <!--<view class="a-list"><view a:if={{data}} class="a-list-items"><block a:for={{data}}><view class="a-list-item {{index !== (data.length - 1) ? '': 'last'}} am-list-item-{{item.align || 'middle'}}" 
+                        hover-class="a-list-item-hover" onTap="listNavigateTo" data-index="{{index}}" data-link="{{item.link}}"><view class="a-list-item-line {{item.textMode ? 'a-list-item-line-' + item.textMode : ''}}"><image a:if={{item.thumb}} class="a-list-item-thumb" src="{{item.thumb}}" mode="scaleToFill" /><text class="a-list-item-content"><image class="text-icon" src="{{item.image}}"></image>{{item.title}}</text><view a:if={{item.extra}} class="a-list-item-extra">{{item.extra}}</view><view class="a-list-arrow a-list-arrow-horizontal" /><view class="a-list-item-bottom" /></view></view></block></view></view> -->
+    </view>
+    <view class="recommend-title">
+        <view class="line line1"></view>
+        <view>
+        </view>
+        <view class="recommendText">为你推荐</view>
+        <view class="line line2"></view>
+    </view>
+    <view class="recommend-section">
+  
+    <view class="tab-list">
+        <view class="tab-list-item tab-list-left">
+            <view class="list-item" a:for="{{tabFirstShowLeft}}" catchTap="goodsClick" data-id="{{item.id}}" key="index">
+                <view class="pic">
+                    <!--<image class="tag" src="/image/hotPro.png" /> -->
+                    <image class="pro" src="{{filters.optimizeImage(item.src[0],392,392)}}" />
+                </view>
+                <view class="content">
+                    <view class="name">
+                        {{item.goodsName || item.name}}
+                    </view>
+                    <view class="tag" a:if="{{item.labelList&&item.labelList.length}}">
+                        <view class="tag-item blue" a:if="{{item.labelList[0]}}">
+                            {{item.labelList[0]}}
+                        </view>
+                        <view class="tag-item orange" a:if="{{item.labelList[1]}}">
+                            {{item.labelList[1]}}
+                        </view>
+                        <view class="tag-item red" a:if="{{item.labelList[2]}}">
+                            {{item.labelList[2]}}
+                        </view>
+                    </view>
+                    <view class="price-section">
+                        <view class="price" a:if="{{item.discount}}">
+                            <text class="unit">¥</text>
+                            <text class="bold">{{filters.parsePrice(item.displayRent * (item.discount/100))}}</text>/天起
+                        </view>
+                        <view class="price" a:if="{{!item.discount}}">
+                            <text class="unit">¥</text>
+                            <text class="bold">{{item.activityStatus?filters.parsePrice(item.promotionRent):filters.parsePrice(item.displayRent)}}</text>/天起
+                        </view>
+                        <view class="qizu" a:if="{{item.displayLeaseDay}}">{{item.displayLeaseDay}}</view>
+                    </view>
+                </view>
+            </view>
+        </view>
+        <view class="tab-list-item tab-list-right">
+            <view class="list-item" a:for="{{tabFirstShowRight}}" catchTap="goodsClick" data-id="{{item.id}}" key="index">
+                <view class="pic">
+                    <!--<image class="tag" src="/image/hotPro.png" /> -->
+                    <image class="pro" src="{{item.src[0]}}" />
+                </view>
+                <view class="content">
+                    <view class="name">
+                        {{item.goodsName || item.name}}
+                    </view>
+                    <view class="tag">
+                        <view class="tag-item blue">
+                            {{item.labelList[0]}}
+                        </view>
+                        <view class="tag-item orange" a:if="{{item.labelList[1]}}">
+                            {{item.labelList[1]}}
+                        </view>
+                        <view class="tag-item red" a:if="{{item.labelList[2]}}">
+                            {{item.labelList[2]}}
+                        </view>
+                    </view>
+                    <view class="price-section">
+                        <view class="price" a:if="{{item.discount}}">
+                            <text class="unit">¥</text>
+                            <text class="bold">{{filters.parsePrice(item.displayRent * (item.discount/100))}}</text>/天起
+                        </view>
+                        <view class="price" a:if="{{!item.discount}}">
+                            <text class="unit">¥</text>
+                            <text class="bold">{{item.activityStatus?filters.parsePrice(item.promotionRent):filters.parsePrice(item.displayRent)}}</text>/天起
+                        </view>
+                        <view class="qizu" a:if="{{item.displayLeaseDay}}">{{item.displayLeaseDay}}</view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+    </view>
+    
+    <!--<view class="mine-footer"><view class="left" data-link="/page/help/helpCenter/helpCenter" onTap="listNavigateTo">常见问题</view><view class="center-line">|</view><view class="right" onTap="showServer">联系客服</view></view> -->
+</view>
+<pop-up position="middle" ref="confirm" closeHide="{{true}}">
+    <view class="confirm-wp" slot="middle">
+        <view class="title">
+            手机绑定
+        </view>
+        <view class="content">
+            您需要先绑定手机号，建议授权绑定。
+        </view>
+        <view class="footer">
+            <button class="btn right" open-type="getAuthorize" onGetAuthorize="onGetAuthorize" onError="onAuthError" scope='phoneNumber'>
+                授权绑定
+            </button>
+        </view>
+    </view>
+</pop-up>
+<pop-up position="middle" ref="server" closeHide="{{true}}">
+    <view class="server-wp" slot="middle">
+        <view class="server-main" slot="middle">
+            <view class="server-item server-item-1">
+                <view class="contact_button">
+                    <contact-button size="80" class="contact-button" tnt-inst-id="jB2_KWKn" scene="SCE01217188" />
+                    <contact-button size="80" class="contact-button" tnt-inst-id="jB2_KWKn" scene="SCE01217188" />
+                    <contact-button size="80" class="contact-button" tnt-inst-id="jB2_KWKn" scene="SCE01217188" />
+                    <contact-button size="80" class="contact-button" tnt-inst-id="jB2_KWKn" scene="SCE01217188" />
+                </view>
+                <view class="left">
+                    <image class="icon" src="/image/home/mine-server.png" />
+                    <view class="info">
+                        <view class="title">平台在线客服</view>
+                        <view class="desc">快速响应受理</view>
+                    </view>
+                </view>
+                <view class="right">
+                    <image class="arrow" src="/image/icon/icon-before.png"></image>
+                </view>
+            </view>
+            <view class="server-item server-item-1" catchTap="callAdvise">
+                <view class="left">
+                    <image class="icon" src="/image/home/mine-iphone.png" />
+                    <view class="info">
+                        <view class="title">平台电话客服</view>
+                        <view class="desc">建议或反馈</view>
+                    </view>
+                </view>
+                <view class="right">
+                    <image class="arrow" src="/image/icon/icon-before.png"></image>
+                </view>
+            </view>
+            <view class="server-item" catchTap="callComplaint">
+                <view class="left">
+                    <image class="icon" src="/image/home/mine-zjiphone.png.png" />
+                    <view class="info">
+                        <view class="title">平台投诉电话</view>
+                        <view class="desc">投诉处理</view>
+                    </view>
+                </view>
+                <view class="right">
+                    <image class="arrow" src="/image/icon/icon-before.png"></image>
+                </view>
+            </view>
+
+            <view class="server-bottom">
+                服务时间: 周一到周日 9:00～18:30
+            </view>
+        </view>
+        <view class="close_wrapper" catchTap="hideServer">
+            <image src="/image/common/close01.png" />
+        </view>
+    </view>
+</pop-up>

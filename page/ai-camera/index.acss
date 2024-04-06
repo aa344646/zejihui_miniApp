@@ -1,0 +1,88 @@
+view,
+image,
+scroll-view,
+navigator,
+button {
+  box-sizing: border-box;
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  flex-shrink: 0;
+  flex-basis: auto;
+  align-items: stretch;
+  align-content: flex-start;
+}
+.page-result {
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  flex-direction: column;
+  width: 750rpx;
+  height: 100vh;
+  align-items: center;
+}
+.page-result-picture {
+  width: 440rpx;
+  height: 440rpx;
+  margin: 44px auto 0px;
+  background-size: contain;
+}
+.page-result-page-network {
+  background-image: url("https://gw.alipayobjects.com/mdn/rms_d57862/afts/img/A*0SX4TKHHYisAAAAAAAAAAABjARQnAQ");
+}
+.page-result-page-error {
+  background-image: url("https://gw.alipayobjects.com/as/g/antui/antui-static/1.0.3/i/error-busy.png");
+}
+.page-result-page-busy {
+  background-image: url("https://gw.alipayobjects.com/as/g/antui/antui-static/1.0.3/i/error-excption.png");
+}
+.page-result-page-empty {
+  background-image: url("https://gw.alipayobjects.com/as/g/antui/antui-static/1.0.3/i/error-not-found.png");
+}
+.page-result-page-logoff {
+  background-image: url("https://gw.alipayobjects.com/as/g/antui/antui-static/1.0.3/i/error-logout.png");
+}
+.page-result-title {
+  margin-top: 50rpx;
+  margin-bottom: 20rpx;
+  font-size: 40rpx;
+  line-height: 56rpx;
+  color: #333;
+}
+.page-result-brief {
+  font-size: 28rpx;
+  line-height: 38rpx;
+  color: #888;
+  max-width: 500rpx;
+  text-align: center;
+}
+.page-result-button {
+  flex: 1 1 0%;
+  display: flex;
+  flex-direction: column;
+  -webkit-box-pack: end;
+  place-content: center flex-end;
+  margin: 0;
+  padding: 0 0 100rpx;
+}
+.page-result-btn {
+  padding: 0;
+  margin: 52rpx 0 0;
+  text-align: center;
+  font-size: 40rpx;
+  color: #108EE9;
+}
+.upload-info-big-img {
+  width: 354rpx;
+  height: 220rpx;
+  margin: 60rpx auto 0;
+}
+page .camera_content {
+  flex: 1;
+}
+page .camera_footer {
+  height: 389rpx;
+}
+page .camera_footer .title {
+  padding-top: 10rpx;
+}

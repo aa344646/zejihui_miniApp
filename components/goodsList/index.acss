@@ -1,0 +1,225 @@
+@import "../../iconfont/iconfont.acss";
+.jieguolist {
+  background: #ffffff;
+}
+.jieguolist.darkbg {
+  background: #f8f8f8;
+}
+.jieguolist.flex {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  padding: 0 24rpx;
+  justify-content: space-between;
+}
+.jieguolist .product-wp.oneCol {
+  margin: 0 30rpx;
+  padding: 30rpx 0;
+}
+.jieguolist .product-wp.oneCol .product {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.jieguolist .product-wp.oneCol .product .img {
+  width: 200rpx;
+  height: 200rpx;
+  overflow: hidden;
+  background: #f6f6f6;
+}
+.jieguolist .product-wp.oneCol .product .img image {
+  width: 100%;
+  height: 100%;
+}
+.jieguolist .product-wp.oneCol .product .detail {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 12rpx 0;
+  margin-left: 16rpx;
+}
+.jieguolist .product-wp.oneCol .product .detail .title {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  font-size: 28rpx;
+  color: #041D29;
+  line-height: 36rpx;
+  margin-bottom: 16rpx;
+}
+.jieguolist .product-wp.oneCol .product .detail .jiage {
+  margin-top: 10rpx;
+  height: 50rpx;
+  line-height: 50rpx;
+  font-weight: bold;
+}
+.jieguolist .product-wp.oneCol .product .detail .jiage .price {
+  font-size: 36rpx;
+  color: #CE0000;
+}
+.jieguolist .product-wp.oneCol .product .detail .jiage .price .mon {
+  font-size: 24rpx;
+  color: #CE0000;
+  font-weight: normal;
+}
+.jieguolist .product-wp.oneCol .product .detail .jiage .unit {
+  color: #8a8a8a;
+  font-size: 24rpx;
+  padding-left: 6rpx;
+  font-weight: normal;
+}
+.jieguolist .product-wp.oneCol .product .detail .tag {
+  display: flex;
+}
+.jieguolist .product-wp.oneCol .product .detail .tag .tag-item {
+  margin-right: 8rpx;
+  font-size: 20rpx;
+  color: #666666;
+  padding: 4rpx 10rpx;
+  background: #F2F2F2;
+  border-radius: 6rpx;
+}
+.jieguolist .product-wp.oneCol .product .detail .tag .tag-item.blue {
+  background: rgba(23, 101, 212, 0.15);
+  color: #1765D4;
+}
+.jieguolist .product-wp.oneCol .product .detail .tag .tag-item.orange {
+  background: rgba(255, 132, 0, 0.15);
+  color: #FF8400;
+}
+.jieguolist .product-wp.oneCol .product .detail .tag .tag-item.red {
+  background: rgba(255, 73, 73, 0.15);
+  color: #FF4949;
+}
+.jieguolist .product-wp.oneCol .product .detail .tag .tag-item.green {
+  background: #d5f6f5;
+  color: #07a3a2;
+}
+.jieguolist .product-wp.oneCol .product .detail .merchant {
+  font-size: 22rpx;
+  color: #9B9B9B;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 10rpx;
+}
+.jieguolist .product-wp.oneCol .product .detail .merchant .name {
+  display: inline-flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+}
+.jieguolist .product-wp.oneCol .product .detail .merchant .name .merchantName {
+  width: 220rpx;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.jieguolist .product-wp.oneCol .product .detail .merchant .name .city {
+  margin-left: 20rpx;
+}
+.jieguolist .product-wp.oneCol .product .detail .merchant .jindian {
+  color: #434343;
+}
+.jieguolist .product-wp.oneCol .product .detail .merchant .jindian > text {
+  font-size: 22rpx;
+}
+.jieguolist .product-wp.twoCol {
+  margin-bottom: 22rpx;
+  background: #FFFFFF;
+  width: 48.5%;
+  display: inline-flex;
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: 16rpx;
+}
+.jieguolist .product-wp.twoCol .product .img {
+  width: 100%;
+  padding-bottom: 100%;
+  height: 0;
+  position: relative;
+  overflow: hidden;
+}
+.jieguolist .product-wp.twoCol .product .img.darkbg {
+  border-top-left-radius: 16rpx;
+  border-top-right-radius: 16rpx;
+}
+.jieguolist .product-wp.twoCol .product .img image {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+.jieguolist .product-wp.twoCol .product .detail {
+  padding: 0 20rpx;
+  padding-bottom: 30rpx;
+  overflow: visible;
+}
+.jieguolist .product-wp.twoCol .product .detail .title {
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 28rpx;
+  color: #000000;
+  padding-top: 14rpx;
+  padding-bottom: 18rpx;
+}
+.jieguolist .product-wp.twoCol .product .detail .jiage {
+  height: 50rpx;
+  line-height: 50rpx;
+}
+.jieguolist .product-wp.twoCol .product .detail .jiage .price {
+  font-size: 36rpx;
+  color: #CE0000;
+}
+.jieguolist .product-wp.twoCol .product .detail .jiage .price .mon {
+  font-size: 24rpx;
+  color: #CE0000;
+}
+.jieguolist .product-wp.twoCol .product .detail .jiage .unit {
+  color: #8A8A8A;
+  font-size: 24rpx;
+  padding-left: 6rpx;
+}
+.jieguolist .product-wp.twoCol .product .detail .oldjiage {
+  padding-left: 2rpx;
+  font-size: 22rpx;
+  color: #BFC5C9;
+  text-decoration: line-through;
+}
+.jieguolist .product-wp.twoCol .product .detail .tag-wp .tag {
+  display: inline-block;
+  height: 26rpx;
+  line-height: 26rpx;
+  min-width: 56rpx;
+  border-radius: 6rpx;
+  font-size: 20rpx;
+  padding: 2rpx 5rpx;
+  margin-right: 10rpx;
+  text-align: center;
+  box-sizing: content-box;
+}
+.jieguolist .product-wp.twoCol .product .detail .tag-wp .tag.tag_r {
+  color: #FF5339;
+  border: 1rpx solid #FF5339;
+}
+.jieguolist .product-wp.twoCol .product .detail .tag-wp .tag.tag_o {
+  color: #FF8639;
+  border: 1rpx solid #FF8639;
+}
+.jieguolist .product-wp.twoCol .product .detail .tag-wp .tag.tag_g {
+  width: 74rpx;
+  color: #9B9B9B;
+  border: 1rpx solid #9B9B9B;
+}
+.jieguolist .product-wp.twoCol .product .detail .tag-wp .tag.tag_b {
+  color: #3795FF;
+  border: 1rpx solid #3795FF;
+}

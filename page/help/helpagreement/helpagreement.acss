@@ -1,0 +1,4 @@
+@import '../../../components/wxParse/wxParse.acss';
+.lease-view{
+    background: #ffffff;
+}

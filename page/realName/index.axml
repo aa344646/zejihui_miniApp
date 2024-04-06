@@ -1,0 +1,31 @@
+<scroll-view scroll-y="{{true}}" class = "bindPhone">
+    <scroll-view scroll-y="{{true}}" class="scrollview">
+      <view class = "header">
+            <!-- <view class = "msg-title">请确保实名认证信息无误</view> -->
+            <view class = "msg-cont">请确保实名认证信息无误</view>
+        </view>
+        <view class = "content">
+            <view class = "main-cont">
+                <view class = "phone-ipt">
+                    <view class = "title">
+                        姓名
+                    </view>
+                    <input onInput="iptName" class = "phone ipt-more" placeholder = "请输入姓名">
+                </view>
+            </view>
+            <view class = "main-cont">
+                <view class = "phone-ipt">
+                    <view class = "title">
+                        身份证号码
+                    </view>
+                    <input maxlength = "18" onInput="iptCertNo" class = "phone ipt-more" placeholder = "请输入身份证号码">
+                </view>
+            </view>
+        </view>
+    </scroll-view>
+    <view class = "bottom">
+        <button class = "btn confrim {{submitBtnStatus?'disabled':''}}" onTap = "submit">
+            立即认证
+        </button>
+    </view>
+</scroll-view>

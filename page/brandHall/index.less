@@ -1,0 +1,296 @@
+// outExt: .acss
+
+.p_brand_hall {
+  width: 750rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background: #edf7ff;
+  .p_header {
+    width: 750rpx;
+    height: 700rpx;
+    &_img {
+      width: 100%;
+      height: 700rpx;
+    }
+  }
+  .p_tab {
+    width: 100%;
+    height: 200rpx;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-top: 20rpx;
+    &_item {
+      color: #7f7f7f;
+      font-size: 28rpx;
+    }
+    .active_size {
+      font-size: 40rpx;
+      font-weight: 600;
+      color: #000;
+    }
+    &_hr {
+      border: 2px solid #553bec;
+      border-radius: 3rpx;
+      width: 70%;
+      margin-left: 20rpx;
+      margin-top: 10rpx;
+    }
+  }
+  .p_title {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 48rpx;
+    &_img {
+      width: 518rpx;
+      height: 66rpx;
+    }
+  }
+  .p_coupon_box {
+    width: 686rpx;
+    background: #ffead9;
+    margin-top: 24rpx;
+    &_bg {
+      width: 204rpx;
+      height: 148rpx;
+      margin-top: 20rpx;
+      margin-left: 20rpx;
+      display: inline-block;
+      background-size: 100% 100%;
+      overflow: hidden;
+      &_text {
+        font-size: 40rpx;
+        color: #ffedce;
+        margin-left: 18rpx;
+        line-height: 85rpx;
+      }
+    }
+    .activeImgO {
+      background: url(../../image/brandHall/red-coubg.webp) no-repeat;
+    }
+    .activeImgT {
+      background: url(../../image/brandHall/received.webp) no-repeat;
+    }
+  }
+  .p_member_date {
+    width: 686rpx;
+    height: 182rpx;
+    background: url(../../image//brandHall/member.png) no-repeat;
+    background-size: 100% 100%;
+    margin-top: 48rpx;
+  }
+  .p_buy_block {
+    width: 686rpx;
+    height: 300rpx;
+    background-size: 100% 100%;
+    margin-top: 24rpx;
+    &_img {
+      width: 686rpx;
+      height: 300rpx;
+    }
+  }
+  .p_new_block {
+    width: 314rpx;
+    height: 66rpx;
+    background: url(../../image//brandHall/new-pro.webp) no-repeat;
+    background-size: 100% 100%;
+    margin-top: 48rpx;
+  }
+  .p_pop_rec_content {
+    width: 700rpx;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 24rpx;
+    justify-content: space-between;
+    &_box {
+      width: 160rpx ;
+      margin-top: 16rpx;
+      display: flex;
+      flex-direction: column;
+      &_img {
+        width: 160rpx;
+        height: 160rpx;
+        display: block;
+        margin-top: 24rpx;
+        border-radius: 16rpx;
+      }
+
+      &_txt {
+        font-size: 22rpx;
+        color: #333333;
+        margin-top: 12rpx;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        display: block;
+        height: 53rpx;
+        word-break: break-all
+
+      }
+      &_price {
+        font-size: 20rpx;
+        display: flex;
+        align-items: center;
+        margin-top: 4rpx;
+        .fuh {
+          font-size: 18rpx;
+          color: #c70000;
+          margin-top: 4rpx;
+        }
+        .number {
+          color: #c70000;
+          font-size: 30rpx;
+        }
+        .pad {
+          color: #ccc;
+          margin-top: 3rpx;
+        }
+      }
+    }
+  }
+  .p_pop_rec {
+    width: 314rpx;
+    height: 66rpx;
+    background: url(../../image//brandHall/pop-rec.webp) no-repeat;
+    background-size: 100% 100%;
+    margin-top: 48rpx;
+  }
+  .p_hot_sale {
+    width: 314rpx;
+    height: 66rpx;
+    background: url(../../image//brandHall/hot-sale.webp) no-repeat;
+    background-size: 100% 100%;
+    // margin-top: -248rpx;
+  }
+
+  .p_new_content {
+    width: 700rpx;
+    margin-top: 24rpx;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    &_newPro {
+      margin-bottom: 20rpx;
+      margin-left: 5rpx;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      background: #fff;
+      border-radius: 16rpx 16rpx;
+      &_img {
+        display: block;
+        width: 268rpx;
+        height: 268rpx;
+        margin-top: 24rpx;
+      }
+      .size {
+        height: 500rpx;
+      }
+      &_txt {
+        width: 292rpx;
+        font-size: 28rpx;
+        margin-top: 24rpx;
+        height: 80rpx;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        line-height: 40rpx;
+        word-break: break-all
+      }
+      &_tag {
+        width: 320rpx;
+        font-size: 18rpx;
+        display: flex;
+        align-items: center;
+        margin-top: 10rpx;
+      }
+      &_money {
+        margin-top: 10rpx;
+        .days {
+          flex: 1;
+          text-align: right;
+          font-size: 22rpx;
+          font-weight: 300;
+          color: #999;
+        }
+        .smallert {
+          color: #999;
+        }
+        .number {
+          color: #c70000;
+        }
+        .fuh {
+          font-size: 18rpx;
+          color: #c70000;
+        }
+        .pad {
+          margin-right: 66rpx;
+          font-size: 20rpx;
+        }
+        .butt {
+          width: 138rpx;
+          height: 48rpx;
+          background-image: linear-gradient(0deg, #5534ea, #5373f5);
+          border-radius: 28rpx;
+          line-height: 48rpx;
+          font-size: 20rpx;
+          letter-spacing: 1rpx;
+          margin-left: 160rpx;
+          margin-bottom: 20rpx;
+          border: none;
+        }
+      }
+      .tag {
+        padding: 4rpx 10rpx;
+        border-radius: 4rpx;
+        display: block;
+      }
+      .tag-color1 {
+        color: #3572d6;
+        background: #d7e5f8;
+
+      }
+
+      .tag-color2 {
+        color: #ff9433;
+        background: #ffead4;
+        margin-left: 8rpx;
+
+      }
+
+      .tag-color3 {
+        color: #ff4444;
+        background: #ffe0e0;
+        margin-left: 8rpx;
+
+      }
+      .tag-color4 {
+        color: #1491a6;
+        background: #d3f0f0;
+        margin-left: 8rpx;
+
+      }
+    }
+  }
+
+  .p_foo {
+    width: 100%;
+    height: 522rpx;
+    position: relative;
+    bottom: 0;
+    &_img {
+      width: 100%;
+      height: 522rpx;
+    }
+  }
+}

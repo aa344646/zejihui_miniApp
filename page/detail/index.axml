@@ -1,0 +1,411 @@
+<import src='../../components/wxParse/wxParse.axml' />
+<import-sjs name="filters" from="../../sjs/filter.sjs" />
+
+<view class='outer' a:if='{{pageControl.viewShow}}'>
+    <scroll-view class="list-wrapper scroll-component" scroll-y="{{true}}" onScroll="watchScroll">
+        <view class='scroll-content'>
+            <view class='swiper-detail'>
+                <view class="zhima-num">
+                    {{pageInfo.swiperIndex}}/{{allData.imgJson.length}}
+                </view>
+                <view class='swiper-container'>
+                    <view>
+                        <swiper onChange="swiperChange"  indicator-color="{{pageControl.indicatorColor}}" 
+                            indicator-active-color="{{pageControl.indicatorActiveColor}}" style="height:100%" class="banner-sw">
+                            <block a:for="{{allData.imgJson}}">
+                                <swiper-item>
+                                    <view class="banner-wp">
+                                        <image src="{{item.url}}" />
+                                    </view>
+                                </swiper-item>
+                            </block>
+                        </swiper>
+                    </view>
+                </view>
+            </view>
+            <view class="zhima">
+                <image src="/image/zhimaxinyong.png"/>
+         
+            </view>
+            <view class='proinfo-area'>
+                <view class='title'>
+                    {{pageInfo.detail.title}}
+                    <!-- <text>{{pageInfo.detail.subtitle}}</text> -->
+                </view>
+                <view class='display-rent'>
+                    <view class="fl prePrice">
+                        <!--<text class='rentName'>￥</text> -->
+                        <text class="rentSign">
+                            <text class="rentSign_firtxt">￥</text>
+                            {{pageInfo.detail.chooseRent || pageInfo.detail.defaultRent}}
+                        </text>
+                        <text class="type-03"> / 天</text>
+                        <text class="type-03" a:if='{{!pageInfo.detail.chooseRent}}'>起</text>
+                    </view>
+                    <view class="fr ordPrice" a:if="{{pageInfo.detail.activityStatus}}">
+                        ￥{{pageInfo.detail.oldDefaultRent}} / 天
+                    </view>
+                </view>
+                                <!--<view class='d-price'><text class='priceName'>原价</text><text class="subPicesSign">￥</text>{{pageInfo.detail.originPrice}}</view><view class='d-price'><text class='priceName'>买断尾款</text><block a:if="{{buyoutMoney>0}}"><text class="subPicesSign">￥</text>{{buyoutMoney}}<text class="qi"> 起</text></block><block a:else><text class="small-tip">此商品不支持买断</text></block></view> -->
+            </view>
+            <!--<view class="popup-coupon" a:if="{{!allData.whiteListed}}"><view class="coupon" catchTap="controlCoupon"><view class="coupon-title"><text class="coupon-num">
+                            {{pageInfo.coupon.content.length || 0}}</text><text>张可用优惠券</text></view><view class="coupon-cont" hidden="{{pageInfo.currentCoupon.couponPrice}}"><image class="iconBefore icon1 icon" src="/image/icon/icon-before.png"></image></view><view class="coupon-cont" hidden="{{!pageInfo.currentCoupon.couponPrice}}"><text class="text">优惠券：省<text style="color: #F5533A;padding:2rpx;padding-right: 2rpx;"> {{(pageInfo.currentCoupon.couponPrice)}}</text> 元</text><image class="iconBefore icon1 icon" src="/image/icon/icon-before.png"></image></view></view></view> -->
+            <!--<view class="popup-coupon" a:if="{{allData.whiteListed}}"><view class="coupon" catchTap="controlCoupon"><view class="coupon-title"><text>优惠券</text></view><view class="coupon-cont"><text class="text"><text>
+                                抱歉 ! 此商品无法使用优惠券</text></text><image class="iconBefore icon1 icon" src="/image/icon/icon-before.png"></image></view></view></view> -->
+            <view class='sentName' onTap='controlServeInst'>
+                <view class='sentContent'>
+                    <block a:for='{{pageInfo.serverDescription}}' a:if="{{index<5}}">
+                        <view class='item'>
+                            <view class='content'>
+                                <image mode="scaleToFill" src="{{item.img}}" class="content-img" />
+                                {{item.name}}
+                            </view>
+                        </view>
+                    </block>
+                </view>
+                <!--<image class="iconBefore icon1 icon" src="/image/icon/icon-before.png"></image> -->
+            </view>
+            <view id="tabsView" class='tab-section'>
+                <view class="wrapper">
+                    <view a:for="{{pageInfo.tabsArr}}" class="tab-item {{index==pageControl.tabIndex?'active':''}}">
+                        <view class="{{index==pageControl.tabIndex?'line-item':''}}" catchTap="setindex" data-index="{{index}}">{{item}}</view>
+                    </view>
+                </view>
+            </view>
+            <view class='tabs-content'>
+                <view class='tabs-content-0' a:if="{{pageControl.tabIndex==0}}">
+                    <view class="wxParse">
+                        <template is="wxParse" data="{{wxParseData:bindData.pictDetailALL.nodes}}" />
+                    </view>
+                </view>
+                <view class='tabs-content-1' a:if="{{pageControl.tabIndex==1}}">
+                    <!-- <block a:for='{{pageInfo.rentContent}}'>
+                        <view class='item'>
+                            <text class='titleName'>{{item.rentTitle}}</text>
+                            <text class='titleContent'>{{item.rentContent}}</text>
+                        </view>
+                    </block> -->
+                    <view class="wxParse">
+                        <template is="wxParse" data="{{wxParseData:bindData.pictDetailALL.nodes}}" />
+                    </view>
+                </view>
+                <view class='tabs-content-2' a:if="{{pageControl.tabIndex==2}}">
+                    <!-- <view class='img'>
+                        <image src='{{pageInfo.rentExplain}}' mode="widthFix" />
+                    </view> -->
+
+                    <view class="wxParse">
+                        <template is="wxParse" data="{{wxParseData:bindData.pictDetailALL.nodes}}" />
+                    </view>
+                </view>
+                <view class='tabs-content-2' a:if="{{pageControl.tabIndex==3}}">
+                    <!-- <view class="eval_wp">
+                        <block a:for="{{pageInfo.comment}}" a:key="{{index}}" a:if="{{pageInfo.comment.length}}">
+                            <view class="eval_option">
+                                <image class="avatar" src="{{item.headImgUrl}}"></image>
+                                <view class="right">
+                                    <view class="first">
+                                        <view class="phone">{{item.userName}}</view>
+                                        <view class="time">{{item.commentTime}}</view>
+                                    </view>
+                                    <view class="star">
+                                        <block a:for="{{pageInfo.star}}" a:for-item="subItem" a:for-index="subIndex" a:key="{{subIndex}}" 
+                                            a:if="{{subIndex<item.score}}">
+                                            <text class="iconfont icon-ico_comment"></text>
+                                        </block>
+                                    </view>
+                                    <view class="text">
+                                        {{item.content}}
+                                    </view>
+                                    <view class="pic">
+                                        <block a:for="{{item.commentImgUrl}}" a:for-item="subItem" a:for-index="subIndex" 
+                                            a:key="{{subIndex}}">
+                                            <view catchTap="previewImage" data-subIndex="{{subIndex}}" data-index="{{index}}">
+                                                <image mode="aspectFill" src="{{subItem.src}}"></image>
+                                            </view>
+                                        </block>
+                                    </view>
+                                    <view class="reply" a:if="{{item.replyContent}}">
+                                        <text class="jiao"></text>
+                                        {{item.replyContent}}
+                                    </view>
+                                </view>
+                            </view>
+                        </block>
+                        <empty a:if="{{!pageInfo.comment.length}}">
+                            <text>此商品暂无评论</text>
+                        </empty>
+                    </view> -->
+
+                    <view class="wxParse">
+                        <template is="wxParse" data="{{wxParseData:bindData.pictDetailALL.nodes}}" />
+                    </view>
+                </view>
+            </view>
+        </view>
+    </scroll-view>
+    <view class='tab-section fixed-menu' a:if='{{pageControl.fixTabShow}}'>
+        <view class="wrapper">
+            <view a:for="{{pageInfo.tabsArr}}" class="tab-item {{index==pageControl.tabIndex?'active':''}}">
+                <view class="{{index==pageControl.tabIndex?'line-item':''}}" catchTap="setindex" data-index="{{index}}">{{item}}</view>
+            </view>
+        </view>
+    </view>
+    <view class='swiper-h1'></view>
+    <view class='footer-section'>
+        <!--<view class='rentDetail' a:if="{{showRentMoney}}"><text class='rentName'>
+                租金<text class='rentsign'><text class="type-01 type">￥</text><text class="type-02 type">{{pageInfo.detail.chossePrice != 0 ? pageInfo.detail.chossePrice : pageInfo.detail.checkPrice}}</text><text class="type-03 type"> / 天</text></text><text class='rent-date' a:if='{{!chooseHidden}}'>起</text></text></view> -->
+        <view class="left">
+            <view class="store-sku" onTap='ToHome'>
+                <text class="store-icon home_icon "></text>
+                <text class="store-text">首页</text>
+            </view>
+            <view class="store-sku" onTap='ToStore'>
+                <text class="store-icon  order_store"></text>
+                <text class="store-text">店铺</text>
+            </view>
+            <view class="store-sku" onTap='showServer'>
+                <image class="icon" src="../../image/order/kefu.png"/>
+                <text class="store-text">客服</text>
+            </view>
+        </view>
+        <view class="rent-Sku-Btn" onTap='openSkuPop'>
+            <view>
+                立即下单
+            </view>
+        </view>
+    </view>
+    <view class='desk-serverIns' hidden='{{!pageControl.controlServeInst}}' onTap='controlServeInst'></view>
+    <view class='serverIns-all' hidden='{{!pageControl.controlServeInst}}'>
+        <view class='serverIns'>
+            <block a:for='{{pageInfo.serverDescription}}'>
+                <view class='item'>
+                    <view class='rent-title'>
+                        <image mode="scaleToFill" src="{{filters.imgFormat(item.img)}}" class="rent-title-img"/>
+                        <text class='name'>{{item.name}}</text>
+                    </view>
+                    <view class='rent-content'>
+                        {{item.content}}
+                    </view>
+                    <view class="rent-content-hr">
+                      
+                    </view>
+                </view>
+            </block>
+        </view>
+        <view class='serverIns-btn serverIns-btn2'>
+            <view class='color-ban'>
+            </view>
+        </view>
+    </view>
+</view>
+<!--<view class="modal" hidden="{{pageControl.couponShow}}"><view class="modal-mask" catchTap='controlCoupon' animation="{{pageControl.animMaskData}}" /><view class="modal-container" animation="{{pageControl.animContentData}}"><view class="modal-close" catchTap="controlCoupon">×</view><view class="modal-content"><view class="grid-child"><view class="grid-child-title"><text class="c-title">{{pageInfo.coupon.title}}</text></view><view class="clist"><view a:for="{{pageInfo.coupon.content}}" a:for-item="val" a:for-index="i" class="clist-item" a:key="i" 
+                        data-index="{{i}}" onTap='selectCoupon'
+                        data-index = "{{i}}"><view class="clist-item-content clist-content"><view class="fl"><radio checked="{{pageInfo.coupon.content[i].couponflag}}" /></view><view class="fr {{pageInfo.coupon.content[i].couponflag?'choose':''}}"><view class="fr-price"><view class="price">
+                                        {{(val.price/100).toFixed(2)}}</view><view class="coupon-title">
+                                        {{val.bonusModelTypeStr}}</view></view><view class="fr-content"><view class="item item-title"><text class="clist-item-text">{{val.bonusModelName}}</text></view><view class="item item-content"><view class="cont cont1"><text class="clist-item-cont">适用商品：{{val.bonusModelNote}}</text></view><view class="cont cont2"><text class="clist-item-cont">有效日期：{{val.effectiveTimeStr}}</text></view></view></view></view></view></view><view class="unchoose-coupon" onTap='selectCoupon' data-index="no"><view class="unCouponSku-item-content clist-item-content"><radio checked="{{!pageInfo.currentCoupon.couponId}}" /><text class="uncouponSku-text clist-item-text"> 不使用优惠券</text></view></view><view class='serverIns-btn serverIns-btn2'><view class='color-ban'></view><button size="primary" class="serverIns-sku-btn" catchTap='controlCoupon'>关闭</button></view><view a:for="{{list.subs}}" class="clist-item" key="{{item.entitle}}" onTap="{{onChildItemTap}}" data-page="{{item.page}}"><view class="clist-item-content"><text class="clist-item-content-title">{{item.title}}</text><text class="clist-item-content-subtitle">{{item.entitle}}</text></view><view class="clist-item-extra"><image aria-hidden="true" class="c-list-item-arrow" src="/image/arrowright.png" mode="aspectFill" /></view></view></view></view></view></view></view> -->
+<view class="load-view" a:if='{{pageControl.loadShow}}'></view>
+<view class='slot-view' a:if='{{pageControl.slotShow}}'>
+    <view class='slot-img'>
+        <image src='{{pageInfo.slotHlepImageSrc}}' mode="widthFix" />
+    </view>
+    <view class='slot-content'>
+        当前商品不存在
+    </view>
+    <view class='slot-btn'>
+        <button class="btn" type="primary" onTap='backToHome'>返回</button>
+    </view>
+</view>
+<pop-up position="middle" ref="confirm" closeHide="{{true}}">
+    <view class="confirm-wp" slot="middle">
+        <view class="title">
+            手机绑定
+        </view>
+        <view class="content">
+            您需要先绑定手机号，建议授权绑定。
+        </view>
+        <view class="footer">
+            <button class="btn right" open-type="getAuthorize" onGetAuthorize="onGetAuthorize" onError="onAuthError" scope='phoneNumber'>
+                授权绑定
+            </button>
+        </view>
+    </view>
+</pop-up>
+<pop-up position="bottom" ref="chooseSkuPop">
+    <view class="choose-wp" slot="bottom">
+        <view class="sku-goods-info">
+            <view class="goods-img">
+                <image src="{{allData.imgJson[0].url}}" />
+            </view>
+            <view class="goods-other">
+                <view class='display-rent'>
+                    <view class="fl prePrice">
+                        <!--<text class='rentName'>￥</text> -->
+                        <text class="rentSign">
+                            <text class="rentsign_firtxt">￥</text>
+                            {{pageInfo.detail.chooseRent || pageInfo.detail.defaultRent}}
+                        </text>
+                        <text class="type-03"> / 天</text>
+                        <text class="type-03" a:if='{{!pageInfo.detail.chooseRent}}'>起</text>
+                    </view>
+                    <view class="fr ordPrice" a:if="{{pageInfo.detail.activityStatus}}">
+                        ￥{{pageInfo.detail.oldDefaultRent}} / 天
+                    </view>
+                    <view class='d-price'>
+                    </view>
+                    <!--<text class='priceName'>市场价</text> -->
+                    <text class="originPrice">￥{{pageInfo.detail.originPrice}}</text>
+                </view>
+                <view class='d-price'>
+                    <block a:if="{{allData.buyout}}">
+                        <block a:if="{{allData.buyoutMoney > 0}}">
+                            <text class='priceName'>买断尾款</text>
+                            <text class="subPicesSign">￥</text>{{buyoutMoney}}
+                            <text class="qi"> 起</text>
+                        </block>
+                        <block a:else>
+                            <text class="small-tip">此商品支持买断</text>
+                        </block>
+                    </block>
+                    <block a:else>
+                        <text class="small-tip">此商品不支持买断</text>
+                    </block>
+                </view>
+                <view class="class-more">
+                    <view class="left">
+                        <view class="alreadySku">
+                            已选择:<block a:for="{{pageInfo.alreadySku}}" a:key="{{index}}" a:if="{{item.value}}">{{item.value}}
+                                <block a:if="{{item.key==='leaseDay'}}">天</block>
+                                <block a:if="{{index!== pageInfo.alreadySku.length-1}}">/</block>
+                            </block>
+                        </view>
+                    </view>
+                </view>
+                
+            </view>
+        </view>
+        <view class='sku-detail'>
+            <block a:for='{{allData.specificationJson}}' a:key="index">
+                <view class='item'>
+                    <view class='rentTitle'>
+                        {{item.specificationName}}
+                    </view>
+                    <view class='sku-content'>
+                        <block a:for='{{item.specificationJson}}' a:for-item="val" a:for-index="subIndex" a:key="subIndex">
+                            <button onTap='BtnChoose' data-index="{{index,subIndex}}" class="sku-content-btn btn {{item.defaultChoose?'choose':'',typeof(item.currentChoose)=='number'&&item.currentChoose==subIndex?'choose':''}} {{!item[val]?'disable':''}}" 
+                                disabled="{{!item[val]}}" type="default" size="mini">{{item.specification=='leaseDay'?val+'天':val}}</button>
+                        </block>
+                    </view>
+                </view>
+            </block>
+            <block a:if='{{pageControl.customLease}}'>
+                <view class="item">
+                    <view id="zdyLease">
+                        <view class="rent-zdy-tiem">
+                            <text class="rent-zdy-title">
+                                租赁时间 ({{allData.minLease+"~"+allData.maxLease}}天)
+                            </text>
+                            <view class="rent-zdy-sku">
+                                <view class="rentZdy-number {{pageInfo.inputDays<=allData.minLease ? 'disableMin':''}}" data-status="reduce" 
+                                    onTap="setNumber">
+                                    <text class="zdyTime-btn-reduce zdyNumber">-</text>
+                                </view>
+                                <view class="rentZdy-number">
+                                    <input type="number" onInput="inputDay" onConfirm="inputEnd" onBlur="inputEnd" maxlength="3" 
+                                        value="{{pageInfo.inputDays}}" />
+                                </view>
+                                <view class="rentZdy-number {{pageInfo.inputDays>=allData.maxLease ?'disableMax':''}}" data-status="add" 
+                                    onTap="setNumber">
+                                    <text class="zdyTime-btn-add zdyNumber">+</text>
+                                </view>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </block>
+            <view class='sku-servers' a:if='{{pageInfo.insuranceServer.control}}'>
+                <view class='servers-title'>
+                    {{pageInfo.insuranceServer.rentName}}
+                </view>
+
+                <view class='rentTitle'>
+                    服务
+                </view>
+                <view class='servers-content'>
+                    <view onTap="setRadio">
+                        <radio checked="{{pageInfo.insuranceServer.insuranceMandatory || pageInfo.insuranceServer.insuranceChoose}}" />
+                        <text class='servers-radio'>
+                            {{pageInfo.insuranceServer.rentTitle}} 
+                            <!-- <text class="server-subtit">{{pageInfo.insuranceServer.rentsubtit}}</text> -->
+                            <text class='servers-texts'>{{pageInfo.insuranceServer.rentContent}}</text>
+                        </text>
+                        <text class='servers-price'>￥{{pageInfo.insuranceServer.rentPrice}}</text>
+                    </view>
+                </view>
+            </view>
+            <view a:if='{{pageInfo.accessoriesList.length}}'>
+                <view class='sku-servers' a:for="{{pageInfo.accessoriesList}}">
+                    <view class='servers-content'>
+                        <view onTap="setRadio1" data-item="{{item}}" data-index="{{index}}">
+                            <!-- df -->
+                            <radio checked="{{item.mandatory || item.defaultChecked}}"  />
+                            <text class='servers-radio' catchTap="tips" data-item="{{item}}">
+                                {{item.rentTitle}} 
+                                <text class="server-subtit">{{item.rentsubtit}}</text>
+                                <text class='servers-text'>{{item.name}}</text>
+                                <!-- <image class="help" src="/image/icon/ico-help.png" /> -->
+                            </text>
+                            <text class='servers-price'>￥{{item.price}}</text>
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <view class="bottom_lb">
+            </view>
+        </view>
+        <view class="sku-pop-footer">
+            <view class="rent-Sku-Btn-wrapper {{pageControl.submitDisable?'':'submit'}}" onTap='submitBtn'>
+                <view>{{pageInfo.submitText}}</view>
+            </view>
+        </view>
+    </view>
+</pop-up>
+<pop-up position="middle" ref="server" closeHide="{{true}}">
+    <view class="server-wp" slot="middle">
+        <view class="server-main" slot="middle">
+            <view class="server-item server-item-1">
+                <view class="contact_button">
+                    <contact-button size="80" class="contact-button" tnt-inst-id="jB2_KWKn" scene="SCE01217188" />
+                    <contact-button size="80" class="contact-button" tnt-inst-id="jB2_KWKn" scene="SCE01217188" />
+                    <contact-button size="80" class="contact-button" tnt-inst-id="jB2_KWKn" scene="SCE01217188" />
+                    <contact-button size="80" class="contact-button" tnt-inst-id="jB2_KWKn" scene="SCE01217188" />
+                </view>
+                <view class="left">
+                    <image class="icon" src="/image/kf.png" />
+                    <view class="info">
+                        <view class="title">平台在线客服</view>
+                        <view class="desc">快速响应受理</view>
+                    </view>
+                </view>
+                <view class="right">
+                    <image class="arrow" src="/image/icon/icon-before.png"></image>
+                </view>
+            </view>
+            <view class="server-item" catchTap="callService">
+                <view class="left">
+                    <image class="icon" src="/image/call.png" />
+                    <view class="info">
+                        <view class="title">平台电话客服</view>
+                        <view class="desc">投诉、建议等反馈</view>
+                    </view>
+                </view>
+                <view class="right">
+                    <image class="arrow" src="/image/icon/icon-before.png"></image>
+                </view>
+            </view>
+        </view>
+        <view class="close_wrapper" catchTap="hideServer">
+            <image src="/image/common/close01.png" />
+        </view>
+    </view>
+</pop-up>

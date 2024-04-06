@@ -1,0 +1,7 @@
+{
+    "defaultTitle": "确认订单",
+    "pullRefresh": false,
+    "usingComponents": {
+        "tips-dialog": "mini-ali-ui/es/tips/tips-dialog/index"
+    }
+}

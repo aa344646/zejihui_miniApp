@@ -1,0 +1,8 @@
+{
+  "defaultTitle": "确认支付",
+  "pullRefresh": false,
+  "usingComponents": {
+    "pop-up":"/components/pop-up/index",
+    "empty":"/components/empty/index"
+  }
+}

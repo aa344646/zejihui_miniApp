@@ -1,0 +1,10 @@
+<view class="title">
+    <view class="left">
+        <view class="sectionName">{{title.title}}</view>
+        <view class="sectionDesc">{{title.subTitle}}</view>
+    </view>
+    <view class="right" a:if="{{title.more}}">
+        <text class="more">更多</text>
+        <text class="iconfont icon-ico_More"></text>
+    </view>
+</view>

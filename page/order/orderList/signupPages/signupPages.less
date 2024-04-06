@@ -1,0 +1,317 @@
+.sign {
+  background: #f6f6f8;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  &-header {
+    width: 750rpx;
+    height: 66rpx;
+    background: #ffecec;
+    text-align: center;
+    line-height: 66rpx;
+
+    &-txt {
+      color: #ce0000;
+      font-size: 24rpx;
+    }
+
+  }
+
+  &-step {
+    width: 686rpx;
+    height: 126rpx;
+    border-radius: 16rpx;
+    background: #fff;
+    margin-top: 24rpx;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: column;
+
+    &-one {
+      width: 582rpx;
+      height: 40rpx;
+      display: flex;
+      align-items: center;
+      justify-content: space-evenly;
+      margin-top: 12rpx;
+
+      &-img {
+        width: 40rpx;
+        height: 40rpx;
+        display: block;
+      }
+
+      &-hr {
+        width: 216rpx;
+        height: 2rpx;
+        background: #f6f6f8;
+      }
+    }
+
+    &-txt {
+      width: 638rpx;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 8rpx;
+
+      &-css {
+        color: #1765d4;
+        font-size: 24rpx;
+      }
+
+      &-css1 {
+        color: #8a8a8a;
+        font-size: 24rpx;
+      }
+
+      &-css2 {
+        color: #8a8a8a;
+        font-size: 24rpx;
+      }
+    }
+  }
+
+  &-content {
+    width: 686rpx;
+    height: 854rpx;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #fff;
+    border-radius: 16rpx;
+    margin-top: 24rpx;
+
+    &-title {
+      color: #333333;
+      font-size: 36rpx;
+      font-weight: 600;
+      margin-top: 32rpx;
+    }
+
+    &-txt {
+      width: 638rpx;
+      height: 774rpx;
+      color: #767676;
+      font-size: 26rpx;
+      margin-top: 16rpx;
+      word-break: break-all;
+      line-height: 48rpx;
+
+      &-floot {
+        margin-top: 60rpx;
+      }
+    }
+  }
+
+  &-reader {
+    width: 686rpx;
+    height: 160rpx;
+    display: flex;
+    margin-top: 24rpx;
+
+    &-sign-reader {
+      width: 32rpx;
+      height: 32rpx;
+    }
+
+    &-agreement {
+      width: 638rpx;
+      font-size: 24rpx;
+      color: #8A8A8A;
+      line-height: 42rpx;
+    }
+  }
+
+  &-contract {
+    width: 686rpx;
+    height: 168rpx;
+    background-color: #FFFFFF;
+    border-radius: 16rpx;
+    margin-top: 24rpx;
+    padding-top: 8rpx;
+    box-sizing: border-box;
+
+    &-text,
+    .common-text {
+      color: #8A8A8A;
+      margin-top: 24rpx;
+      display: flex;
+      justify-content: space-between;
+
+      &-txt {
+        color: #333333;
+      }
+    }
+
+    .common-text {
+      display: flex;
+      justify-content: flex-start;
+      box-sizing: border-box;
+      padding-left: 24rpx;
+    }
+  }
+
+  &-the-contract {
+    width: 686rpx;
+    height: 828rpx;
+    background: #FFFFFF;
+    border-radius: 16rpx;
+    margin-top: 24rpx;
+    box-sizing: border-box;
+    padding: 32rpx 24rpx;
+
+    .sign-contract1,
+    .common-title {
+
+      height: 44rpx;
+      font-size: 32rpx;
+      font-weight: 600;
+      color: #333333;
+      line-height: 44rpx;
+    }
+  }
+
+  .sign-contract-footer {
+    width: 638rpx;
+    height: 184rpx;
+    border-radius: 16rpx;
+    border: 2rpx solid #f4f7fc;
+    background: #ced6e2;
+    margin-top: 24rpx;
+    text-align: center;
+    line-height: 184rpx;
+    color: #1765D4;
+    font-size: 28rpx;
+  }
+
+  // address
+  &-address {
+    width: 686rpx;
+    height: 476rpx;
+    box-sizing: border-box;
+    background: #fff;
+    border-radius: 16rpx;
+    padding: 32rpx 24rpx;
+    margin-top: 24rpx;
+
+    .common-title {
+      font-weight: bold;
+      font-size: 32rpx;
+    }
+
+    .common-text {
+      color: #8A8A8A;
+      margin-top: 24rpx;
+      display: flex;
+      justify-content: space-between;
+
+      .sign-address-txt {
+        color: #333333;
+      }
+
+      .sign-address-last {
+        color: #333333;
+        width: 374rpx;
+        text-align: right;
+      }
+    }
+  }
+
+  // radio
+  &-confirm {
+    width: 686rpx;
+    margin-top: 24rpx;
+    color: #8A8A8A;
+    font-size: 24rpx;
+    display: flex;
+    justify-content: flex-start;
+
+  }
+
+  &-success{
+    width: 686rpx;
+    height: 672rpx;
+    background: #FFFFFF;
+    border-radius: 16rpx;
+    margin-top: 24rpx;
+    // box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    &-txt{
+      font-size: 32rpx;
+      margin-top: 32rpx;
+      font-weight: bold;
+    }
+    .sign-details{
+      width: 638rpx;
+      height: 312rpx;
+      background: #1766d417;
+      border-radius: 16rpx;
+      margin-top: 52rpx;
+      padding-left: 24rpx;
+
+      font-size: 28rpx;
+      
+      &-title{
+        color: #8A8A8A;
+        margin-top: 28rpx;
+        
+        line-height: 40rpx;
+      }
+      &-txt{
+        color: #333333;
+      }
+      &-footer{
+        width: 590rpx;
+        height: 144rpx;
+        font-size: 24rpx;
+        color: #1765D4;
+        line-height: 40rpx;
+        margin-top: 24rpx;
+      }
+    }
+  }
+  .confirm-img{
+    width: 144rpx;
+    height: 144rpx;
+    margin-top: 64rpx;
+    
+
+  }
+
+
+
+
+
+
+
+  &-checkbox-txt {
+    display: flex;
+    align-items: center;
+  }
+
+  &-footer {
+    width: 686rpx;
+    height: 74rpx;
+    border-radius: 38rpx;
+    color: #fff;
+    line-height: 74rpx;
+    text-align: center;
+    margin-top: 48rpx;
+    margin-bottom: 48rpx;
+    font-size: 32rpx;
+  }
+
+  &-footer-use {
+    background: #1765D4;
+  }
+
+  &-footer-nouse {
+    background: #ccc;
+  }
+}

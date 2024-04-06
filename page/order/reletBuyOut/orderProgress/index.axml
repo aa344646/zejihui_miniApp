@@ -1,0 +1,47 @@
+<view class="wp" a:if="{{viewShow}}">
+    <view class="head">
+        <view class="top" catchTap = "concatOrder" data-id = "{{data.orderId}}">
+            <view class="top-l">
+                关联订单 ：{{data.orderNumber}}
+            </view>
+            <view class="iconfont icon-ico-qianjin"></view>
+        </view>
+        <view class="con">
+            <view class="con-left">
+                <view class="img">
+                <image src="{{data.goodsImage}}" mode="aspectFill"></image>
+                </view>
+            </view>
+            <view class="con-right">
+                <view class="name">{{data.goodsName}}</view>
+                <view class="sku">{{data.standard}}</view>
+            </view>
+        </view>
+    </view>
+    <view class="body">
+        <view class="title">
+            申请进度
+        </view>
+        <block a:for="{{data.stateProgress}}" a:key="index">
+            <view class="address addDetail">
+                <view class="progressLine">
+                    <view class='progressLine-con'>
+                    <view class="line">
+                        <view class='line1'></view>
+                        <view class='line2'></view>
+                    </view>
+                    <view class="point">
+                        <text class="icon iconfont {{index==0?'icon-ico_select_pre':'icon-ico_select'}} "></text>
+                    </view>
+                    </view>
+                </view>
+                <view class="addCon">
+                    <text>{{item.state}}</text>
+                    <text>{{item.stateDesc}}</text>
+                    <text>{{item.applyTime}}</text>
+                </view>
+            </view>
+        </block>
+    </view>
+</view>
+<empty a:if="{{emptyShow}}"></empty>

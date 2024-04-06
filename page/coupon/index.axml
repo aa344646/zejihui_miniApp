@@ -1,0 +1,133 @@
+<import-sjs name="filters" from="../../sjs/filter.sjs" />
+
+<view>
+  <view class="coupon-all" a:if='{{kipe.haveCoupons}}'>
+    <block a:for="{{kipe.couponList}}" a:for-item="val" a:for-index="i" a:key="i" >
+
+      <view   class="clist-item {{openDescIndex ===i+1 ? 'div-shadow' : ''}}" >
+        <block a:if="{{val.status === 'unused' }}">
+          <view class="fl clist-itme-left {{filters.selectBg(val) }}">
+            <view class="top">
+              <text class="top_fuh" a:if="{{ !val.voucherType === 'DISCOUNT_VOUCHER'}}">¥</text>
+              <text class="top_mone" a:if="{{ !val.voucherType }}">{{(val.price ? val.price/100 : 0)}}</text>
+              <text class="top_mone" a:else>{{filters.returnPrice(val)}}</text>
+            </view>
+            <view class="bottom"  a:if="{{ !val.voucherType }}">
+              {{val.bonusModelMoneyOffRole < 0?'无门槛': '满'+ (val.bonusModelMoneyOffRole/100)+'可用'}}
+            </view>
+            <view class="bottom" a:else >
+              {{filters.txtformat(val)}}
+            </view>
+          </view>
+          
+          
+          <view class="clist-item-content clist-itme-right clist-content fr">
+            <view class="item item-title">
+      <text class="clist-item-text">    
+
+          <view class="clist-item-text-textq" a:if="{{ !val.voucherType}}">  
+        
+            <text class="clist-item-text-textq-ptxt">  <text class="clist-item-text-textq-ptq" > 平台券</text>  仅限{{val.appliesGoodsTypeStr.slice(0,val.appliesGoodsTypeStr.length-1)}}</text> 
+            </view>
+            <view class="clist-item-text-textq" a:else>  
+              <text class="clist-item-text-textq-ptxt" a:if="{{ val.failure === 0 && val.volumeStatus!== 1 }}">     <text class="clist-item-text-textq-ptq1" > 商家券</text> 仅限{{val.volumeName}}</text> 
+              <text class="clist-item-text-textq-ptxt-overdue" a:elif="{{ val.failure === 1 }}">     <text class="clist-item-text-textq-ptq99" > 商家券</text> 仅限{{val.volumeName}}</text> 
+            </view>          
+            </text>
+            </view>
+            <view class="item item-content">
+              <view class="cont cont2">
+                <view class="clist-item-text" a:if="{{!val.voucherType}}">有效期至: {{val.effectiveTimeStr.replace("至","-")}}        
+                </view>
+                <view class="clist-item-text" a:else>有效期至: {{filters.parseTime(val.publishStartTime,'y-m-d')+"- "+filters.parseTime(val.publishEndTime,'y-m-d')}}
+                </view>
+              </view>
+            </view>
+            <view class="item item-content activite_desc">
+              <text class="item-content-acttxt"  catchTap="handleOpenDesc" data-index="{{i}}">
+                <text>活动说明</text>
+                 <image mode="scaleToFill"   src="{{ !DescFlag && openDescIndex ===i+1? '../../image/coupon/desccolse.png':'../../image/coupon/opendesc.png'}}" class="item-content-acttxt-open" /> </text> 
+              <view a:if="{{ val.voucherType && val.volumeStatus === 1 || val.failure === 1 }}" class="item-content-btn-nouse">已失效</view>
+              <view a:elif="{{ val.voucherType && val.jumpUrl }}" class="item-content-btn" onTap="goUseCoupon" data-goUrl="{{val}}">去使用</view>
+            </view>
+
+
+
+          </view>
+          
+        </block>
+        <block a:else>
+          <view class="fl clist-itme-left" style="background:url(../../image/home/invalid.png) no-repeat">
+            <view class="top">
+              <text class="top_fuh">¥</text>
+              <text class="top_mone">{{(val.price/100)}}</text>
+            </view>
+            <view class="bottom">
+              {{val.bonusModelMoneyOffRole < 0?'无门槛': '满'+ (val.bonusModelMoneyOffRole/100)+'可用'}}
+            </view>
+          </view>
+          
+          
+          <view class="clist-item-content clist-itme-right clist-content fr">
+            <view class="item item-title">
+              <text class="clist-item-text">仅限{{val.appliesGoodsTypeStr.slice(0,val.appliesGoodsTypeStr.length-1)}}</text>
+            </view>
+            <view class="item item-content">
+              <view class="cont cont2">
+                <view class="clist-item-text">有效期至: {{val.effectiveTimeStr.replace("至","-")}}
+                  <!-- <view class="item-content-btn-invalid">已失效</view> -->
+                </view>
+              </view>
+            </view>
+          </view>
+          
+        </block>
+      </view>
+      <view a:if="{{!DescFlag && openDescIndex ===i+1 }}" class=" {{openDescIndex ===i+1? 'open-desc-title' : ''}}" >
+        <view class="desc-text">
+          活动说明:
+        </view>
+        <view class="desc-text-content">
+          <view  a:if="{{!val.voucherType}}">
+            {{val.bonusModelNote}}
+          </view>
+          <view a:else>
+            {{val.voucherComment}}
+          </view>
+        </view>
+      </view>
+
+      <view a:if="{{ DescFlag && openDescIndex ===i+1 }}" class=" {{openDescIndex ===i+1? 'close-desc-title' : ''}}" >
+        <view class="desc-text">
+          活动说明:
+        </view>
+        <view class="desc-text-content">
+          <view  a:if="{{!val.voucherType}}">
+            {{val.bonusModelNote}}
+          </view>
+          <view a:else>
+            {{val.voucherComment}}
+          </view>
+        </view>
+      </view>
+      <!-- <view a:if="{{ !DescFlag }}" class=" {{preIndex ===i ? 'close-desc-title' : ''}}" >
+      </view> -->
+    </block>
+
+    <view class="no-more" a:if='{{!kipe.couponListflag}}'>
+      <view class="line"></view>
+      <view class="content">没有更多了</view>
+      <view class="line"></view>
+    </view>
+  </view>
+  
+  
+  <view class="not-coupons" a:if='{{!kipe.haveCoupons}}'>
+    <view class='slot-img'>
+      <image mode="scaleToFill" src="../../image/home/nocp.png"  class="slot-img-size"/>
+    </view>
+    <view class='slot-content'>
+      暂无可用优惠券
+    </view>
+  </view>
+</view>

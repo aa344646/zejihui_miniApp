@@ -1,0 +1,6 @@
+{
+    "usingComponents": {
+      "after-service-detail":"/components/afterServiceCommon/index",
+      "pop-up":"/components/pop-up/index"
+    }
+  }

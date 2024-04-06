@@ -1,0 +1,44 @@
+.shareInfo {
+  z-index: 2000;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  box-sizing: border-box;
+  background-color: #fff;
+  border-radius: 20rpx 20rpx 0 0;
+}
+.pick-wp {
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 100%;
+  overflow: hidden;
+  z-index: 8;
+  background: rgba(0, 0, 0, 0.4);
+}
+.pop-wrap {
+  z-index: 2000;
+  width: 100%;
+  position: fixed;
+  top: 114rpx;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.pop-wrap .close {
+  position: absolute;
+  bottom: -134rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2001;
+}
+.pop-wrap .close .icon-close {
+  width: 64rpx;
+  height: 64rpx;
+}
+.pop-wrap-middle {
+  top: 514rpx;
+}

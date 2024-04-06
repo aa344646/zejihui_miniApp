@@ -1,0 +1,59 @@
+<import-sjs name="filters" from="/sjs/filter.sjs"/>
+<view>
+  <view class="nav-wp">
+    <view class="nav">
+      <block a:for="{{current}}" a:key="index">
+        <text class="item {{type==item.type?'active':''}}" catchTap="changeTab" data-type="{{item.type}}">{{item.name}}</text>
+      </block>
+    </view>
+  </view>
+
+  <view class="content">
+    <block a:if="{{list.length>0}}">
+      <block a:for="{{list}}" a:key="index">
+        <view class="list" >
+          <view class="top">
+            <view class="top-left" a:if="{{type == 'applied'}}">{{item.stateStr}}</view>
+            <view class="top-right" a:if="{{type == 'appliable'}}">原订单号: {{item.orderNumber}}</view>
+            <view class="top-right" a:if="{{type == 'applied' && status == 0}}">续租订单号: {{item.reletNumber}}</view>
+            <view class="top-right" a:if="{{type == 'applied' && status == 1}}">买断订单号: {{item.buyoutNumber}}</view>
+          </view>
+          <view class="con" catchTap="goOrderProgress" data-item="{{item}}">
+            <view class="con-left">
+              <view class="img">
+                <image src="{{item.goodsImage}}" mode="aspectFill"></image>
+              </view>
+            </view>
+            <view class="con-right">
+              <view class="name">{{item.goodsName}}</view>
+              <view class="sku">{{item.standard}}</view>
+            </view>
+          </view>
+          <view class="bottom">
+          <view class="left">
+            <view>下单时间 : {{item.time}}</view>
+          </view>
+          <view class="right">
+            <view class="button renewal" data-id="{{item.id}}" catchTap="apply" a:if="{{ type == 'appliable'}}">
+                申请{{status==0?'续租':'买断'}}
+            </view>
+            <view class="button renewal" data-id="{{item.orderId}}" data-type="{{status==0?'relet':'BuyOut'}}" catchTap="pay" a:if="{{ type == 'applied' &&(item.state=='pending_relet_pay' || item.state=='pending_buyout_pay')}}">
+                立即支付
+            </view>
+            <view class="button cancel" catchTap="cancelApply" data-id="{{item.id}}" a:if="{{type == 'applied' && (item.state=='credit_check' || item.state=='relet_check' || item.state=='check')}}">
+                取消申请
+            </view>
+          </view>
+          </view>
+        </view>
+      </block>
+      <view a:if="{{!hasMore}}">
+        <empty>— 没有更多订单了 —</empty>
+      </view>
+    </block>
+    <block a:if="{{list.length<=0}}">
+      <empty>该分类下暂时没有订单</empty>
+    </block>
+  </view>
+
+</view>

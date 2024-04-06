@@ -1,0 +1,744 @@
+<import-sjs name="filters" from="/sjs/filter.sjs" />
+
+<import src="/components/customAlert/customAlert.axml" />
+<view class="order-detail">
+  <block a:if="{{getSuccess}}">
+    <!-- 顶部订单信息 -->
+    <view class="{{filters.topStatusBg(dataList.state)}} topStatus">
+      <view class="status-class-area">
+        <!-- 待商家接单 -->
+        <view a:if="{{dataList.state=='pending_order_receiving'}}">
+          <view class="order-status">
+            <!--<image src="../../../image/order/orderDetail/ico-state01.png" mode="widthFix" /> -->
+            <view>{{dataList.stateStr}}</view>
+          </view>
+          <view class="order-status-describe">
+            <view class="describe-con">{{dataList.description}}</view>
+          </view>
+        </view>
+        <!-- 待签署 -->
+        <view a:elif="{{dataList.state=='pending_sign'}}">
+          <view class="order-status">
+            <view>{{dataList.stateStr}}</view>
+          </view>
+          <view class="order-status-describe">
+            <view class="describe-con">{{dataList.description}}</view>
+          </view>
+        </view>
+        <!-- 待发货 -->
+
+        <view a:elif="{{dataList.state=='pending_send_goods'}}">
+          <view class="order-status">
+            <!--<image src="/image/order/orderDetail/ico-state01.png" mode="widthFix" /> -->
+            <view>{{dataList.stateStr}}</view>
+
+            <view class="tip">
+              <view a:if="{{tipShow}}" class="content">
+                <view class="inner">温馨提示:</view>
+                <view class="inner">商家将于24小时内接单,若超时发货或其它原因订单可能会被取消</view>
+                <!--<view class="jiao"></view> -->
+              </view>
+              <text class="iconfont icon-gantanhao" catchTap="tipShow"></text>
+            </view>
+          </view>
+          <view class="order-status-describe">
+            <view class="describe-con">{{dataList.description}}</view>
+          </view>
+        </view>
+        <!-- pending_cancel_check -->
+
+        <view a:elif="{{dataList.state=='pending_cancel_check'}}">
+          <view class="order-status">
+            <!--<image src="../../../image/order/orderDetail/ico-state01.png" mode="widthFix" /> -->
+            <view>{{dataList.stateStr}}</view>
+          </view>
+          <view class="order-status-describe">
+            <view class="describe-con">{{dataList.description}}</view>
+          </view>
+        </view>
+        <!-- 待收货 -->
+        <view
+          a:elif="{{dataList.state=='pending_receive_goods'||dataList.state=='express_rejection'}}"
+          catchTap="goLogistics"
+        >
+          <view class="order-status">
+            <!--<image src="../../../image/order/orderDetail/ico-state02.png" mode="widthFix" /> -->
+            <view>{{dataList.stateStr}}</view>
+          </view>
+          <view class="order-status-describe">
+            <view class="describe-con">{{dataList.description}}</view>
+            <text
+              a:if="{{dataList.orderLeaseInfo.deliveryWay!='PRIVATE_STORE'}}"
+              class="statusDetail iconfont icon-ico-qianjin"
+            >
+            </text>
+          </view>
+        </view>
+        <!-- 租用中 -->
+        <view a:elif="{{dataList.state=='running'||dataList.state=='running_overdue'}}">
+          <view class="order-status">
+            <!--<image src="../../../image/order/orderDetail/ico-state04.png" mode="widthFix" /> -->
+            <view>{{dataList.stateStr}}</view>
+          </view>
+          <view class="order-status-describe">
+            <view class="describe-con">{{dataList.description}}</view>
+          </view>
+        </view>
+        <!-- 待还机 -->
+        <view a:elif="{{dataList.state=='pending_return'||dataList.state=='return_overdue'}}">
+          <view class="order-status">
+            <!--<image src="../../../image/order/orderDetail/ico-state01.png" mode="widthFix" /> -->
+            <view>{{dataList.stateStr}}</view>
+          </view>
+          <view class="order-status-describe">
+            <view class="describe-con">{{dataList.description}}</view>
+          </view>
+        </view>
+        <!-- 退还中 -->
+        <view a:elif="{{dataList.state=='returning'||dataList.state=='returned_unreceived'||dataList.state=='returned_received'}}">
+          <view class="order-status">
+            <!--<image src="../../../image/order/orderDetail/ico-state01.png" mode="widthFix" /> -->
+            <view>{{dataList.stateStr}}</view>
+          </view>
+          <view class="order-status-describe">
+            <view class="describe-con">{{dataList.description}}</view>
+          </view>
+        </view>
+        <!-- 已取消 -->
+        <view a:elif="{{dataList.state=='merchant_credit_check_unpass_canceled'||dataList.state=='system_credit_check_unpass_canceled'||dataList.state=='artificial_credit_check_unpass_canceled'||dataList.state=='merchant_relet_check_unpass_canceled'||dataList.state=='user_canceled'||dataList.state=='safeguard_rights_canceled'||dataList.state=='order_payment_overtime_canceled'||dataList.state=='merchant_not_yet_send_canceled'||dataList.state=='express_rejection_canceled'}}">
+          <view class="order-status">
+            <!--<image src="../../../image/order/orderDetail/ico-state03.png" mode="widthFix" /> -->
+            <view>{{dataList.stateStr}}</view>
+          </view>
+          <view class="order-status-describe">
+            <view class="describe-con">{{dataList.description}}</view>
+          </view>
+        </view>
+        <!-- 已完成 -->
+        <view a:elif="{{dataList.state=='lease_finished'||dataList.state=='relet_finished'||dataList.state=='buyout_finished'}}">
+          <view class="order-status">
+            <!--<image src="../../../image/order/orderDetail/ico-state04.png" mode="widthFix" /> -->
+            <view>{{dataList.stateStr}}</view>
+          </view>
+          <view class="order-status-describe">
+            <view class="describe-con">{{dataList.description}}</view>
+          </view>
+        </view>
+
+        <view a:else>
+          <view class="order-status">
+            <!--<image src="../../../image/order/orderDetail/ico-state01.png" mode="widthFix" /> -->
+            <view>{{dataList.stateStr}}</view>
+          </view>
+          <view class="order-status-describe">
+            <view class="describe-con">{{dataList.description}}</view>
+          </view>
+        </view>
+      </view>
+      <!--<view class="order-status-time">{{dataList.processTime}}</view> -->
+    </view>
+    <!-- 用户个人信息 -->
+    <view a:if="{{!(dataList.state=='returning'||dataList.state=='returned_unreceived'||dataList.state=='returned_received')}}">
+      <view class="personInfo">
+        <view class="personInfo-row1">
+          <view class="name">{{dataList.orderLeaseInfo.contact}}</view>
+          <view class="tel">{{dataList.orderLeaseInfo.phone}}</view>
+        </view>
+        <view class="personInfo-row2">
+          <!--<image class="iconAddress marign-r10" src="/image/icon/address.png"></image> -->
+          <view class="addr-detail">
+            {{dataList.orderLeaseInfo.receiveAddress}}
+          </view>
+        </view>
+        <image
+          mode="scaleToFill"
+          src="../../../image/order/infobottom.png"
+          class="address_lineimg"
+        />
+      </view>
+    </view>
+    <!-- 商品详细信息 -->
+    <view class="orderInfo">
+      <!-- 商品描述 -->
+      <view class="chooseDescribe">
+        <view class="item-con">
+          <view class="item-con-left">
+            <image src="{{dataList.image}}" mode="widthFix" />
+          </view>
+          <view class="item-con-right">
+            <view class="title">{{dataList.goodsName}}</view>
+            <view class="sku">已选：{{dataList.specification}}</view>
+            <!--<view class="total">总租金：¥ {{(dataList.orderLeaseInfo.dailyRent*dataList.orderLeaseInfo.leaseTerm).toFixed(2)}}</view> -->
+            <!--<view class="total">买断尾款：<block a:if="{{buyoutMoney && buyoutMoney>0}}">
+                ¥ {{buyoutMoney}}</block><block a:else><text>此商品不支持买断</text></block></view> -->
+            <!--<view class="tags" a:if="{{dataList.xinyongzuDepositBean&&dataList.xinyongzuDepositBean.creditAmount!=0}}">芝麻信用·免押金</view> -->
+          </view>
+        </view>
+      </view>
+
+      <!-- 租期 -->
+      <view class="new_zu_qi">
+        <view class="item-con">
+          租期
+        </view>
+        <view class="item-time">
+          {{filters.parseTimeTwo(dataList.orderLeaseInfo.leaseStartTime,'y-m-d')}}
+            -
+          {{filters.parseTimeTwo(dataList.orderLeaseInfo.leaseExpireTime,'y-m-d')}}
+        </view>
+      </view>
+      <view
+        a:if="{{dataList.state == 'pending_user_compensate' || dataList.state=='pending_compensate_check'}}"
+        class="compensate"
+      >
+        <view class="priceInfo">
+          <view class="tip">应赔付总额</view>
+          <view class="price">
+            ￥
+            <text class="strong">
+              {{filters.parsePrice(orderCompensateInfo.compensateAmount)}}
+            </text>
+          </view>
+        </view>
+        <view class="detail">
+          <view class="item">
+            <view class="left">赔偿金额</view>
+            <view class="right clRed">
+              {{filters.parsePrice(orderCompensateInfo.compensateAmount)}}元
+            </view>
+          </view>
+          <view class="item">
+            <view class="left">发起时间</view>
+            <view class="right">{{filters.parseTime(orderCompensateInfo.createTime)}}</view>
+          </view>
+          <view class="item" data-key="hideDetailModal" catchTap="showModal">
+            <view class="left">赔偿详情</view>
+            <view class="right clBlue">查看详情</view>
+          </view>
+          <view class="item" catchTap="saveSchedule">
+            <view class="left">查看赔偿进度</view>
+            <view class="right iconfont icon-ico-qianjin"></view>
+          </view>
+          <view a:if="{{!proof.remark}}" class="opinion" catchTap="toSaveGuard">
+            <text class="iconfont icon-process04"></text>
+            <text>对赔偿金额有异议</text>
+          </view>
+        </view>
+      </view>
+      <!-- 租金信息 -->
+      <view class="detialModel rent">
+        <!-- <view class="detialModel-item style-bold">
+          <view>总金额</view>
+          <view>¥ {{AllPayprice}}</view>
+        </view> -->
+        <view class="detialModel-item">
+          <view>首付实付租金</view>
+          <view class="item-shoufucolor">¥{{dataList.orderLeaseInfo.firstPay}}</view>
+        </view>
+        <view class="detialModel-item" a:if="{{ dataList.orderLeaseInfo.leaseTerm > 30 }}">
+          <view>剩余月租金</view>
+          <view class="item-color">¥{{(dataList.orderLeaseInfo.dailyRent*30).toFixed(2)}}*{{dataList.orderLeaseInfo.remPayNum}}期</view>
+        </view>
+        <view class="detialModel-item">
+          <view>租金</view>
+          <view class="item-color">¥{{dataList.orderLeaseInfo.dailyRent}}/天</view>
+        </view>
+        <view class="detialModel-item">
+          <view>总租金</view>
+          <view a:if="{{ dataList.orderLeaseInfo.discount > 0 }}" class="item-color">
+            ¥{{((dataList.orderLeaseInfo.dailyRent * dataList.orderLeaseInfo.leaseTerm) - (dataList.orderLeaseInfo.discount/100)).toFixed(2)}}
+            <text class="item-underline">¥{{(dataList.orderLeaseInfo.dailyRent * dataList.orderLeaseInfo.leaseTerm).toFixed(2)}}</text>
+          </view>
+          <view a:else class="item-color">¥{{(dataList.orderLeaseInfo.dailyRent * dataList.orderLeaseInfo.leaseTerm).toFixed(2)}}</view>
+        </view>
+        <view class="detialModel-item">
+          <view>租期</view>
+          <view class="item-color">{{dataList.orderLeaseInfo.leaseTerm}}天</view>
+        </view>
+        <view class='border-h2'></view>
+        <view class="detialModel-item" a:if="{{ dataList.accidentInsurance }}">
+          <view>保障服务</view>
+          <view class="item-color">¥{{dataList.accidentInsurance}}</view>
+        </view>
+        <!-- <view class="detialModel-item">
+          <view>租金</view>
+          <view>¥ {{dataList.orderLeaseInfo.dailyRent}}/天</view>
+        </view>
+        <view class="detialModel-item">
+          <view>租期</view>
+          <view>共{{dataList.orderLeaseInfo.leaseTerm}}天</view>
+        </view>
+        <view a:if="{{dataList.accidentInsurance>0}}" class="detialModel-item">
+          <view>意外保险（只需首期支付）</view>
+          <view>¥ {{dataList.accidentInsurance}}</view>
+        </view>
+        <view a:if="{{dataList.accessoriesAmount>0}}" class="detialModel-item">
+          <view>配件（只需首期支付）</view>
+          <view>¥ {{dataList.accessoriesAmount}}</view>
+        </view>
+        <view a:if="{{dataList.orderLeaseInfo.voucherDiscount>0}}" class="detialModel-item">
+          <view>优惠券</view>
+          <view>- ¥ {{couponPrice}}</view>
+        </view> -->
+        <!-- <view class="detialModel-item">
+          <view>租金付款方式</view>
+          <view catchTap="openCustomAlert" class="item-color" data-name="pay">
+            支付宝免密支付
+          </view>
+        </view> -->
+        <view a:if="{{dataList.orderLeaseInfo.discount>0}}" class="detialModel-item">
+          <view>平台优惠</view>
+          <view class="item-Coupon">-¥{{((dataList.orderLeaseInfo.discount)/100).toFixed(2)}} 
+            <!-- <text class="item-Coupon-arrow"> ></text> -->
+          </view>
+        </view> 
+        <view class="detialModel-item" a:if="{{dataList.accessoriesAmount>0}}">
+          <view>配件</view>
+          <view class="item-color">¥{{dataList.accessoriesAmount}}</view>
+        </view>
+        <view class='border-h2'></view>
+        <view class="detialModel-item">
+          <view>配送方式</view>
+          <view class="item-color">{{dataList.orderLeaseInfo.deliveryWayStr}}</view>
+        </view>
+        <!-- <view class="detialModel-item">
+          <view>买断尾款</view>
+          <view class="item-color">¥ {{buyoutMoney}}/天</view>
+        </view> -->
+
+        <view class="detialModel-item">买断尾款
+          <block a:if="{{buyoutMoney && buyoutMoney>0}}">
+            <text  class="item-color">¥{{buyoutMoney}}</text>
+         </block><block a:else><text class="item-color">此商品不支持买断</text></block></view>
+        <!--<view class="rent-tips">如未完成订单，支付宝免密支付将在30分钟后自动取消</view>-->
+      </view>
+      <!-- 押金信息-->
+      <view a:if="{{dataList.xinyongzuDepositBean}}" class="detialModel foregift">
+        <view
+          a:if="{{dataList.xinyongzuDepositBean&&dataList.xinyongzuDepositBean.creditAmount!=0}}"
+          class="detialModel-item"
+        >
+          <view class="total-deposit">总押金</view>
+          <view class="item-email">¥{{dataList.xinyongzuDepositBean.deposit}}</view>
+        </view>
+        <view class="detialModel-item style-bold">
+          <view class="subtotal-deposit">点击免押凭租，授权成功最高免¥8999.00商品押金</view>
+        </view>
+        <view
+          class="detialModel-item frozen-top"
+        >
+          <view>押金冻结方式</view>
+          <view class="center" catchTap="openCustomAlert" data-name="authorize">
+            支付宝资金授权
+            <!-- <image class="iconHelp marign-l8" src="/image/icon/ico-help.png"></image> -->
+          </view>
+        </view>
+      </view>
+      <!-- 邮箱 -->
+      <view class="email-text">
+        <view class="item-con">
+          邮箱
+        </view>
+        <view class="item-email">
+          {{dataList.orderLeaseInfo.email}}
+        </view>
+      </view>
+      <!-- 订单信息 -->
+      <view class="detialModel otherDetails">
+        <view class="detialModel-item">
+          <view>订单编号</view>
+          <view class="item-email">{{dataList.orderLeaseInfo.orderNumber}}</view>
+        </view>
+        <view class="detialModel-item">
+          <view>下单时间</view>
+          <view class="item-email">{{dataList.orderLeaseInfo.createTime}}</view>
+        </view>
+        <view class="detialModel-item">
+          <view>查看账单</view>
+          <view class="item-email-look" catchTap="goBillDetail" >点击查看</view>
+        </view>
+        <!-- 待收货 -->
+        <view
+          a:if="{{dataList.state=='pending_receive_goods'||dataList.state=='express_rejection'||dataList.state=='running'||dataList.state=='pending_return'||dataList.state=='return_overdue'||dataList.state=='lease_finished'||dataList.state=='relet_finished'}}"
+          class="detialModel-item"
+        >
+          <view>发货时间</view>
+          <view>{{dataList.orderLeaseInfo.merchantDeliveryTime}}</view>
+        </view>
+        <!-- 租用中/待还机/已完成 -->
+        <view
+          a:if="{{dataList.orderLeaseInfo.userReceivedTime && dataList.state=='running'||dataList.state=='running_overdue'||dataList.state=='pending_return'||dataList.state=='return_overdue'||dataList.state=='lease_finished'||dataList.state=='relet_finished'||dataList.state=='buyout_finished'}}"
+          class="detialModel-item"
+        >
+          <view a:if="{{ dataList.orderLeaseInfo.userReceivedTime }}" >收货时间</view>
+          <view>{{dataList.orderLeaseInfo.userReceivedTime}}</view>
+        </view>
+        <!-- 已取消 -->
+        <view
+          a:if="{{dataList.state=='system_credit_check_unpass_canceled'||dataList.state=='artificial_credit_check_unpass_canceled'||dataList.state=='merchant_relet_check_unpass_canceled'||dataList.state=='user_canceled'||dataList.state=='safeguard_rights_canceled'||dataList.state=='order_payment_overtime_canceled'||dataList.state=='merchant_not_yet_send_canceled'||dataList.state=='express_rejection_canceled'}}"
+          class="detialModel-item"
+        >
+          <view>取消时间</view>
+          <view class="item-color">{{dataList.canceledTime}}</view>
+        </view>
+        <view a:if="{{orderInfo.orderLeaseInfo.ismtAgmtUrl}}" class="detialModel-item">
+          <view>订单合同</view>
+          <view style="color:#1CCFC9" catchTap="helpAgreement">点击查看</view>
+        </view>
+      </view>
+    </view>
+    <!-- 操作按钮 -->
+    <view class="operation-area">
+      <!-- 申请中 -->
+      <!--<view class="operation" a:if="{{dataList.state=='pending_submit'}}"><button type="default" plain catchTap="callMerchant">{{shopPhone?'联系商家':'联系客服'}}</button><button type="primary" catchTap="nextSubmit">继续提交</button></view> -->
+      <!-- 待签署 -->
+      <view a:if="{{dataList.state=='pending_sign'}}" class="operation">
+        <button type="default" plain catchTap="callMerchant">
+          {{shopPhone?'联系商家':'联系客服'}}
+        </button>
+        <button type="default" plain catchTap="sign">立即签署</button>
+      </view>
+      <!-- 待支付 -->
+      <view a:elif="{{dataList.state=='pending_pay'}}" class="operation">
+        <button type="default" plain catchTap="callMerchant">
+          {{shopPhone?'联系商家':'联系客服'}}
+        </button>
+
+        <button type="default" data-type="payment" catchTap="toPay">立即支付</button>
+      </view>
+      <!-- 待发货 -->
+      <view a:elif="{{dataList.state=='pending_send_goods'}}" class="operation">
+        <button type="default" plain catchTap="callMerchant">
+          {{shopPhone?'联系商家':'联系客服'}}
+        </button>
+
+        <button
+          a:if="{{dataList.orderLeaseInfo.cancelable}}"
+          type="default"
+          catchTap="cancelOrder"
+          class="color_999"
+        >
+          取消订单
+        </button>
+      </view>
+      <!-- 待收货 -->
+      <view
+        a:elif="{{dataList.state=='pending_receive_goods'||dataList.state=='express_rejection'}}"
+        class="operation"
+      >
+        <button type="default" plain catchTap="callMerchant">
+          {{shopPhone?'联系商家':'联系客服'}}
+        </button>
+
+        <button type="default" plain catchTap="goBillDetail">查看账单</button>
+        <button type="default" catchTap="confirmReceipt">确认收货</button>
+      </view>
+      <!-- 租用中 -->
+      <view
+        a:elif="{{dataList.state=='running'||dataList.state=='running_overdue'}}"
+        class="operation"
+      >
+        <button type="default" plain catchTap="callMerchant">
+          {{shopPhone?'联系商家':'联系客服'}}
+        </button>
+
+        <button type="default" plain catchTap="goBuyGoods">买断申请</button>
+        <!--<button type="primary" catchTap="toComment">{{commented?'查看评价':'评 价'}}</button> -->
+        <button
+          a:if="{{dataList.nextPayNum>0}}"
+          type="default"
+          data-type="bill"
+          catchTap="toPay"
+        >
+          支付租金
+        </button>
+
+      </view>
+      <!-- 待还机 -->
+      <view
+        a:elif="{{dataList.state=='pending_return'||dataList.state=='return_overdue'}}"
+        class="operation"
+      >
+        <button type="default" plain catchTap="callMerchant">
+          {{shopPhone?'联系商家':'联系客服'}}
+        </button>
+
+        <button type="default" plain catchTap="goBillDetail">查看账单</button>
+        <button a:if="{{dataList.nextPayNum==0}}" type="default" catchTap="goReturnBack">
+          立即归还
+        </button>
+      </view>
+      <!-- 退还中 -->
+      <view
+        a:elif="{{dataList.state=='returning'||dataList.state=='returned_unreceived'||dataList.state=='returned_received'}}"
+        class="operation"
+      >
+        <button type="default" plain catchTap="callMerchant">
+          {{shopPhone?'联系商家':'联系客服'}}
+        </button>
+
+
+        <!--<button type="primary" catchTap="toComment">{{commented?'查看评价':'评 价'}}</button> -->
+        <button type="default" plain catchTap="goBillDetail">查看账单</button>
+      </view>
+      <!-- 已取消 -->
+      <view
+        a:elif="{{dataList.state == 'system_credit_check_unpass_canceled' || dataList.state=='artificial_credit_check_unpass_canceled'||dataList.state=='merchant_relet_check_unpass_canceled'||dataList.state=='user_canceled'||dataList.state=='safeguard_rights_canceled'||dataList.state=='order_payment_overtime_canceled'||dataList.state=='merchant_not_yet_send_canceled'||dataList.state=='express_rejection_canceled'}}"
+        class="operation"
+      >
+        <button type="default" plain catchTap="callMerchant">
+          {{shopPhone?'联系商家':'联系客服'}}
+        </button>
+
+      </view>
+      <!-- 已完成 -->
+      <view
+        a:elif="{{dataList.state=='lease_finished'||dataList.state=='relet_finished'||dataList.state=='buyout_finished'}}"
+        class="operation"
+      >
+
+        <!--<button type="primary" catchTap="toComment">{{commented?'查看评价':'评 价'}}</button> -->
+        <button type="default" plain catchTap="callMerchant">
+          {{shopPhone?'联系商家':'联系客服'}}
+        </button>
+        <button type="default" plain catchTap="goBillDetail">查看账单</button>
+      </view>
+      <!-- 其他状态 -->
+      <view a:else class="operation">
+        <button type="default" plain catchTap="callMerchant">
+          {{shopPhone?'联系商家':'联系客服'}}
+        </button>
+        <button
+          a:if="{{dataList.state=='pending_relet_pay' || dataList.state=='pending_buyout_pay'}}"
+          type="default"
+          catchTap="toPay"
+          data-type="{{dataList.state=='pending_relet_pay'?'relet':'BuyOut'}}"
+        >
+          立即支付
+        </button>
+        <button
+          a:if="{{dataList.state=='pending_user_compensate'}}"
+          type="default"
+          catchTap="toPay"
+          data-type="compensate"
+        >
+          赔偿支付
+        </button>
+        <button
+          a:if="{{dataList.state=='pending_cancel_check'}}"
+          type="default"
+          catchTap="revokeCancel"
+        >
+          撤销申请
+        </button>
+      </view>
+    </view>
+    <!-- 取消订单弹窗 -->
+    <view a:if="{{modelFlag}}" class="model-wrapper">
+      <view class="model">
+        <view class="model-title">取消订单</view>
+        <view class="model-subTitle">取消原因</view>
+        <view class="model-con">
+          <radio-group name="radio-group" onChange="chooseCancelReason">
+            <block a:for="{{cancelReasonList}}">
+              <label>
+                <radio value="{{item.value}}" />{{item.text}}</label>
+            </block>
+          </radio-group>
+        </view>
+        <view class="model-button">
+          <view class="cancel" catchTap="cancelModel">再考虑下</view>
+          <view class="confirm" catchTap="confirmModel">取消订单</view>
+        </view>
+      </view>
+    </view>
+  </block>
+
+  <block a:else>
+    <view class="empty-wp">
+      <text>{{getMessage}}</text>
+    </view>
+  </block>
+
+  <!-- alert弹窗 -->
+  <template a:if="{{customAlert}}" is="customAlert" data='{{data:customAlertData,closeCustomAlert:closeCustomAlert}}' />
+</view>
+<view a:if="{{!hideModal}}" class="pick-wp" catchTap="hideModal"></view>
+<view a:if="{{!hideProgress}}" class="pop-wrap-a">
+  <view class="compensateContent">
+    <view class="header">
+      赔偿进度
+    </view>
+
+    <view class="schedule">
+      <block a:for="{{compensateS}}" a:key="item.time">
+        <view class="rows">
+          <view class="t">
+            <view class="min">{{filters.parseTime(item.time,'h:m')}}</view>
+            <view class="day">{{filters.parseTime(item.time,'y-m-d')}}</view>
+          </view>
+          <view class="dot {{index==0?'current':''}}">
+          </view>
+          <view class="cont">{{item.content}}</view>
+        </view>
+      </block>
+    </view>
+    <view class="close" catchTap="hideModal">
+      <text class="iconfont icon-ico-guanbi"></text>
+    </view>
+  </view>
+</view>
+<view a:if="{{!hideDetailModal}}" class="compensateDetail" animation="{{animationData}}">
+  <view class="header">
+    <view class="left">
+      赔偿详情
+    </view>
+    <block a:if="{{orderCompensateInfo.checkState=='init'}}">
+      <view class="right" catchTap="toSaveGuard">
+        赔偿申诉
+        <text class="iconfont icon-ico_right1"></text>
+      </view>
+    </block>
+    <block a:else>
+      <view class="right" catchTap="showWhichCompensate">
+        查看{{showUserCompensate?'用户':'商户'}}举证
+        <text class="iconfont icon-ico_right1"></text>
+      </view>
+    </block>
+  </view>
+  <view class="detail-wp">
+    <view class="details {{showUserCompensate?'':'animate'}}">
+      <view class="compensate-pop-wp">
+        <block a:if="{{orderCompensateInfo.image.length}}">
+          <view class="area1">
+            <view class="pics">
+              <view class="title">商户举证图片（共{{orderCompensateInfo.image.length}}张）</view>
+              <scroll-view scroll-x>
+                <view class="con">
+                  <block
+                    a:for="{{orderCompensateInfo.image}}"
+                    a:key="index"
+                  >
+                    <view
+                      class="imgs-wp"
+                      catchTap="previewCompensateImage"
+                      data-index="{{index}}"
+                    >
+                      <image class="img" src="{{item.url}}"></image>
+                    </view>
+                  </block>
+                </view>
+              </scroll-view>
+            </view>
+          </view>
+        </block>
+        <view class="area2">
+          <view
+            a:for="{{orderCompensateInfo.damageSituation}}"
+            class="compensate-des-item"
+            a:key="index"
+          >
+            <view class="reason">
+              赔偿原因：{{item.describe}}
+            </view>
+            <view class="price">
+              赔偿金额：
+              <text>{{filters.parsePrice(item.money)}}元</text>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class="compensate-pop-wp">
+        <block a:if="{{proof.image.length}}">
+          <view class="area1">
+            <view class="pics">
+              <view class="title">用户举证图片（共{{proof.image.length}}张）</view>
+              <scroll-view scroll-x="{{true}}">
+                <view class="con">
+                  <block a:for="{{proof.image}}" a:key="index">
+                    <view
+                      class="imgs-wp"
+                      catchTap="previewCompensateImage"
+                      data-index="{{index}}"
+                    >
+                      <image class="img" src="{{item.url}}"></image>
+                    </view>
+                  </block>
+                </view>
+              </scroll-view>
+            </view>
+          </view>
+        </block>
+        <view class="area2">
+          <view class="compensate-des-item">
+            <view class="reason">
+              拒绝赔偿原因：{{proof.remark}}
+            </view>
+            <view class="reason">
+              拒绝赔偿详细描述：{{proof.proofInfo}}
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+<pop-up class="pop-server-wrap" position="middle" ref="server" closeHide="{{true}}">
+  <view class="server-wp" slot="middle">
+    <view class="server-main" slot="middle">
+      <view class="server-item server-item-1">
+        <view class="contact_button">
+          <contact-button
+            size="80"
+            class="contact-button"
+            tnt-inst-id="jB2_KWKn"
+            scene="SCE01217188"
+          />
+          <contact-button
+            size="80"
+            class="contact-button"
+            tnt-inst-id="jB2_KWKn"
+            scene="SCE01217188"
+          />
+          <contact-button
+            size="80"
+            class="contact-button"
+            tnt-inst-id="jB2_KWKn"
+            scene="SCE01217188"
+          />
+          <contact-button
+            size="80"
+            class="contact-button"
+            tnt-inst-id="jB2_KWKn"
+            scene="SCE01217188"
+          />
+        </view>
+        <view class="left">
+          <image class="icon" src="/image/kf.png" />
+          <view class="info">
+            <view class="title">平台在线客服</view>
+            <view class="desc">快速响应受理</view>
+          </view>
+        </view>
+        <view class="right">
+          <image class="arrow" src="/image/icon/icon-before.png"></image>
+        </view>
+      </view>
+      <view class="server-item" catchTap="callService">
+        <view class="left">
+          <image class="icon" src="/image/call.png" />
+          <view class="info">
+            <view class="title">平台电话客服</view>
+            <view class="desc">投诉、建议等反馈</view>
+          </view>
+        </view>
+        <view class="right">
+          <image class="arrow" src="/image/icon/icon-before.png"></image>
+        </view>
+      </view>
+    </view>
+    <view class="close_wrapper" catchTap="hideServer">
+      <image src="/image/common/close01.png" />
+    </view>
+  </view>
+</pop-up>

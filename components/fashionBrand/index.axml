@@ -1,0 +1,21 @@
+<view class="fashionBrandWp merchant">
+    <view class="brandTop">
+        <view class="left">
+            <view class="icon" a:if="{{item.shopLogo}}">
+                <image src="{{item.shopLogo}}"></image>   
+            </view>
+            <view class="brandName">{{item.shopName}}</view>
+        </view>
+        <view class="right" catchTap="toMerchant" data-id="{{item.merchantId}}">
+            <text class="text">进店</text>
+            <image class="iconMore" src="../../image/icon/ico_More.png"></image>
+        </view>
+    </view>
+    <view class="brandContent">
+        <block a:for="{{item.imgJson}}" a:key="index" a:for-item="subItem">
+            <view class="brandPic" catchTap = "previewImage" data-index="{{index}}">
+                <image src="{{subItem.url}}"></image>
+            </view>
+        </block>
+    </view>
+</view>

@@ -1,0 +1,11 @@
+.empty-container {
+  display: block;
+  text-align: center;
+  padding: 40rpx 0;
+}
+.empty-container > .info {
+  display: block;
+  font-size: 26rpx;
+  color: #BFC5C9;
+  text-align: center;
+}

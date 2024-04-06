@@ -1,0 +1,454 @@
+.mokuaiTitle {
+  padding-left: 30rpx;
+  font-size: 36rpx;
+  color: #000000;
+}
+page {
+  height: 100%;
+}
+page .store-wp {
+  height: 100%;
+}
+page .store-wp .store-header .header-wp {
+  width: 100%;
+  height: 250rpx;
+  background-position: top center;
+  -webkit-background-size: cover;
+  background-size: cover;
+  position: relative;
+}
+page .store-wp .store-header .header-wp .header {
+  padding-left: 220rpx;
+  width: 100%;
+  box-sizing: border-box;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 150rpx;
+  background: #ffffff;
+  border-top-left-radius: 20rpx;
+  border-top-right-radius: 20rpx;
+}
+page .store-wp .store-header .header-wp .header .avater {
+  background: #ffffff;
+  box-shadow: 0 0 10px 0 rgba(4, 29, 41, 0.3);
+  width: 160rpx;
+  height: 160rpx;
+  border-radius: 50%;
+  text-align: center;
+  position: absolute;
+  left: 36rpx;
+  top: -40rpx;
+}
+page .store-wp .store-header .header-wp .header .avater view {
+  width: 148rpx;
+  height: 148rpx;
+  margin: 6rpx auto 0;
+  overflow: hidden;
+  border-radius: 50%;
+}
+page .store-wp .store-header .header-wp .header .avater view image {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+page .store-wp .store-header .header-wp .header .storeInfo {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  padding: 24rpx 44rpx 0 0;
+  justify-content: space-between;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  box-sizing: border-box;
+}
+page .store-wp .store-header .header-wp .header .storeInfo .left {
+  flex: 1;
+  padding-right: 48rpx;
+  box-sizing: border-box;
+  border-right: 1rpx solid #EAEAEA;
+}
+page .store-wp .store-header .header-wp .header .storeInfo .left .title {
+  width: 202rpx;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 32rpx;
+  color: #000000;
+}
+page .store-wp .store-header .header-wp .header .storeInfo .left .rentnum {
+  height: 34rpx;
+  line-height: 34rpx;
+}
+page .store-wp .store-header .header-wp .header .storeInfo .left .rentnum text {
+  font-size: 24rpx;
+  color: #9B9B9B;
+}
+page .store-wp .store-header .header-wp .header .storeInfo .left .rentnum text.num {
+  font-size: 26rpx;
+  color: #000000;
+  padding-right: 6rpx;
+}
+page .store-wp .store-header .header-wp .header .storeInfo .right {
+  padding-left: 40rpx;
+  box-sizing: border-box;
+  display: flex;
+}
+page .store-wp .store-header .header-wp .header .storeInfo .right .redPackage image {
+  width: 52rpx;
+  height: 52rpx;
+}
+page .store-wp .store-header .header-wp .header .storeInfo .right .redPackage,
+page .store-wp .store-header .header-wp .header .storeInfo .right .share {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+page .store-wp .store-header .header-wp .header .storeInfo .right .redPackage .text,
+page .store-wp .store-header .header-wp .header .storeInfo .right .share .text {
+  font-size: 22rpx;
+  line-height: 30px;
+}
+page .store-wp .store-header .header-wp .header .storeInfo .right .redPackage .text {
+  color: #FF5339;
+}
+page .store-wp .store-header .header-wp .header .storeInfo .right .share {
+  margin-left: 34rpx;
+}
+page .store-wp .store-header .header-wp .header .storeInfo .right .share .gtImage {
+  width: 40rpx;
+  height: 40rpx;
+}
+page .store-wp .store-header .header-wp .header .storeInfo .right .share .text {
+  color: #041D29;
+}
+page .store-wp .tab-header {
+  background: #F9FAFB;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  height: 88rpx;
+}
+page .store-wp .tab-header.fixed {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 99;
+}
+page .store-wp .tab-header .item {
+  height: 88rpx;
+  line-height: 88rpx;
+  color: #434343;
+  font-size: 28rpx;
+}
+page .store-wp .tab-header .item.active {
+  color: #3795FF;
+  position: relative;
+}
+page .store-wp .tab-header .item.active::before {
+  content: '';
+  background: #3795FF;
+  width: 70rpx;
+  height: 4rpx;
+  border-radius: 8rpx 8rpx 0 0;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+page .store-wp .tab-content.fixed {
+  margin-top: 88rpx;
+}
+page .store-wp .tab-content .index .banner-wp {
+  background: #ffffff;
+  position: relative;
+  width: 100%;
+  height: 66rpx;
+  padding-bottom: 33.333%;
+  overflow: hidden;
+}
+page .store-wp .tab-content .index .banner-wp .swiper-wp {
+  padding: 40rpx 30rpx;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+}
+page .store-wp .tab-content .index .banner-wp .swiper-wp .banner-swiper {
+  height: 216rpx;
+}
+page .store-wp .tab-content .index .banner-wp .swiper-wp .banner-swiper .img-wp {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+page .store-wp .tab-content .index .banner-wp .swiper-wp .banner-swiper .img-wp image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+}
+page .store-wp .tab-content .index .banner-wp .swiper-wp .dots {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 20rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+page .store-wp .tab-content .index .banner-wp .swiper-wp .dots text {
+  width: 6rpx;
+  height: 4rpx;
+  border-radius: 200rpx;
+  background: #BFC5C9;
+  margin: 0 3rpx;
+}
+page .store-wp .tab-content .index .banner-wp .swiper-wp .dots text.active {
+  background: #9B9B9B;
+  width: 20rpx;
+}
+page .store-wp .tab-content .index .coupon {
+  background: #ffffff;
+  margin-top: 10rpx;
+  padding: 20rpx 0;
+}
+page .store-wp .tab-content .index .recommend {
+  background: #ffffff;
+  margin-top: 10rpx;
+  padding-top: 40rpx;
+  width: 100%;
+  box-sizing: border-box;
+}
+page .store-wp .tab-content .index .recommend .title {
+  padding-left: 30rpx;
+  font-size: 36rpx;
+  color: #000000;
+}
+page .store-wp .tab-content .index .recommend .list-wp {
+  overflow: scroll;
+  position: relative;
+}
+page .store-wp .tab-content .index .recommend .list-wp .goodlist {
+  padding: 40rpx 30rpx;
+  white-space: nowrap;
+}
+page .store-wp .tab-content .index .recommend .list-wp .goodlist .item {
+  vertical-align: top;
+  width: 33.33333%;
+  display: inline-block;
+  margin: 0 15rpx;
+}
+page .store-wp .tab-content .index .recommend .list-wp .goodlist .item .img {
+  margin: 0 auto;
+  width: 200rpx;
+  height: 200rpx;
+}
+page .store-wp .tab-content .index .recommend .list-wp .goodlist .item .img image {
+  width: 100%;
+  height: 100%;
+}
+page .store-wp .tab-content .index .recommend .list-wp .goodlist .item .info .name {
+  white-space: normal;
+  margin-top: 6rpx;
+  font-size: 28rpx;
+  color: #000000;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  line-height: 36rpx;
+  height: 72rpx;
+}
+page .store-wp .tab-content .index .recommend .list-wp .goodlist .item .info .jiage {
+  height: 50rpx;
+  line-height: 50rpx;
+}
+page .store-wp .tab-content .index .recommend .list-wp .goodlist .item .info .jiage .price {
+  font-size: 36rpx;
+  color: #FF5339;
+}
+page .store-wp .tab-content .index .recommend .list-wp .goodlist .item .info .jiage .unit {
+  color: #9B9B9B;
+  font-size: 24rpx;
+  padding-left: 6rpx;
+}
+page .store-wp .tab-content .index .recommend .list-wp .goodlist .item .info .oldjiage {
+  padding-left: 2rpx;
+  font-size: 22rpx;
+  color: #BFC5C9;
+  text-decoration: line-through;
+}
+page .store-wp .tab-content .index .recommend .list-wp .goodlist .item .info .tag-wp .tag {
+  display: inline-block;
+  height: 26rpx;
+  line-height: 26rpx;
+  min-width: 56rpx;
+  border-radius: 6rpx;
+  font-size: 20rpx;
+  padding: 2rpx 5rpx;
+  margin-right: 10rpx;
+  text-align: center;
+  box-sizing: content-box;
+}
+page .store-wp .tab-content .index .recommend .list-wp .goodlist .item .info .tag-wp .tag.tag_r {
+  color: #FF5339;
+  border: 1rpx solid #FF5339;
+}
+page .store-wp .tab-content .index .recommend .list-wp .goodlist .item .info .tag-wp .tag.tag_o {
+  color: #FF8639;
+  border: 1rpx solid #FF8639;
+}
+page .store-wp .tab-content .index .recommend .list-wp .goodlist .item .info .tag-wp .tag.tag_g {
+  width: 74rpx;
+  color: #9B9B9B;
+  border: 1rpx solid #9B9B9B;
+}
+page .store-wp .tab-content .index .recommend .list-wp .goodlist .item .info .tag-wp .tag.tag_b {
+  color: #3795FF;
+  border: 1rpx solid #3795FF;
+}
+page .store-wp .tab-content .index .goodsPutAway {
+  padding: 40rpx 0;
+  width: 100%;
+  box-sizing: border-box;
+}
+page .store-wp .tab-content .index .goodsPutAway .title {
+  padding-left: 30rpx;
+  font-size: 36rpx;
+  color: #000000;
+}
+page .store-wp .tab-content .index .goodsPutAway .more {
+  text-align: center;
+  font-size: 24rpx;
+  color: #9B9B9B;
+  padding-bottom: 88rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+page .store-wp .tab-content .index .goodsPutAway .more .iconLower {
+  width: 24rpx;
+  height: 24rpx;
+  margin-left: 6rpx;
+}
+page .store-wp .tab-content .index .goodsPutAway .goods-wp {
+  margin-top: 24rpx;
+}
+page .store-wp .tab-content .list {
+  background: #ffffff;
+}
+page .store-wp .tab-content .list .orderbtn {
+  width: 100%;
+  padding: 20rpx 30rpx 30rpx;
+  box-sizing: border-box;
+  background: #ffffff;
+}
+page .store-wp .tab-content .list .orderbtn.fixed {
+  width: 100%;
+  position: fixed;
+  left: 0;
+  top: 88rpx;
+  z-index: 99;
+}
+page .store-wp .tab-content .list .orderbtn .item {
+  display: inline-block;
+  background: #F8F8F8;
+  width: 164rpx;
+  height: 68rpx;
+  text-align: center;
+  line-height: 68rpx;
+  border-radius: 43px;
+  font-size: 26rpx;
+  color: #9B9B9B;
+}
+page .store-wp .tab-content .list .orderbtn .item.active {
+  background: rgba(55, 149, 255, 0.1);
+  color: #2395FF;
+}
+page .store-wp .tab-content .list .orderbtn .jiage {
+  margin-left: 20rpx;
+}
+page .store-wp .tab-content .list .orderbtn .jiage .icon {
+  margin-left: 14rpx;
+  width: 20rpx;
+  height: 24rpx;
+}
+page .store-wp .tab-content .list .goodslist-wp {
+  background: #fff;
+}
+page .store-wp .tab-content .list .goodslist-wp.fixed {
+  margin-top: 246rpx;
+}
+.footer-wp {
+  border-top: 1rpx solid #EAEAEA;
+  background: #ffffff;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 88rpx;
+  z-index: 100;
+}
+.footer-wp .footer-btn {
+  height: 100%;
+  width: 100%;
+  background: #fff;
+}
+.footer-wp .footer-btn .left {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+.footer-wp .footer-btn .left .item {
+  height: 88rpx;
+  font-size: 28rpx;
+  color: #434343;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.footer-wp .footer-btn .left .item .icon-search {
+  font-size: 26rpx;
+  margin-right: 10rpx;
+}
+.footer-wp .footer-btn .left .item:nth-of-type(-n+2) {
+  position: relative;
+}
+.footer-wp .footer-btn .left .item.concat {
+  color: #3795FF;
+}
+.footer-wp .footer-btn .left .item.concat .iconfont {
+  color: #3795FF;
+  font-size: 36rpx;
+}
+.footer-wp .footer-btn .right {
+  background: #F8F8F8;
+  box-sizing: border-box;
+  width: 88rpx;
+  height: 88rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  font-size: 20rpx;
+  color: #434343;
+}
+.footer-wp .footer-btn .right text {
+  width: 32rpx;
+  height: 18rpx;
+  color: #434343;
+}

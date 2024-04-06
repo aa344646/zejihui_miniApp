@@ -1,0 +1,42 @@
+.oreder-fail {
+  min-height: 548rpx;
+  width: 100%;
+}
+.oreder-fail .fail-content {
+  min-height: 400rpx;
+  width: 100%;
+  text-align: center;
+  background: #FFFFFF;
+}
+.oreder-fail .fail-content .iconFail {
+  width: 120rpx;
+  height: 120rpx;
+}
+.oreder-fail .fail-content .fail-title {
+  font-size: 34rpx;
+  line-height: 34rpx;
+  color: #333333;
+  margin-top: 30rpx;
+}
+.oreder-fail .fail-content .fail-text {
+  margin-top: 20rpx;
+  font-size: 30rpx;
+  color: #888888;
+  letter-spacing: 0;
+  text-align: center;
+  line-height: 30rpx;
+}
+.oreder-fail .sku-btn {
+  margin-top: 60rpx;
+  width: 690rpx;
+  height: 88rpx;
+  margin: 0 auto;
+  overflow: hidden;
+}
+.oreder-fail .sku-btn .btn {
+  width: 100%;
+  height: 88rpx;
+  line-height: 88rpx;
+  background: #2395FF;
+  border-radius: 100rpx;
+}

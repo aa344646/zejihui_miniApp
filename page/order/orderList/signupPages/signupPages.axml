@@ -1,0 +1,260 @@
+<view a:if="{{ goNext === 0  }}" class="sign">
+  <view class="sign-header">
+    <text class="sign-header-txt">提示语提示语提示语提示语提示语</text>
+  </view>
+  <view class="sign-step">
+    <view class="sign-step-one">
+      <image class="sign-step-one-img" mode="scaleToFill" src="/image/newnew/one.png" />
+      <view class="sign-step-one-hr"></view>
+      <image class="sign-step-one-img" mode="scaleToFill" src="/image/newnew/notwo.png" />
+      <view class="sign-step-one-hr"></view>
+      <image class="sign-step-one-img" mode="scaleToFill" src="/image/newnew/nothree.png" />
+
+    </view>
+    <view class="sign-step-txt">
+      <view class="sign-step-txt-css">
+        同意须知
+      </view>
+      <view class="sign-step-txt-css1">
+        签署合同
+      </view>
+      <view class="sign-step-txt-css2">
+        公证成功
+      </view>
+
+    </view>
+    <view></view>
+  </view>
+  <view class="sign-content">
+    <view class="sign-content-title">
+      公证告知书
+    </view>
+    <view class="sign-content-txt">
+      第一条 商家可针对商品设置商品价格，商品通过审核后即生效，商品价格设置应遵循以下原则：
+      <view>
+        （1）全新商品，商品价格不高于商品发布时官方市场价120%；
+      </view>
+      （2）非全新商品，商品价格设置不得高于在发布时全新商品官方市场价的100%；
+      <view>（3）官方定义的限量款、纪念款、稀缺款等商品价格设置不受以上原则约束；
+        商品价格将用于计算用户缴纳的押金数额，押金以蚂蚁花呗预授权冻结或直接支付的方式存在，并不直接进入商家账户。
+      </view>
+      <view class="sign-content-txt-floot">
+        第二节 商品标准规范
+        第二条 商城版商户：商家在发布商品时，需按照详情页发布规范、参数规范进行发布（1.商品图片上传尺寸限制750*750px，文件大小不得超过500KB，最多5张；
+      </view>
+
+    </view>
+
+  </view>
+  <view class="sign-reader">
+    <checkbox
+      checked="{{radioValue}}"
+      style="transform:scale(0.8);margin-top:-6px;margin-right:-1px"
+      onChange="handleRadioValue"
+    >
+    </checkbox>
+    <view class="sign-reader-agreement">
+      我已点击阅读《公证告知书》、《公证申请表及谈话笔录》和《租赁服务协议》，清楚并同意上述特别提示的全部内容，并保证所供证明材料全部属实，并明确提供虚伪或伪造证明材料的相关法律责任。
+    </view>
+
+  </view>
+  <view a:if="{{ radioValue }}" class="sign-footer sign-footer-use " catchTap="goNextStep">
+    确认，进入下一步
+  </view>
+  <view a:else class="sign-footer  sign-footer-nouse">
+    确认，进入下一步
+  </view>
+
+</view>
+
+
+
+<view a:if="{{ goNext === 1 }}" class="sign">
+  <view class="sign-header">
+    <text class="sign-header-txt">提示语提示语提示语提示语提示语</text>
+  </view>
+  <view class="sign-step">
+    <view class="sign-step-one  ">
+      <image class="sign-step-one-img" mode="scaleToFill" src="/image/newnew/one.png" />
+      <view class="sign-step-one-hr"></view>
+      <image class="sign-step-one-img" mode="scaleToFill" src="/image/newnew/two.png" />
+      <view class="sign-step-one-hr"></view>
+      <image class="sign-step-one-img" mode="scaleToFill" src="/image/newnew/nothree.png" />
+
+    </view>
+    <view class="sign-step-txt">
+      <view class="sign-step-txt-css1">
+        同意须知
+      </view>
+      <view class="sign-step-txt-css ">
+        签署合同
+      </view>
+      <view class="sign-step-txt-css2">
+        公证成功
+      </view>
+
+    </view>
+    <view></view>
+  </view>
+  <view class="sign-contract">
+    <view>
+      <view class="sign-contract-text common-text ">
+        合同名称：
+        <text class="sign-contract-text-txt">租赁服务协议</text>
+      </view>
+    </view>
+    <view>
+      <view class="sign-contract-text common-text">
+        合同编号：
+        <text class="sign-contract-text-txt">83hn7fh9vje8v7n9nc</text>
+      </view>
+    </view>
+  </view>
+  <view class="sign-the-contract">
+    <view class="sign-contract1 common-title">
+      签署合同
+    </view>
+    <view class="sign-contract-text common-text">
+      设备名称：
+      <text class="sign-contract-text-txt">苹果iPhone13</text>
+    </view>
+    <view class="sign-contract-text common-text">
+      套餐名称：
+      <text class="sign-contract-text-txt">03</text>
+    </view>
+    <view class="sign-contract-text common-text">
+      设备数量：
+      <text class="sign-contract-text-txt">1</text>
+    </view>
+    <view class="sign-contract-text common-text">
+      租期：
+      <text class="sign-contract-text-txt">360天</text>
+    </view>
+    <view class="sign-contract-text common-text"> 租金单价：
+      <text class="sign-contract-text-txt">4800.00</text>
+    </view>
+    <view class="sign-contract-text common-text">
+      总租金：
+      <text class="sign-contract-text-txt">3600.00</text>
+    </view>
+    <view class="sign-contract-text common-text">
+      已付预付租金（已冻结）：
+      <text class="sign-contract-text-txt">0.00</text>
+    </view>
+    <view class="sign-contract-text common-text">
+      买断价：
+      <text class="sign-contract-text-txt">3156.00</text>
+    </view>
+    <view class="sign-contract-footer" catchTap="{{over ?'':'goSian'}}">
+      {{ over ? '点击跳转签署区' :'点击跳转签署区'}}
+    </view>
+
+  </view>
+  <view class="sign-address">
+    <view class="sign-address-title common-title">
+      送到地址
+    </view>
+    <view class="common-text">
+      联系人：
+      <text class="sign-address-txt">张三</text>
+    </view>
+    <view class="common-text">
+      身份证号码：
+      <text class="sign-address-txt">532947199905060028</text>
+    </view>
+    <view class="common-text">
+      手机号码：
+      <text class="sign-address-txt"> 15857133489</text>
+    </view>
+    <view class="common-text">
+      邮箱号码：
+      <text class="sign-address-txt">1751342488@qq.com</text>
+    </view>
+    <view class="common-text">
+      地址：
+      <text class="sign-address-last">浙江省 杭州市 拱墅区 嘻嘻新作7撞A座</text>
+    </view>
+
+  </view>
+  <view class="sign-confirm">
+    <checkbox
+      checked="{{radioValue}}"
+      style="transform:scale(0.8);margin-right:-1px"
+      onChange="handleRadioValue"
+    >
+    </checkbox>
+    <view class="sign-checkbox-txt">
+      本人已认真阅读并同意填写邮箱作为公证书
+    </view>
+
+  </view>
+  <view a:if="{{ radioValue }}" class="sign-footer sign-footer-use " catchTap="goNextStep">
+    确认，进入下一步
+  </view>
+  <view a:else class="sign-footer  sign-footer-nouse">
+    确认，进入下一步
+  </view>
+
+</view>
+
+<view a:if="{{ goNext === 2}}" class="sign">
+  <view class="sign-header">
+    <text class="sign-header-txt">提示语提示语提示语提示语提示语</text>
+  </view>
+  <view class="sign-step">
+    <view class="sign-step-one  ">
+      <image class="sign-step-one-img" mode="scaleToFill" src="/image/newnew/one.png" />
+      <view class="sign-step-one-hr">
+      </view>
+      <image class="sign-step-one-img" mode="scaleToFill" src="/image/newnew/two.png" />
+      <view class="sign-step-one-hr">
+      </view>
+      <image class="sign-step-one-img" mode="scaleToFill" src="/image/newnew/three.png" />
+    </view>
+    <view class="sign-step-txt">
+      <view class="sign-step-txt-css1">
+        同意须知
+      </view>
+      <view class="sign-step-txt-css2 ">
+        签署合同
+      </view>
+      <view class="sign-step-txt-css">
+        公证成功
+      </view>
+    </view>
+  </view>
+  <view class="sign-success">
+    <image mode="scaleToFill" src="/image/confirm.png" class="confirm-img" />
+    <view class="sign-success-txt">
+      签约完成，公证处已受理
+    </view>
+    <view class="sign-details">
+      <view class="sign-details-title">
+        合同名称：
+        <text class="sign-details-txt">租赁服务协议</text>
+      </view>
+      <view class="sign-details-title">
+        合同编号：
+        <text class="sign-details-txt">2023kljopgkmpfeo021</text>
+      </view>
+      <view class="sign-details-footer">
+        您本次签署的合同，将由依法设立的公证处您本次签署的合同，将由依法设立的公证处您本次签署的合同，将由依法设立的公证处
+      </view>
+
+    </view>
+  </view>
+
+
+
+  <view a:if="{{ radioValue }}" class="sign-footer sign-footer-use " catchTap="goNextStep">
+    完成
+  </view>
+  <view a:else class="sign-footer  sign-footer-nouse">
+    完成
+  </view>
+
+  <view>
+
+  </view>
+
+</view>

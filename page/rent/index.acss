@@ -1,0 +1,12 @@
+@import '../../components/rentOrder/index.acss';
+@import '../../components/desk/index.acss';
+page view ::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+    display: none;  
+}
+/* page ::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+    display: none;
+} */

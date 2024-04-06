@@ -1,0 +1,252 @@
+.wp {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: #f7f7f7;
+}
+.tip {
+  height: 60rpx;
+  line-height: 60rpx;
+  padding: 0 30rpx;
+  font-size: 24rpx;
+  color: #9B9B9B;
+}
+.address-wp {
+  box-sizing: border-box;
+  background: #FFF;
+  margin-bottom: 20rpx;
+}
+.address-wp .address {
+  border-radius: 10rpx;
+  padding: 30rpx;
+  position: relative;
+}
+.address-wp .address .del {
+  position: absolute;
+  right: 60rpx;
+  top: 32rpx;
+  font-size: 24rpx;
+  color: #3795FF;
+}
+.address-wp .address .isDefault {
+  margin-left: 20rpx;
+  font-size: 24rpx;
+  color: #3795FF;
+}
+.address-wp .address .del {
+  right: 70rpx;
+  color: #8a8a8a;
+}
+.address-wp .address .line {
+  line-height: 1em;
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 16rpx;
+}
+.address-wp .address .line.content {
+  margin-bottom: 0;
+}
+.address-wp .address .line.content .right {
+  flex: 0 0 360rpx;
+  line-height: 36rpx;
+}
+.address-wp .address .line .left {
+  width: 130rpx;
+  font-size: 24rpx;
+  color: #555555;
+  letter-spacing: 4.66rpx;
+}
+.address-wp .address .line .right {
+  flex: 1;
+  font-size: 24rpx;
+  color: #041D29;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+}
+.address-wp .address .control {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-left: 30rpx;
+  margin-left: 34rpx;
+  border-left: 2rpx solid #EAEAEA;
+  font-size: 24rpx;
+  color: #3795FF;
+}
+.address-wp .address .select {
+  position: absolute;
+  right: 66rpx;
+  top: 32rpx;
+  width: 40rpx;
+  height: 40rpx;
+}
+.address-wp .address .select .iconfont {
+  font-size: 40rpx;
+}
+.address-wp .address .select .icon-ico_select {
+  color: #9B9B9B;
+}
+.address-wp .address .select .icon-ico_select_pre {
+  color: #2395FF;
+}
+.logistics-wp {
+  margin-top: 20rpx;
+  background: #fff;
+  padding: 30rpx;
+}
+.logistics-wp .item .title {
+  font-size: 26rpx;
+  color: #9B9B9B;
+}
+.logistics-wp .item .row {
+  height: 84rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.logistics-wp .item .row .left {
+  flex: 1;
+  font-size: 28rpx;
+  color: #041D29;
+}
+.logistics-wp .item .row .left input {
+  display: inline-block;
+  vertical-align: top;
+  width: 100%;
+}
+.logistics-wp .item .row .left .picker {
+  padding-left: 15rpx;
+  font-size: 34rpx;
+}
+.logistics-wp .item .row .left .placeholder {
+  color: #333;
+}
+.logistics-wp .item .row .right {
+  width: 32rpx;
+}
+.logistics-wp .item .row .right .iconfont {
+  color: #999;
+  font-size: 32rpx;
+}
+.logistics-wp .item + .item {
+  padding-top: 30rpx;
+  border-top: 1rpx solid #ECECEC;
+}
+.note {
+  padding: 20rpx 30rpx 180rpx ;
+  font-size: 24rpx;
+  color: #9B9B9B;
+}
+.submit {
+  background: #FFFFFF;
+  position: fixed;
+  z-index: 1000;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 120rpx;
+  padding: 20rpx;
+  box-sizing: border-box;
+}
+.submit button {
+  height: 100%;
+  text-align: center;
+  background: #2395FF;
+  border-radius: 66rpx;
+  color: #FFFFFF;
+  width: 100%;
+  font-size: 32rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.result {
+  height: 660rpx;
+  padding-top: 160rpx;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #fff;
+  border-radius: 10rpx 10rpx 0 0;
+}
+.result .icon {
+  font-size: 160rpx;
+  line-height: 160rpx;
+  margin-bottom: 40rpx;
+}
+.result .icon-ico_payment {
+  color: #2395FF;
+}
+.result .icon-shibaibiaoqing {
+  color: #8a8a8a;
+}
+.result .status {
+  font-size: 32rpx;
+  line-height: 16px;
+  margin-bottom: 40rpx;
+  color: #000;
+  font-family: PingFangSC-Regular;
+}
+.result .time,
+.result .type {
+  font-size: 24rpx;
+  color: #555;
+  font-family: PingFangSC-Regular;
+}
+.result .return {
+  display: flex;
+  align-items: center;
+  margin-top: 52rpx;
+  font-size: 24rpx;
+  line-height: 24rpx;
+  color: #2395FF;
+  font-family: PingFangSC-Regular;
+}
+.result .return .icon-ico_right1 {
+  margin-left: 6rpx;
+}
+.tipInfo {
+  position: fixed;
+  z-index: 2000;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  box-sizing: border-box;
+  background-color: #fff;
+}
+.pick-wp {
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 100%;
+  overflow: hidden;
+  z-index: 8;
+  background: rgba(0, 0, 0, 0.4);
+}
+.pop-wrap {
+  z-index: 2000;
+  width: 100%;
+  position: fixed;
+  top: 114rpx;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.pop-wrap .close {
+  position: absolute;
+  bottom: -134rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2001;
+}
+.pop-wrap .close .icon-close {
+  width: 64rpx;
+  height: 64rpx;
+}

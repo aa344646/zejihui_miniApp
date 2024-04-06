@@ -1,0 +1,963 @@
+.address-wp {
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #f6f6f8;
+}
+.address-wp .address {
+  border-radius: 10rpx;
+  border-radius: 16rpx;
+  width: 686rpx;
+  margin-top: 32rpx;
+  height: 200rpx;
+  background-size: 100% 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background: #fff;
+  position: relative;
+}
+.address-wp .address_desc {
+  margin-top: 18rpx;
+  color: #8a8a8a;
+  font-size: 24rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  width: 600rpx;
+}
+.address-wp .address_fullandmobile {
+  height: 44rpx;
+  width: 600rpx;
+}
+.address-wp .address_fullandmobile_fullname {
+  color: #333333;
+  font-size: 32rpx;
+  margin-right: 16rpx;
+}
+.address-wp .address_fullandmobile_mobilePhone {
+  color: #333333;
+  font-size: 28rpx;
+  margin-right: 16rpx;
+}
+.address-wp .address_fullandmobile_img {
+  width: 40rpx;
+  height: 40rpx;
+  margin-left: 250rpx;
+}
+.address-wp .address_addimg {
+  width: 48rpx;
+  height: 48rpx;
+  display: block;
+}
+.address-wp .address_harvest {
+  font-size: 26rpx;
+  color: #8a8a8a;
+  margin-top: 14rpx;
+}
+.address-wp .address_lineimg {
+  position: absolute;
+  bottom: 2rpx;
+  height: 219rpx;
+}
+.rentOrder {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  background: #f6f6f8;
+}
+/* .rentOrder { */
+/* width: 100%;
+    height: 100%;
+    overflow: hidden; */
+/* } */
+.addr-detail {
+  width: 100%;
+}
+.addr-detail .addr-detail-content {
+  padding: 40rpx 30rpx 38rpx;
+  background: #ffffff;
+  overflow: hidden;
+}
+.addr-detail .addr-detail-linear {
+  width: 100%;
+  height: 10rpx;
+  overflow: hidden;
+  background-image: linear-gradient(-46deg, #009fee 0%, #00edcc 100%);
+}
+.addr-detail-content .user-detail text {
+  font-size: 32rpx;
+  line-height: 32rpx;
+  color: #000000;
+  letter-spacing: 0;
+}
+.addr-detail-content .user-detail .user-phone {
+  margin-left: 40rpx;
+}
+.addr-detail-content .user-addr {
+  width: 100%;
+  min-height: 40rpx;
+  overflow: hidden;
+  margin-top: 10rpx;
+  display: flex;
+  align-items: center;
+}
+.addr-detail-content .user-addr .iconAddress {
+  width: 28rpx;
+  height: 32rpx;
+}
+.user-addr .addr {
+  width: 664rpx;
+  height: 100%;
+  font-size: 28rpx;
+  color: #888888;
+}
+.user-help {
+  margin-top: 20rpx;
+  margin-left: 26rpx;
+  color: #999999;
+  font-size: 20rpx;
+  line-height: 20rpx;
+  letter-spacing: 0;
+  font-family: "PingFangSC-Light";
+}
+.goods-detail {
+  overflow: hidden;
+  width: 686rpx;
+  border-radius: 16rpx;
+  margin-top: 24rpx;
+  background: #fff;
+}
+.goods-detail .goods-rentDetail {
+  margin-left: 30rpx;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.goods-detail .goods-rentDetail .imgSrc {
+  width: 160rpx;
+  height: 160rpx;
+  overflow: hidden;
+  float: left;
+  display: block;
+  background: #f6f6f6;
+}
+.goods-detail .goods-rentDetail .goods-content {
+  width: 510rpx;
+  overflow: hidden;
+  padding-top: 34rpx;
+  padding-left: 20rpx;
+  padding-bottom: 34rpx;
+}
+.goods-rentDetail .imgSrc {
+  background: #f6f6f6;
+}
+.goods-rentDetail .imgSrc_imgs {
+  width: 160rpx;
+  height: 160rpx;
+}
+.goods-content .goods-title {
+  font-size: 28rpx;
+  line-height: 40rpx;
+  color: #333333;
+  width: 450rpx;
+}
+.goods-content .goods-sentName {
+  font-size: 24rpx;
+  color: #999999;
+  line-height: 36rpx;
+  margin-top: 12rpx;
+}
+.goods-content .goods-price {
+  margin-top: 16rpx;
+  font-size: 28rpx;
+  color: #333333;
+  line-height: 28rpx;
+}
+.goods-content .zfb-logo {
+  margin-top: 20rpx;
+  width: 170rpx;
+  height: 30rpx;
+}
+.goods-content .zfb-logo .a-image {
+  width: 0;
+  height: 0;
+}
+.goods-content .zfb-logo .zfblogo {
+  width: 100%;
+  height: 100%;
+}
+.lease-time {
+  width: 686rpx;
+  margin-top: 24rpx;
+  background: #fff;
+  height: 132rpx;
+  border-radius: 16rpx;
+}
+.lease-time_box {
+  width: 100%;
+  margin-top: 24rpx;
+}
+.lease-time_box_text1 {
+  font-size: 28rpx;
+  color: #333333;
+  margin-left: 24rpx;
+  margin-top: 24rpx;
+}
+.lease-time_box_text2 {
+  font-size: 28rpx;
+  color: #8a8a8a;
+  margin-left: 250rpx;
+}
+.lease-time_text {
+  margin-top: 24rpx;
+  font-size: 22rpx;
+  color: #fc881a;
+  margin-left: 24rpx;
+}
+.sent-goods-pay {
+  width: 686rpx;
+  margin-top: 24rpx;
+  overflow: hidden;
+  background: #fff;
+  border-radius: 16rpx;
+}
+.sent-goods-pay .goods-pay-content .rent-zfb-payHelp {
+  font-size: 24rpx;
+  line-height: 24rpx;
+  font-family: "PingFangSC-Light";
+}
+.ptCol {
+  color: #ce0000;
+}
+.goods-pay-content {
+  padding: 40rpx 30rpx;
+  overflow: hidden;
+}
+.goods-pay-content .goods-rent {
+  margin-bottom: 30rpx;
+  margin-left: -3rpx;
+}
+.goods-pay-content /deep/ .goods-pay-data:not {
+  font-size: 28rpx !important;
+}
+.goods-pay-content .goods-pay-item {
+  display: flex;
+  justify-content: space-between;
+}
+.goods-pay-content .goods-pay-item-nouse {
+  font-size: 28rpx;
+  color: #333333;
+}
+.goods-pay-content .goods-pay-item-canuse {
+  font-size: 28rpx;
+  color: #ce0000 !important;
+  position: relative;
+  margin-right: 12rpx;
+}
+.goods-pay-content .goods-pay-item-canuse-jt {
+  width: 20rpx;
+  padding-top: 10rpx;
+  color: #ce0000 !important;
+  position: absolute;
+  right: -30rpx;
+  top: -12rpx;
+}
+.goods-pay-content .rent-pay-firstmoney {
+  font-size: 28rpx;
+  color: #333333;
+  line-height: 28rpx;
+}
+.goods-pay-content .payonce {
+  color: #ce0000 !important;
+  font-size: 28rpx;
+  font-weight: 600;
+}
+.goods-pay-content > view :first-child {
+  font-size: 28rpx;
+  color: #999999;
+  line-height: 28rpx;
+}
+.goods-pay-content .rent-pay-payment {
+  margin-top: 32rpx;
+  margin-bottom: 20rpx;
+  cursor: pointer;
+}
+.rent-pay-firstmoney .goods-pay-data {
+  font-size: 28rpx;
+}
+.rent-pay-firstmoney .goods-pay-data > text {
+  font-size: 28rpx;
+}
+.goods-pay-data {
+  display: flex;
+  align-items: center;
+  color: #333333;
+  font-size: 28rpx !important;
+}
+.goods-pay-data text.icon {
+  margin-left: 8.2rpx;
+  font-size: 31.5rpx;
+  color: #999999;
+}
+.goods-pay-zfbHonor {
+  width: 646rpx;
+  padding: 20rpx 23rpx 42rpx;
+  position: relative;
+  background: #fff;
+  margin-top: 24rpx;
+  border-radius: 16rpx;
+}
+.goods-pay-zfbHonor .dialog {
+  font-size: 24rpx;
+}
+.goods-pay-zfbHonor .dialog .content {
+  width: 300rpx;
+}
+.goods-pay-zfbHonor .dialog .am-tips-dialog-wrap {
+  position: absolute;
+  width: 236rpx;
+  height: 28rpx;
+  border-radius: 8rpx;
+  background: #fc881a;
+  color: #fff;
+  top: -60rpx;
+  right: 5rpx;
+}
+.goods-pay-zfbHonor .dialog .am-tips-dialog-arrow-bottom-left {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  border-left: 7px solid transparent;
+  border-right: 7px solid transparent;
+  border-top: 10px solid #fc881a;
+  margin-left: 140rpx;
+  background-image: none !important;
+  left: 46px;
+}
+.goods-pay-zfbHonor .dialog .am-tips-dialog-close {
+  display: none !important;
+}
+.goods-pay-zfbHonor > view {
+  display: flex;
+  justify-content: space-between;
+  font-size: 28rpx;
+}
+.goods-pay-zfbHonor > view:not(:last-child) {
+  margin-bottom: 8rpx;
+}
+.goods-pay-zfbHonor .rent-pay-allMoney {
+  color: #8a8a8a;
+  line-height: 28rpx;
+}
+.rent-pay-allMoney .mofangtishi {
+  margin-left: 10rpx;
+  font-size: 20rpx;
+}
+.rent-pay-allMoney .pay-authorize {
+  font-size: 28rpx;
+  color: #333333;
+  margin-right: 10rpx;
+}
+.rent-pay-allMoney .goods-pay-data {
+  color: #333333;
+  font-size: 28rpx;
+}
+.rent-pay-allMoney .goods-pay-data-curr {
+  color: #8a8a8a !important;
+  font-size: 28rpx !important;
+  text-decoration: line-through;
+  margin-left: 16rpx;
+}
+.rent-pay-allMoney .goods-pay-data > text {
+  font-size: 28rpx;
+  color: #333333;
+}
+.rent-pay-allMoney .once_title {
+  font-size: 28rpx;
+  color: #333333;
+}
+.rent-pay-allMoney .goods-pay-origin-price {
+  margin-right: 10rpx;
+}
+.rent-pay-allMoney-tip .goods-pay-data {
+  font-size: 28rpx;
+  color: #8a8a8a;
+}
+.rent-pay-allMoney-tip-text {
+  font-size: 20rpx !important;
+  color: #8a8a8a;
+  margin-bottom: 48rpx;
+}
+.rent-datePay .goods-pay-data-yuezu {
+  font-size: 28rpx;
+  color: #8a8a8a;
+  margin-left: 16rpx;
+  text-decoration: line-through;
+}
+.pay-rent-honor {
+  color: #333333;
+  line-height: 28rpx;
+}
+.pay-rent-honor .goods-pay-data {
+  color: #333333;
+}
+.pay-rent-honor .goods-pay-data .pay-sent {
+  font-size: 28rpx;
+  line-height: 36rpx;
+}
+.pay-rent-frozendeposit {
+  line-height: 28rpx;
+}
+.pay-rent-frozendeposit .goods-pay-data {
+  color: #333333;
+}
+.pay-rent-frozendeposit .goods-pay-data .pay-sent {
+  font-size: 28rpx;
+}
+.pay-rent-frozenRemit {
+  color: #999999;
+  line-height: 28rpx;
+  cursor: pointer;
+}
+.pay-rent-frozenRemit .goods-pay-data > view:first-child {
+  letter-spacing: 0;
+}
+.border-h2 {
+  margin-bottom: 30rpx;
+  height: 2rpx;
+  background: #f7f7f7;
+}
+.border-h3 {
+  margin-top: 24rpx;
+}
+.rent-pay-submit {
+  width: 100%;
+  height: 142rpx;
+  margin-top: 40rpx;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background: #fff;
+  position: fixed;
+  bottom: 0rpx;
+}
+.rent-pay-submit .rent-pay-radio radio {
+  border-color: #c9c9c9;
+  width: 44rpx;
+  height: 44rpx;
+}
+.rent-pay-submit .rent-pay-radio {
+  margin-bottom: 15rpx;
+}
+.rent-pay-submit .rent-pay-radio > text > text:last-child {
+  color: #1f84fa;
+  cursor: pointer;
+  margin-left: 8rpx;
+}
+.rent-pay-submit .rent-pay-sku {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 30rpx;
+}
+.rent-pay-submit .rent-pay-sku .rent-pay-btn {
+  width: 242rpx;
+  height: 74rpx;
+  opacity: 0.4;
+  background: #1765d4;
+  border-radius: 36rpx;
+  line-height: 74rpx;
+  font-size: 32rpx;
+  color: #ffffff;
+  text-align: center;
+  border: none;
+}
+.rent-pay-submit .rent-pay-sku .rentcheckBtn {
+  background: #1765d4;
+  opacity: 1;
+}
+.rent-pay-radioChecked {
+  font-size: 26rpx;
+  color: #ffffff;
+  background: #35394b;
+  opacity: 0.9;
+  width: 314rpx;
+  height: 81rpx;
+  text-align: center;
+  line-height: 81rpx;
+  position: fixed;
+  border-radius: 6rpx;
+  bottom: 342rpx;
+  left: 30rpx;
+  display: block;
+  z-index: 999;
+}
+.rent-pay-radioChecked .triangle {
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 10rpx 10rpx 10rpx 10rpx;
+  border-color: #35394b transparent transparent transparent;
+  position: absolute;
+  bottom: -18rpx;
+  left: 10rpx;
+  z-index: 100;
+}
+.rent-pay-text {
+  width: 686rpx;
+  height: 60rpx;
+  font-size: 28rpx;
+  line-height: 44rpx;
+  margin-top: 32rpx;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  margin-bottom: 280rpx;
+}
+.rent-pay-text radio {
+  font-size: 32rpx ;
+}
+.rent-pay-text .rent-pay-text-radio {
+  display: block;
+}
+.rent-pay-text-argee-text {
+  color: #8a8a8a;
+  font-size: 24rpx;
+  margin-left: 6rpx;
+}
+.rent-pay-text-contract {
+  color: #1765d4;
+  font-size: 24rpx;
+}
+.rent-pay-text-subtxt {
+  font-size: 28rpx;
+  line-height: 44rpx;
+  margin-top: 32rpx;
+  text-align: left;
+}
+.rent-pay-text-subtxt-sf {
+  font-size: 24rpx;
+  color: #333333 !important;
+}
+.rent-pay-text-subtxt-my {
+  font-size: 52rpx;
+  color: #ce0000 !important;
+}
+.rent-pay-text-subtxt-my-fuh {
+  font-size: 20rpx;
+  color: #ce0000;
+  margin-right: 4rpx;
+}
+/* color: #003600; */
+/* .rents{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+} */
+.iconHelp {
+  width: 28rpx !important;
+  height: 28rpx !important;
+  margin-left: 6rpx;
+}
+.license-wrapper {
+  background: #fff;
+  width: 686rpx;
+  margin-top: 100rpx !important;
+  border-radius: 16rpx;
+  height: 80rpx;
+  color: #333333;
+  font-size: 28rpx;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+.license-wrapper .license-wrapper-input {
+  font-size: 28rpx;
+}
+.license-wrapper.sec {
+  margin-top: 24rpx;
+}
+.license-wrapper.scc {
+  margin-top: 24rpx;
+}
+.license-wrapper .connect-title {
+  position: absolute;
+  top: -30px;
+  left: 20rpx;
+  color: #333333;
+  font-size: 28rpx;
+  font-weight: 600;
+}
+.license-wrapper .last-inputs {
+  font-size: 28rpx;
+  padding: 20rpx;
+  border-radius: 16rpx;
+}
+.connect-item {
+  margin-bottom: 40rpx;
+}
+.connect-item.last {
+  margin-bottom: 0;
+}
+.connect-name,
+.connect-phone {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 60rpx;
+  line-height: 60rpx;
+  border-bottom: 1px solid #eee;
+  margin-bottom: 8rpx;
+}
+.connect-label {
+  color: #333;
+}
+.connect-text {
+  color: #888888;
+}
+.add-connect {
+  margin-top: 40rpx;
+  text-align: center;
+  color: #888;
+  cursor: pointer;
+}
+.popup-coupon {
+  width: 100%;
+  background: #fff;
+}
+.popup-coupon .coupon {
+  margin: 0 30rpx;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #f8f8f8;
+  border-radius: 40rpx;
+  height: 66rpx;
+  padding: 0 20rpx;
+  box-sizing: border-box;
+}
+.popup-coupon .coupon .coupon-title {
+  text-align: left;
+  display: flex;
+  align-items: flex-end;
+  font-size: 24rpx;
+  color: #b0b2b3;
+  line-height: 36rpx;
+}
+.popup-coupon .coupon .coupon-title .coupon-num {
+  font-size: 40rpx;
+  line-height: 40rpx;
+  font-weight: 600;
+  color: #6096fd;
+  margin-right: 10rpx;
+}
+.popup-coupon .coupon .coupon-cont {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.popup-coupon .coupon .coupon-cont text {
+  font-size: 28rpx;
+}
+.popup-coupon .coupon .coupon-cont .iconBefore {
+  width: 26rpx;
+  height: 26rpx;
+}
+/* color: #F5533A;padding:2rpx; */
+.coupon-cont .couponPrice {
+  color: #f5533a;
+  padding-left: 2rpx;
+  padding-right: 2rpx;
+}
+.coupon-cont .nocoupon {
+  padding-left: 2rpx;
+  padding-right: 2rpx;
+}
+.modal {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: transparent;
+}
+.pick-wp {
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  top: 0;
+  overflow: hidden;
+  z-index: 8;
+  background: rgba(0, 0, 0, 0.4);
+}
+.modal-mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 999;
+  opacity: 0;
+}
+.modal-container {
+  background-color: #fff;
+  z-index: 1000;
+  position: fixed;
+  left: 0;
+  width: 100%;
+  bottom: 0;
+  height: 60%;
+  transform: translateY(100%);
+}
+/* .modal-show {
+  opacity: 1;
+  transform: scale(1);
+}
+.modal-hide {
+  opacity: 0;
+  transform: scale(0);
+} */
+.modal-close {
+  position: absolute;
+  top: 2rpx;
+  right: 60rpx;
+  color: #888;
+  font-size: 80rpx;
+}
+.modal-content {
+  height: 100%;
+}
+.grid-child {
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.grid-child-title {
+  padding: 40rpx 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.c-title {
+  color: #333333;
+  font-size: 40rpx;
+}
+.c-chacha {
+  width: 60rpx !important;
+  height: 60rpx;
+  position: absolute;
+  right: 48rpx;
+}
+.grid-child-entitle {
+  height: 48rpx;
+  padding: 0 40rpx;
+}
+.c-entitle {
+  font-size: 34rpx;
+  color: #888;
+}
+.clist {
+  padding: 40rpx 30rpx 120rpx;
+  overflow-y: scroll;
+}
+.clist-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16rpx 0 16rpx 0;
+}
+/* .clist-item:active {
+  background-color: #7f;;
+} */
+.clist-content {
+  flex: 1;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  overflow-y: scroll;
+}
+.clist-item-content .fl {
+  padding: 4rpx 0;
+  padding-left: 10rpx;
+  float: left;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.clist-item-content .fr {
+  margin-left: 16rpx;
+  overflow: hidden;
+  float: left;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  min-height: 180rpx;
+  background: #fff;
+  background-size: cover;
+  width: 600rpx;
+}
+.clist-item-content .fr .fr-price {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 170rpx;
+  overflow: hidden;
+  min-height: 180rpx;
+  background-size: 170rpx 180rpx;
+  border-radius: 8rpx;
+}
+.clist-item-content .fr .fr-price .price {
+  font-size: 44rpx;
+  color: #ffffff;
+}
+.clist-item-content .fr .fr-price .price .sign {
+  font-size: 24rpx;
+}
+.clist-item-content .fr .fr-price .coupon-title {
+  font-size: 22rpx;
+  color: #ffffff;
+  margin-top: 10rpx;
+}
+.clist-item-content .fr .fr-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  overflow: hidden;
+  width: 410rpx;
+  padding-left: 26rpx;
+  min-height: 180rpx;
+}
+.clist-item-content .fr .item-title text {
+  font-size: 26rpx;
+  color: #555555;
+}
+.clist-item-content .fr .item-content {
+  margin-top: 20rpx;
+}
+.clist-item-content .fr .item-content .cont1 text {
+  color: #9b9b9b;
+  font-size: 22rpx;
+}
+.clist-item-content .fr .item-content .cont1 .clist-item-cont {
+  white-space: pre-wrap;
+}
+.clist-item-content .fr .item-content .cont2 {
+  margin-top: 10rpx;
+}
+.clist-item-content .fr .item-content .cont2 text {
+  color: #9b9b9b;
+  font-size: 22rpx;
+}
+.clist-item-content .fr .item-content .cont2 .clist-item-cont {
+  white-space: nowrap;
+}
+.clist-item-content .choose {
+  background-size: cover;
+}
+/*.clist-item-content .fr .item-content .cont1 .clist-item-cont{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }*/
+.clist-item-content-title {
+  font-size: 34rpx;
+}
+.c-list-item-extra {
+  width: 80rpx;
+}
+.c-list-item-arrow {
+  width: 32rpx;
+  height: 32rpx;
+}
+.unchoose-coupon {
+  padding: 16rpx 0 16rpx 10rpx;
+}
+.unchoose-coupon .unCouponSku-item-content {
+  padding: 3rpx 0;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.unchoose-coupon .unCouponSku-item-content .unCouponSku-radio {
+  padding-left: 10rpx;
+  float: left;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.unchoose-coupon .unCouponSku-item-content .uncouponSku-text {
+  padding-left: 16rpx;
+  font-size: 28rpx;
+  overflow: hidden;
+  float: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+.a-image {
+  width: 100%;
+}
+.serverIns-btn {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+.serverIns-btn .serverIns-sku-btn {
+  background: #1765D4;
+  border-radius: 100rpx;
+  font-size: 36rpx;
+  color: #ffffff;
+  width: 686rpx;
+  height: 74rpx;
+  line-height: 88rpx;
+  margin-top: 20rpx;
+}
+.serverIns-btn2 {
+  width: 100%;
+  height: 114rpx !important;
+  overflow: hidden;
+  background: #fff;
+}
+.serverIns-btn2 .serverIns-sku-btn {
+  text-align: center;
+  margin-left: 30rpx;
+  width: 690rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  border: none;
+  background: #6096fd;
+  border-radius: 40rpx;
+  font-size: 32rpx;
+  color: #fff;
+  line-height: 90rpx;
+  letter-spacing: 7rpx;
+}
+.desk-serverIns {
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 9999;
+}

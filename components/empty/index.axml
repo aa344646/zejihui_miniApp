@@ -1,0 +1,6 @@
+<view class="empty-container">
+  <view class="info">
+    <slot></slot>
+  </view>
+</view>
+

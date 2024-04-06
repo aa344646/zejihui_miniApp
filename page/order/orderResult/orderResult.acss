@@ -1,0 +1,110 @@
+.orderResult {
+  width: 100%;
+}
+.orderResult .resultTop {
+  background: #fff;
+  padding: 60rpx 0;
+  text-align: center;
+  height: 420rpx;
+  box-sizing: border-box;
+  width: 100%;
+  margin-bottom: 20rpx;
+}
+.orderResult .resultTop .Icon {
+  font-size: 120rpx;
+  color: #1e8cff;
+}
+.orderResult .resultTop .title {
+  font-size: 34rpx;
+  color: #333333;
+  margin: 30rpx 0 20rpx 0;
+}
+.orderResult .resultTop .detail {
+  font-size: 22rpx;
+  color: #888888;
+  margin-bottom: 20rpx;
+}
+.orderResult .resultTop .tip {
+  font-size: 22rpx;
+  color: #888888;
+}
+.orderResult .resultTop .zfblogoview {
+  margin: 10rpx auto;
+  width: 203rpx;
+  height: 23rpx;
+}
+.orderResult .resultTop .zfblogoview image {
+  width: 100%;
+  height: 100%;
+}
+.orderResult .rentShow {
+  background: #fff;
+  border-bottom: 1px solid #dddddd;
+  padding: 40rpx 30rpx;
+  color: #999999;
+}
+.orderResult .rentShow .rents {
+  margin-bottom: 30rpx;
+  color: #999999;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+}
+.orderResult .rentShow .rents:first-of-type {
+  color: #333333;
+}
+.orderResult .rentShow .desc {
+  font-size: 24rpx;
+}
+.orderResult .depositShow {
+  background: #fff;
+  padding: 40rpx 30rpx;
+}
+.orderResult .depositShow .desposit {
+  margin-bottom: 30rpx;
+  color: #333333;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+}
+.orderResult .depositShow .desposit:first-of-type {
+  color: #999999;
+}
+.orderResult .buttons {
+  padding: 60rpx 30rpx;
+  overflow: hidden;
+}
+.orderResult .buttons button {
+  float: left;
+  width: 330rpx;
+  height: 88rpx;
+  line-height: 88rpx;
+  text-align: center;
+}
+.orderResult .buttons .gotoorder {
+  border: 1px solid #2395FF;
+  border-radius: 100rpx;
+  margin-right: 30rpx;
+  font-size: 36rpx;
+  color: #2395FF;
+}
+.orderResult .buttons .gotolease {
+  background: #2395FF;
+  border-radius: 100rpx;
+  color: #fff;
+}
+.orderResult .logo {
+  width: 310rpx;
+  height: 42rpx;
+  margin: 0 auto 20rpx auto;
+}
+.orderResult .logo image {
+  width: 100%;
+  height: 100%;
+}
+.orderResult .compotition {
+  padding-bottom: 50rpx;
+  text-align: center;
+  font-size: 22rpx;
+  color: #B5B5B5;
+}

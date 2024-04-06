@@ -1,0 +1,55 @@
+<!--其中一行一个商品也做了模板-->
+<import-sjs name="filters" from="../../sjs/filter.sjs" />
+<view class="jieguolist {{col==2?'flex':''}} {{darkBg?'darkbg':''}}">
+    <block a:for="{{list}}" a:key="{{item.id}}">
+        <view class="product-wp {{col==1?'oneCol':''}} {{col==2?'twoCol':''}} {{col==3?'threeCol':''}}" catchTap="goodsClick" 
+            data-id="{{item.id}}">
+            <view class="product">
+                <view class="img {{darkBg?'darkbg':''}}">
+                    <image src="{{item.src[0].indexOf('?x-oss-process=')?item.src[0]:item.src[0]+'?x-oss-process=image/resize,m_lfit,w_'+ width +',limit_1/format,jpg/sharpen,100/interlace,1/quality,q_95'}}" 
+                        class="image"></image>
+                </view>
+                <view class="detail">
+                    <view class="top">
+                        <view class="title jiacu">{{item.name}}</view>
+                        <view class="tag" a:if="{{item.labelList&&item.labelList.length}}">
+                            <view class="tag-item blue" a:if="{{item.labelList[0]}}">
+                                {{item.labelList[0]}}
+                            </view>
+                            <view class="tag-item orange" a:if="{{item.labelList[1]}}">
+                                {{item.labelList[1]}}
+                            </view>
+                            <view class="tag-item red" a:if="{{item.labelList[2]}}">
+                                {{item.labelList[2]}}
+                            </view>
+                            <view class="tag-item green" a:if="{{item.labelList[3]}}">
+                                {{item.labelList[3]}}
+                            </view>
+                        </view>
+                    </view>
+                    <view class="bottom">
+                        <view class="jiage">
+                            <view a:if="{{item.discount}}">
+                                <view class="price">
+                                    <text class="mon">￥</text>
+                                    <text class="clRed bigFont">{{filters.parsePrice(item.displayRent * (item.discount/100))}}</text>
+                                    <text class="unit">/天起</text></view>
+                            </view>
+                            <view a:if="{{!item.discount}}">
+                                <view class="price">
+                                    <text class="mon">￥</text>
+                                    <text>{{item.activityStatus?filters.parsePrice(item.promotionRent):filters.parsePrice(item.displayRent)}}</text>
+                                    <text class="unit">/天起</text></view>
+                            </view>
+                        </view>
+                        <view class="oldjiage" a:if="{{item.activityStatus && showOldPrice}}">
+                            <text class="price">{{filters.parsePrice(item.displayRent)}}元/天</text>
+                            
+                        </view>
+                    </view>
+                    <!--<view class="merchant" a:if="{{col==1 && !fromMerchant}}"><view class="name"><text class="merchantName">{{item.shopName}}</text><text class="city">{{item.city}}</text></view><view class="jindian" catchTap="toStore" data-id="{{item.merchantId}}">进店<text class="iconfont icon-ico_back-copy"></text></view></view> -->
+                </view>
+            </view>
+        </view>
+    </block>
+</view>

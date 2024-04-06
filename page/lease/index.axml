@@ -1,0 +1,504 @@
+<import-sjs name="filters" from="../../sjs/filter.sjs" />
+<view class="home">
+  <block a:if="{{viewShow}}">
+    <view class="customTitleBar" style="height:{{systemInfo.titleBarHeight + systemInfo.statusBarHeight}}px;padding-top:{{systemInfo.statusBarHeight}}px;background-color:rgba(33, 140, 251,{{opac}})">
+      <image class="titleLogo" src="/image/logo.png" />
+      择机汇
+    </view>
+    <view class="leaseHeader">
+      <view a:if="{{categorys.length}}" class="categoryWp" style="padding-top:{{systemInfo.titleBarHeight + systemInfo.statusBarHeight}}px;">
+        <view class="customSearchWp" onTap="toSearch">
+          <text class="iconfont icon-sousuo"></text>
+          <text class="text">
+            租好物
+          </text>
+        </view>
+
+
+        <scroll-view
+          class="categorySwiper"
+          scroll-x="{{true}}"
+          style="width: 100%"
+          onScroll="categoryChange"
+        >
+
+          <block a:for="{{categorys}}" a:key="index">
+            <view id="blue2" class="scroll-view-item_H">
+              <block
+                a:for="{{item}}"
+                a:for-index="subIndex"
+                a:for-item="subItem"
+                a:key="index"
+              >
+                <view
+                  class="option"
+                  catchTap="categoryClick"
+                  data-cid="{{subItem.dataId}}"
+                  data-type="{{subItem.type}}"
+                >
+                  <view class="icon">
+                    <image src="{{filters.optimizeImage(subItem.src,156,144)}}" />
+                  </view>
+                  <view class="name">
+                    {{subItem.name}}
+                  </view>
+                </view>
+              </block>
+
+
+            </view>
+          </block>
+
+
+
+        </scroll-view>
+
+
+
+
+
+      </view>
+      <view class="leaseMethods" data-id="{{newHomeData.popularizeId}}" catchTap="toleaseMethods">
+        <image class="leaseMethodsImg" src="/image/leaseMethods.png" />
+      </view>
+      <!-- 金刚区点 -->
+      <view class="dots">
+        <block a:for="{{categorys}}" a:key="index">
+          <view class="dot {{categoryIndex==index?'active':''}}"></view>
+        </block>
+      </view>
+    </view>
+    <!--<view class="zjhhsj" a:if="{{cube.rightList.length}}" catchTap="toMapArea" data-item="{{cube.rightList[4]}}"><image src="{{cube.rightList[4].imgFull}}" /></view> -->
+    <view a:if="{{cube.rightList.length > 4 }}" class="zjhhsj">
+      <swiper
+        onChange="zjhhsjChange"
+        class="zjhhsjSwiperWrapper"
+        indicator-dots="{{false}}"
+        autoplay
+        interval="{{5000}}"
+        duration="{{duration}}"
+        circular="{{circular}}"
+      >
+        <block
+          a:for="{{ cube.rightList.slice(4,cube.rightList.length) }}"
+          a:for-item="item"
+        >
+          <swiper-item class="swiperItem">
+            <view class="swiper-content" catchTap="toMapArea" data-item="{{item}}">
+              <image class="swiperImg" src="{{filters.optimizeImage(item.imgFull,720,166)}}" />
+            </view>
+          </swiper-item>
+        </block>
+
+
+      </swiper>
+      <view class="dots">
+        {{zjhhsjCurrent+1}}/{{cube.rightList.length - 4}}
+      </view>
+    </view>
+    <!--  // todo: 功能已ok，活动未开启so未使用改块<view class="zjhhsj-redcoupon"><view class="zjhhsj-redcoupon-box" catchTap="goGetRedCoupon"></view></view> -->
+
+    <!--<view class="merchantEntry" catchTap="merchantEntry"><image src="https://img.zejihui.com.cn/zs.png"/></view> -->
+    <view a:if="{{hotList.length || newList.length}}" class="recommend-section">
+      <view a:if="{{hotList.length}}" class="recommend">
+        <image mode="scaleToFill" src="../../image/tapnew.png" class="recommend_tapnew" />
+        <view class="title">
+          <view class="left">
+            {{hotListName}}
+          </view>
+          <!--<view
+            class="right"
+            data-id="{{newHomeData.topGatherPagesIds[0]}}"
+            catchTap="toJuheIndex"
+          >
+            查看更多<image class="arrowRight" src="/image/more.png" /> -->
+        </view>
+      </view>
+      <scroll-view scroll-x class="goodsRecommendScroll">
+        <view class="goodsRecommend">
+          <block a:for="{{hotList}}" a:key="index">
+            <view class="goodsItem" data-id="{{item.id}}" catchTap="goodsClick">
+              <image a:if="{{index === 0}}" class="tag" src="../../image/n1.png" />
+              <image a:if="{{index === 1}}" class="tag" src="../../image/n2.png" />
+              <image a:if="{{index === 2}}" class="tag" src="../../image/n3.png" />
+              <view class="goodsPicWrap">
+                <image class="goodsPic" src="{{filters.optimizeImage(item.src[0],194,200)}}" />
+              </view>
+              <view class="goodsName">
+                {{item.name}}
+              </view>
+              <view a:if="{{item.discount}}">
+                <view class="price">
+                  <text class="unit">
+                    ￥
+                  </text>
+                  <text class="bigFont">
+                    {{filters.parsePrice(item.displayRent * (item.discount/100))}}
+                  </text>
+                  /天起
+                </view>
+              </view>
+              <view a:if="{{!item.discount}}">
+                <view class="price">
+                  <text class="unit">
+                    ￥
+                  </text>
+                  <text class="bigFont">
+                    {{item.activityStatus?filters.parsePrice(item.promotionRent):filters.parsePrice(item.displayRent)}}
+                  </text>
+                  /天起
+                </view>
+              </view>
+            </view>
+          </block>
+        </view>
+      </scroll-view>
+    </view>
+    <view a:if="{{newList.length}}" class="recommend">
+      <view class="title">
+        <view class="left">
+          {{newListName}}
+        </view>
+        <view
+          class="right"
+          data-id="{{newHomeData.topGatherPagesIds[1]}}"
+          catchTap="toJuheIndex"
+        >
+          查看更多
+          <image class="arrowRight" src="/image/more.png" />
+        </view>
+      </view>
+      <scroll-view scroll-x class="goodsRecommendScroll">
+        <view class="goodsRecommend">
+          <block a:for="{{newList}}" a:key="index">
+            <view class="goodsItem" data-id="{{item.id}}" catchTap="goodsClick">
+              <image a:if="{{index === 0}}" class="tag" src="../../image/n1.png" />
+              <image a:if="{{index === 1}}" class="tag" src="../../image/n2.png" />
+              <image a:if="{{index === 2}}" class="tag" src="../../image/n3.png" />
+              <view class="goodsPicWrap">
+                <image class="goodsPic" src="{{filters.optimizeImage(item.src[0],194,200)}}" />
+              </view>
+              <view class="goodsName">
+                {{item.name}}
+              </view>
+              <view a:if="{{item.discount}}">
+                <view class="price">
+                  <text class="unit">
+                    ￥
+                  </text>
+                  <text class="bigFont">
+                    {{filters.parsePrice(item.displayRent * (item.discount/100))}}
+                  </text>
+                  /天起
+                </view>
+              </view>
+              <view a:if="{{!item.discount}}">
+                <view class="price">
+                  <text class="unit">
+                    ￥
+                  </text>
+                  <text class="bigFont">
+                    {{item.activityStatus?filters.parsePrice(item.promotionRent):filters.parsePrice(item.displayRent)}}
+                  </text>
+                  /天起
+                </view>
+              </view>
+            </view>
+          </block>
+        </view>
+      </scroll-view>
+    </view>
+    </view>
+
+
+
+    <!--<popup
+      show="{{flagRed}}"
+      position="bottom"
+      disableScroll
+      zIndex="999"
+      className="picker-popup"
+      mask="true"
+    ><view class="pop_container"><view class="hedtxt">
+          可领取{{allCouponData.length}}张优惠券</view><view class="subtxt">
+          可在「支付宝卡包」中查看 {{'>'}}</view><image
+          mode="scaleToFill"
+          catchTap="onPopupClose"
+          src="../../image/chahao.png"
+          class="pop_img"
+        /><view class="pop_redimgbox"><view class="redimg" a:for="{{ storeData }}" a:for-item="item" a:for-index="index" a:key="index"><view class="pop_box1"><text class="pop_box1_mon">
+                {{filters.returnPrice(item)}}</text><text class="pop_box1_yuan">
+                元</text></view><view class="pop_box2"><view class="pop_box2_txt1">
+                {{item.activitName}}</view><view class="pop_box2_txt2">
+                {{filters.titleformat(item.voucherType)}}</view><view class="pop_box2_txt3">
+               {{filters.txtformat(item)}}</view></view><view class="pop_box3"><view class="pop_lq1" catchTap="getRedCoupon" data-activityId="{{item.activityId}}">
+                领取</view>
+    <!--<view class="pop_lq3">
+                已领取</view> -->
+    <!--<view class="pop_lq2">
+                {{item.publishEndTime}}过期</view></view></view><view class="go_usec">
+            立即使用</view></view></view></popup> -->
+
+
+
+
+    <!--<modal  visible="{{newYearPop}}" onClose="handleClose"><view class="newyear-notice"><image mode="scaleToFill" src="https://h5-ze-ji-hui.oss-cn-hangzhou.aliyuncs.com/static/img/newYearPop.png" class="bodyImg" /><view class="bodyAction" catchTap="handleClose"><image mode="scaleToFill" src="https://h5-ze-ji-hui.oss-cn-hangzhou.aliyuncs.com/static/img/maincha.png" class="bodyAction-icon" /></view></view></modal> -->
+
+
+
+
+    <view a:if="{{cube.rightList.length}}" class="cubeWrapper">
+      <view class="title">
+        <view class="left">
+          好物精选
+        </view>
+      </view>
+      <view
+        a:if="{{ liveList[0].imgUrl }}"
+        class="live-cube"
+        data-id='{{liveList[0].dataId}}'
+        data-type='{{liveList[0].type}}'
+        data-link='{{liveList[0].linkUrl}}'
+        catchTap="goDouyinLive"
+      >
+        <image src="{{filters.optimizeImage(liveList[0].imgUrl,788,74)}}" />
+      </view>
+      <view class="cubeTop {{ !liveList[0].imgUrl ? 'cubeTop-active': '' }}">
+        <view class="cubeTopLeft">
+          <swiper
+            class="swiperWrapper"
+            indicator-dots="{{false}}"
+            autoplay
+            interval="{{interval}}"
+            duration="{{duration}}"
+            circular="{{circular}}"
+          >
+            <block a:for="{{cube.leftList}}" a:key="index">
+              <swiper-item class="swiperItem">
+                <view
+                  class="swiper-content"
+                  catchTap="toMapArea"
+                  data-item="{{item}}"
+                >
+                  <image class="swiperImg" src="{{filters.optimizeImage(item.imgFull,384,384)}}" />
+                </view>
+              </swiper-item>
+            </block>
+          </swiper>
+        </view>
+        <view class="cubeTopRight">
+          <view class="cubeItem" catchTap="toMapArea" data-item="{{cube.rightList[0]}}">
+            <image src="{{ filters.optimizeImage(cube.rightList[0].imgFull,384,184) }}" />
+          </view>
+          <view class="cubeItem" catchTap="toMapArea" data-item="{{cube.rightList[1]}}">
+            <image src="{{ filters.optimizeImage(cube.rightList[1].imgFull,384,184) }}" />
+          </view>
+          <!--<view class="cubeItem" catchTap="toMapArea" data-item="{{cube.rightList[2]}}"><image src="{{cube.rightList[2].imgFull}}" /></view> -->
+        </view>
+      </view>
+      <view class="cubeBottom">
+        <view class="cubeBottomLeft" catchTap="toMapArea" data-item="{{cube.rightList[2]}}">
+          <image src="{{ filters.optimizeImage(cube.rightList[2].imgFull,384,184) }}" />
+        </view>
+        <view class="cubeBottomRight" catchTap="toMapArea" data-item="{{cube.rightList[3]}}">
+          <image src="{{ filters.optimizeImage(cube.rightList[3].imgFull,384,184) }}" />
+        </view>
+      </view>
+    </view>
+    <!--<view class="adWelcome"><adwelcome appId="2021002189690874" planId="723233386454343798" /></view> -->
+    <!-- 这里增加秒审 -->
+    <!--<view class="quickCheck" catchTap="quickCheck"><image src="https://img.zejihui.com.cn/2022/13_miaosheng.png" /></view> -->
+
+
+    <!--<view class="live-section"><view class="title"><view class="left">官方直播间</view></view><view class="live-content" a:if="{{ liveList.length === 3  }}"><image mode="scaleToFill" src="{{liveList[0].imgUrl}}" class="left" data-id='{{liveList[0].dataId}}' data-type='{{liveList[0].type}}' data-link='{{liveList[0].linkUrl}}' /><image class="right"  mode="scaleToFill" src="{{liveList[1].imgUrl}}" data-id='{{liveList[1].dataId}}' data-type='{{liveList[1].type}}' data-link='{{liveList[1].linkUrl}}'/></view><view class="live-content" a:else catchTap="goDouyinLive"><image mode="scaleToFill" src="{{liveList[0].imgUrl}}" class="one-img" data-id='{{liveList[0].dataId}}' data-type='{{liveList[0].type}}' data-link='{{liveList[0].linkUrl}}' /></view></view> -->
+    <!--<view class="quickLease" a:if="{{activityData.goodsList.length}}"><view class="paddingWp"><view class="title"><view class="activityName">
+                    {{activityData.title}}</view></view><scroll-view scroll-x class="scrollView"><view class="activityContent"><block a:for="{{activityData.goodsList}}" a:key="index"><view class="goods" catchTap="toDetail" data-id="{{item.id}}"><view class="image"><image src="{{item.imgPro}}"></image></view><view class="name">{{item.goodsName || item.name}}</view><view class="typeWp"><view class="type {{item.oldLevelStr=='全新'?'new':'old'}}">
+                                    {{item.oldLevelStr}}</view></view><view a:if="{{item.discount}}"><view class="price"><text class="clRed bigFont">{{filters.parsePrice(item.displayRent * (item.discount/100))}}</text> 元/天</view><view class="del">{{filters.parsePrice(item.displayRent)}} 元/天</view></view><view a:if="{{!item.discount}}"><view class="price"><text class="clRed bigFont">{{item.activityStatus?filters.parsePrice(item.promotionRent):filters.parsePrice(item.displayRent)}}</text> 元/天</view><view class="del" a:if="{{item.activityStatus}}">{{filters.parsePrice(item.displayRent)}} 元/天</view></view></view><view class="mrR30" a:if="{{index!=activityData.goodsList.length-1}}"></view></block></view></scroll-view></view></view> -->
+    <!--<view class="goodsWp"><view class="title"></view><view class="goodsSection" a:for="{{collectList}}" a:key="index" a:if="{{item}}"><view a:if="{{item.img}}" class="beautifulPic" catchTap="toJuhe" data-id="{{item.gatherPagesId}}"><image src="{{item.imgPro}}"></image></view><scroll-view scroll-x class="goodsShelvesScroll"><view class="goodsShelves"><block a:for="{{item.goodsItemVOs}}" a:key="index"><view class="goodsItem"><component-homegoods item="{{item}}"></component-homegoods></view></block></view></scroll-view><view class="content"><block a:for="{{item.goodsItemVOs}}" a:key="index"><component-homegoods item="{{item}}"></component-homegoods></block></view></view></view> -->
+    <!--<view class="paddingWp" a:if="{{homeData.todayNewShopBean.todayNewShopListBeanList.length}}"><view class="fashionBrand"><component-hometitle title="{{homeData.todayNewShopBean}}"></component-hometitle><scroll-view scroll-x class="merchantScroll"><view class="fashionBrandContent"><block a:for="{{homeData.todayNewShopBean.todayNewShopListBeanList}}" a:key="index"><component-fashionbrand class="merchant" item="{{item}}"></component-fashionbrand></block></view></scroll-view></view></view> -->
+    <!--<view class="paddingWp" a:if="{{homeData.indexRecommend.goodList.length}}"><view class="hotGoods"><component-hometitle title="{{homeData.indexRecommend}}"></component-hometitle><component-hotgoods goods="{{homeData.indexRecommend.goodList}}"></component-hotgoods></view></view> -->
+    <!-- style="position:{{fixTabShow?'fixed':'static'}};left:0;top:{{systemInfo.titleBarHeight + systemInfo.statusBarHeight}}px;z-index:{{fixTabShow?10000:0}}" -->
+    <view class="tabs" id="tabsView">
+      <!--<view a:for="{{recommendList}}" class="tab-item {{tabIndex == index?'active':''}}" data-index="{{index}}" 
+                    catchTap="tabCLick" a:key="index"><view class="title">
+                        {{item.title}}</view></view> -->
+      <scroll-view scroll-x class="scroll-x">
+        <view
+          a:for="{{recommendList}}"
+          class="tab-item {{tabIndex == index?'active':''}}"
+          data-index="{{index}}"
+          catchTap="tabCLick"
+          a:key="index"
+        >
+          <view class="title">
+            {{item.title}}
+          </view>
+        </view>
+      </scroll-view>
+    </view>
+    <view class="tabs tabsFixed {{!fixTabShow?'hidden':''}}" style="top:{{systemInfo.titleBarHeight + systemInfo.statusBarHeight}}px">
+      <scroll-view scroll-x class="scroll-x">
+        <view
+          a:for="{{recommendList}}"
+          class="tab-item {{tabIndex == index?'active':''}}"
+          data-index="{{index}}"
+          catchTap="tabCLick"
+          a:key="index"
+        >
+          <view class="title">
+            {{item.title}}
+          </view>
+        </view>
+      </scroll-view>
+    </view>
+    <view class="tab-list">
+      <block a:if="{{tabIndex === 0}}">
+        <view class="tab-list-item tab-list-left">
+          <view
+            a:for="{{tabFirstShowLeft}}"
+            class="list-item"
+            catchTap="itemClick"
+            data-id="{{item.id}}"
+            key="index"
+          >
+            <view class="pic">
+              <!--<image class="tag" src="/image/hotPro.png" /> -->
+              <image class="pro" src="{{item.imgPro}}" />
+            </view>
+            <view class="content">
+              <view class="name">
+                {{item.goodsName || item.name}}
+              </view>
+              <view
+                a:if="{{item.labelList&&item.labelList.length}}"
+                class="tag"
+              >
+                <view a:if="{{item.labelList[0]}}" class="tag-item blue">
+                  {{item.labelList[0]}}
+                </view>
+                <view a:if="{{item.labelList[1]}}" class="tag-item orange">
+                  {{item.labelList[1]}}
+                </view>
+                <view a:if="{{item.labelList[2]}}" class="tag-item red">
+                  {{item.labelList[2]}}
+                </view>
+              </view>
+              <view class="price-section">
+                <view a:if="{{item.discount}}" class="price">
+                  <text class="unit">
+                    ¥
+                  </text>
+                  <text class="bold">
+                    {{filters.parsePrice(item.displayRent * (item.discount/100))}}
+                  </text>
+                  /天起
+                </view>
+                <view a:if="{{!item.discount}}" class="price">
+                  <text class="unit">
+                    ¥
+                  </text>
+                  <text class="bold">
+                    {{item.activityStatus?filters.parsePrice(item.promotionRent):filters.parsePrice(item.displayRent)}}
+                  </text>
+                  /天起
+                </view>
+                <view a:if="{{item.displayLeaseDay}}" class="qizu">
+                  {{item.displayLeaseDay}}
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+        <view class="tab-list-item tab-list-right">
+          <view
+            a:for="{{tabFirstShowRight}}"
+            class="list-item"
+            catchTap="itemClick"
+            data-id="{{item.id}}"
+            key="index"
+          >
+            <view class="pic">
+              <!--<image class="tag" src="/image/hotPro.png" /> -->
+              <image class="pro" src="{{item.imgPro}}" />
+            </view>
+            <view class="content">
+              <view class="name">
+                {{item.goodsName || item.name}}
+              </view>
+              <view class="tag">
+                <view class="tag-item blue">
+                  {{item.labelList[0]}}
+                </view>
+                <view a:if="{{item.labelList[1]}}" class="tag-item orange">
+                  {{item.labelList[1]}}
+                </view>
+                <view a:if="{{item.labelList[2]}}" class="tag-item red">
+                  {{item.labelList[2]}}
+                </view>
+              </view>
+              <view class="price-section">
+                <view a:if="{{item.discount}}" class="price">
+                  <text class="unit">
+                    ¥
+                  </text>
+                  <text class="bold">
+                    {{filters.parsePrice(item.displayRent * (item.discount/100))}}
+                  </text>
+                  /天起
+                </view>
+                <view a:if="{{!item.discount}}" class="price">
+                  <text class="unit">
+                    ¥
+                  </text>
+                  <text class="bold">
+                    {{item.activityStatus?filters.parsePrice(item.promotionRent):filters.parsePrice(item.displayRent)}}
+                  </text>
+                  /天起
+                </view>
+                <view a:if="{{item.displayLeaseDay}}" class="qizu">
+                  {{item.displayLeaseDay}}
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+        <!--<view class="list-item" a:for="{{tabFirstShowList}}" catchTap="itemClick" data-id="{{item.id}}" key="index"><view class="pic"><image class="tag" src="/image/hotPro.png" /><image class="pro" src="{{item.imgPro}}" /></view><view class="content"><view class="name">
+                            {{item.goodsName || item.name}}</view><view class="tag"><view class="tag-item">
+                                {{item.oldLevelStr}}</view><view class="tag-item"> 
+                        国行</view></view><view class="price" a:if="{{item.discount}}">
+                            ¥<text class="bold">{{filters.parsePrice(item.displayRent * (item.discount/100))}}</text>/天</view><view class="price" a:if="{{!item.discount}}">
+                            ¥<text class="bold">{{item.activityStatus?filters.parsePrice(item.promotionRent):filters.parsePrice(item.displayRent)}}</text>/天</view><view class="lease"><view class="sf">顺丰包邮</view></view></view></view> -->
+      </block>
+      <block a:else>
+        <view class="listGoods">
+          <view class="goodsSection">
+            <view
+              a:if="{{recommendList[tabIndex].imgFull}}"
+              class="beautifulPic"
+              catchTap="toJuheIndex"
+              data-id="{{recommendList[tabIndex].gatherPagesId}}"
+            >
+              <image src="{{recommendList[tabIndex].imgFull}}"></image>
+            </view>
+            <view class="goodsShelvesScroll">
+              <block
+                a:for="{{recommendList[tabIndex].goodsItemVOs}}"
+                a:key="index"
+              >
+                <view class="goodsItem">
+                  <component-homegoods item="{{item}}"></component-homegoods>
+                </view>
+              </block>
+            </view>
+            <!--<scroll-view scroll-x class="goodsShelvesScroll"><view class="goodsShelves"></view></scroll-view> -->
+            <!--<view class="content"><block a:for="{{item.goodsItemVOs}}" a:key="index"><component-homegoods item="{{item}}"></component-homegoods></block></view> -->
+          </view>
+        </view>
+      </block>
+    </view>
+    <empty a:if="{{tabIndex===0&&tabPage === tabFirstList.length-1 || tabIndex!==0}}">
+      <text>— 宝贝虽有底线，生活无限可能 —</text>
+    </empty>
+    <!--<view class="footer"><view class="guaranteePic"><image src="/image/home/footer.jpeg"></image></view></view> -->
+  </block>
+</view>

@@ -1,0 +1,9 @@
+{
+  "defaultTitle": "",
+  "transparentTitle": "always",
+  "titlePenetrate": "YES",
+  "usingComponents": {
+    "pop-up":"/components/pop-up/index",
+    "adwelcome": "plugin://shulientry/adwelcome"
+  }
+}

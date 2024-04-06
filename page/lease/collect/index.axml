@@ -1,0 +1,38 @@
+<view class="collect">
+    <view a:if="{{img}}" class="view-banner">
+        <image src="{{img}}" mode="widthFix"></image>
+    </view>
+    <view class="notes" a:if="{{pageData.notes.length}}">
+        <view class="note-item" a:for="{{pageData.notes}}">
+            {{item}}
+        </view>
+    </view>
+    <!--商品列表-->
+    <view class="view-list">
+        <block a:if="{{list.length}}">
+            <goods-list col='1' list="{{list}}"></goods-list>
+            <empty a:if="{{!hasMore&&!pageData.explanation.length}}">
+                <text>— 宝贝虽有底线，生活无限可能 —</text>
+            </empty>
+            <view class="explanation" a:if="{{pageData.explanation.length}}">
+                <view class="explan-title">
+                    <view>
+                        活动规则
+                    </view>
+                </view>
+                <view class="explan-wp">
+                    <view class="explan" a:for="{{pageData.explanation}}">
+                        {{item}}
+                    </view>
+                </view>
+            </view>
+        </block>
+
+        <block a:if="{{!list.length && empty}}">
+            <view class="view-empty">
+            <empty>- 商品列表不存在 -</empty>
+            </view>
+        </block>
+    </view>
+    
+</view>

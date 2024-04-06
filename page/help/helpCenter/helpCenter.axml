@@ -1,0 +1,351 @@
+<view class="help">
+    <view class="articleTitle">关于择机汇租赁</view>
+    <view class="part">
+      <!-- 分类 -->
+      <view class="part-title">
+        申请商品租赁的条件
+      </view>
+      <!-- question -->
+      <view class="question">
+        <view class="question-subTitle">
+          Q.在择机汇上如何租用喜欢的商品？ 
+        </view>
+        <view class="question-con">
+          A:用户芝麻分600分以上，即可享受择机汇平台的租赁服务。
+        </view>
+      </view>
+      <!-- question -->
+      <view class="question">
+        <view class="question-subTitle">
+          Q.我的芝麻分达到要求，为什么没有通过审核？
+        </view>
+        <view class="question-con">
+          A:芝麻分达标是申请商品租赁的门槛，下单完成后择机汇有一套完整的风险评分体系进行审核，信审未达审核标准的用户订单将无法通过审核，具体以短信和站内信通知为准。
+        </view>
+      </view>
+      <!-- question -->
+      <view class="question">
+        <view class="question-subTitle">
+          Q．为什么我的蚂蚁花呗不能使用？
+        </view>
+        <view class="question-con">
+          A：如果是花呗的问题，您可以咨询下支付宝哦。（支付宝热线95188）
+        </view>
+      </view>
+      <!-- question -->
+      <view class="question">
+        <view class="question-subTitle">
+          Q.择机汇的租赁流程是怎么样的？
+        </view>
+        <view class="question-con">
+           A：您可以先选择您心仪的商品和商品的规格后进行预约，预约后工作人员会尽快给您审核，审核通过后您就可以付款啦，付款后商家在72小时内给您发货，您就收到货物就可以使用货物啦。租期结束后您把商品完好的寄回就好啦。
+        </view>
+      </view>
+      <!-- 分类 -->
+      <view class="part-title">
+        关于下单
+      </view>
+      <!-- question -->
+      <view class="question">
+        <view class="question-subTitle">
+          Q.预约成功后多久可以下单支付？
+        </view>
+        <view class="question-con">
+          A:若您预约成功，客服人员将在1-3个工作日内通过电话或短信和站内信方式告知审核结果，请您在此期间保持通信通畅。
+        </view>
+      </view>
+      <!-- question -->
+      <view class="question">
+        <view class="question-subTitle">
+          Q.我怎样才能拿到租赁的商品？
+        </view>
+        <view class="question-con">
+          A:一般情况下，商家将通过邮寄的方式将商品送达，当您选择完心仪的装备并确定租期后，商家会在72小时内将设备用快递寄出。
+        </view>
+      </view>
+      <!-- question -->
+      <view class="question">
+        <view class="question-subTitle">
+          Q.租期内可以退换其他型号的商品吗？
+        </view>
+        <view class="question-con">
+          A:租赁期内暂不支持退换商品。
+        </view>
+      </view>
+      <!-- question -->
+      <view class="question">
+        <view class="question-subTitle">
+          Q.支付成功后还能修改或取消订单吗？
+        </view>
+        <view class="question-con">
+          A:支付成功后，用户信息（含收货地址）、产品的型号、颜色、内存等，均不可更改。支付成功后，暂不支持订单取消及退款事宜；如遇特殊情况，可通过联系客服为您处理。
+        </view>
+      </view>
+      <!-- 分类 -->
+      <view class="part-title">
+        关于审核
+      </view>
+      <!-- question -->
+      <view class="question">
+        <view class="question-subTitle">
+          Q.下单后多久通过审核？
+        </view>
+        <view class="question-con">
+          A:预约成功后在72小时内会以短信和站内信方式告知审核结果，请您注意查看。
+        </view>
+      </view>
+      <!-- question -->
+      <view class="question">
+        <view class="question-subTitle">
+          Q.审核通过后我还需要做什么？
+        </view>
+        <view class="question-con">
+          A:审核通过后，请您在24小时内付款，首付款=第一期租金+商品意外保险—商品优惠券，首付成功后，商家将在72小时内会给您发货，请您耐心等待。
+        </view>
+      </view>
+      <!-- question -->
+      <view class="question">
+        <view class="question-subTitle">
+          Q.为什么证件审核不通过？
+        </view>
+        <view class="question-con">
+          A:身份信息审核不通过是因为您的信息填写不规范或者您的证件上传不达标，请您查看下是否按照标准填写信息或上传证件照。
+        </view>
+      </view>
+      <!-- 分类 -->
+      <view class="part-title">
+        关于租金
+      </view>
+      <!-- question -->
+      <view class="question">
+        <view class="question-subTitle">
+          Q.租期的支付方式
+        </view>
+        <view class="question-con">
+          A：日租的商品是一次性付清的，月租的商品是一个月支付一次的哦 
+        </view>
+      </view>
+      <!-- question -->
+      <view class="question">
+        <view class="question-subTitle">
+          Q.租期的开始计算
+        </view>
+        <view class="question-con">
+          <view>A：租期是从物流显示您签收商品时间T+1的00：00，以物流显示已签收状态为准</view>
+          <view>例：(小A租赁了一款商品，商品签收时间为9月1日17：55分，则租赁订单的开始时间为：9月2日00：00)</view>
+          <view>请注意：由于物流、地理位置不同等客观条件的限制，择机汇平台并不能承诺全国所有区域的设备送达日期，具体从择机汇商家仓库到您手里的物流时间可以联系商家及物流咨询。</view>
+        </view>
+      </view>
+      <!-- question -->
+      <view class="question">
+        <view class="question-subTitle">
+          Q.租赁订单的结束时间：
+        </view>
+        <view class="question-con">
+          <view>A：与起始时间计算对应。</view>
+          <view>例：（小A租赁了一款商品，租期为3天，租赁订单的物流显示签收时间为9月1日15：28分，则小A该笔订单的租赁开始计算时间为9月2日00：00，租赁结束时间为9月5日00：00）</view>
+        </view>
+      </view>
+      <!-- question -->
+      <view class="question">
+        <view class="question-subTitle">
+          Q.怎样支付机器租金？
+        </view>
+        <view class="question-con">
+          A:择机汇目前仅支持支付宝作为付款方式。
+        </view>
+      </view>
+      <!-- question -->
+      <view class="question">
+        <view class="question-subTitle">
+          Q.长租订单的每期租金怎样支付？
+        </view>
+        <view class="question-con">
+          A:请进入【我的】-【预约租赁】-【待支付】-点击【支付按钮】即可支付。
+        </view>
+      </view>
+      <!-- 分类 -->
+      <view class="part-title">
+        关于快递运输
+      </view>
+      <!-- question -->
+      <view class="question">
+        <view class="question-subTitle">
+          Q.请问运费怎么算？
+        </view>
+        <view class="question-con">
+          A：商家发货是包邮的哦，您只需要承担退回的运费即可
+        </view>
+      </view>
+      <!-- question -->
+      <view class="question">
+        <view class="question-subTitle">
+          Q.请问支付后什么时候发货？
+        </view>
+        <view class="question-con">
+          A：商家将在您首付完成后72小时内安排发货，请您耐心等待。
+        </view>
+      </view>
+      <!-- question -->
+      <view class="question">
+        <view class="question-subTitle">
+          Q.商家发货使用的那种快递物流？
+        </view>
+        <view class="question-con">
+          A:商品发货将根据商家提供的物流方式进行发货，具体送达时间根据物流时效有浮动，请您关注物流流转信息，并注意查收验。
+        </view>
+      </view>
+      <!-- question -->
+      <view class="question">
+        <view class="question-subTitle">
+          Q.为什么会让我提供身份证复印件？
+        </view>
+        <view class="question-con">
+           A.由于现在快递签收的不规范，择机汇想让您能够当面验货检查货物，故您验货后提供身份证复印件也是能够更好的保障您的权益。
+        </view>
+      </view>
+      <!-- 分类 -->
+      <view class="part-title">
+        关于维修
+      </view>
+      <!-- question -->
+      <view class="question">
+        <view class="question-subTitle">
+          Q.请问意外保障服务是什么？
+        </view>
+        <view class="question-con">
+           A:意外保障服务是指用户在租赁期间如果出现商品非人为质量问题，且程度在意外保障范围内，即可享受免费维修服务。具体的意外保险范围您可在查看在意外保障服务条款下查看具体说明。意外保障服务由商家提供或用户自行购买，您可在下单付款前确认商品保险范围。为减少在使用不当导致的资损，建议购买商品保险；
+        </view>
+      </view>
+      <!-- question -->
+      <view class="question">
+        <view class="question-subTitle">
+          Q.机器怎样申请维修？
+        </view>
+        <view class="question-con">
+           A:您的订单包含意外保障服务且商品问题在意外保障服务范围内，您可在【售后／维修】端提交维修申请并可对商品问题进行相关说明并上传凭证，在商家同意后，根据平台商家提供退货维修地址将商品寄回即可，商品维修正常后发回您处，维修期间不计入租赁时间，请您耐心等待处理即可。
+        </view>
+      </view>
+      <!-- 分类 -->
+      <view class="part-title">
+        关于退货（商品问题情况）
+      </view>
+      <!-- question -->
+      <view class="question">
+        <view class="question-subTitle">
+          Q.商品出现质量问题是否可以支持退货？
+        </view>
+        <view class="question-con">
+           A:如租用商品出现质量问题，用户可在收到商品7日内联系商家予以处理，或要求平台介入。如使用7日之后出现的质量问题，用户可联系商家进行沟通协调处理；
+        </view>
+      </view>
+      <!-- question -->
+      <view class="question">
+        <view class="question-subTitle">
+          Q.退货的机器什么时间进行退款？
+        </view>
+        <view class="question-con">
+           A:商家将在退货商品检查通过后的7个工作日内进行退款操作。
+        </view>
+      </view>
+      <!-- question -->
+      <view class="question">
+        <view class="question-subTitle">
+          Q.退货运费由谁承担？
+        </view>
+        <view class="question-con">
+          A:退货运费遵循“谁责任，谁承担”的原则，如商品出现质量问题且经平台认定属实的，则商家承担退货运费；
+        </view>
+      </view>
+      <!-- 分类 -->
+      <view class="part-title">
+        到期归还退货／买断/续租
+      </view>
+      <!-- question -->
+      <view class="question">
+        <view class="question-subTitle">
+          Q.怎么续租？
+        </view>
+        <view class="question-con">
+          A:大部分商品支持用户续租的行为，可在租期届满3日前提出续租申请，剩余租期不足3个工作日将无法进行相应的续租申请，用户可在平台的相应订单上发起续租申请，具体租期和租金需根据商家提供该商品的续租服务决定，最终结果需和商家协商确定。
+        </view>
+      </view>
+      <!-- question -->
+      <view class="question">
+        <view class="question-subTitle">
+          Q.怎么买断？买断金额？
+        </view>
+        <view class="question-con">
+          <view> A:大部分商品支持用户买断的行为，可在租期届满5日前提出续租申请，剩余租期不足5个工作日将无法进行相应的买断申请，用户可在平台的相应订单上发起买断申请。</view>
+          <view>A：具体价格是可以和商家协商的，买断金额=租赁当日商品价*（80%~120%）-已支付租金</view>
+        </view>
+      </view>
+      <!-- question -->
+      <view class="question">
+        <view class="question-subTitle">
+          Q:买断的钱可以分期付款吗？
+        </view>
+        <view class="question-con">
+          A:买断金额=签约协议当天商品的总价值-已付租金，买断金额需一次性付清。
+        </view>
+      </view>
+      <!-- question -->
+      <view class="question">
+        <view class="question-subTitle">
+          Q.到期怎么归还退货？
+        </view>
+        <view class="question-con">
+          A:到期后请您点击【预约退还】，并根据邮寄信息将您租赁的商品在1个工作日内寄回。请您退还时仔细检查商品是否完整并将所有配件退回即可。
+        </view>
+      </view>
+      <!-- question -->
+      <view class="question">
+        <view class="question-subTitle">
+          Q.合约到期，忘记归还怎么办？
+        </view>
+        <view class="question-con">
+          A:我们会在合约到期前3个自然日以短信或电话形式提醒您准备退还商品，您需要在合约到期后1个自然日内将商品归还择机汇，如超过1个自然日仍未归则将产生相应的逾期费用。
+        </view>
+      </view>
+      <!-- question -->
+      <view class="question">
+        <view class="question-subTitle">
+          Q.什么情况下商品无法正常归还？
+        </view>
+        <view class="question-con">
+          A:归还的机型与原订单的型号不符，出现择机汇意外保障服务范围之外的问题机器时不能正常归还。
+        </view>
+      </view>
+      <!-- 分类 -->
+      <view class="part-title">
+        其他事项
+      </view>
+      <!-- question -->
+      <view class="question">
+        <view class="question-subTitle">
+          Q.择机汇提供的商品是全新的吗？
+        </view>
+        <view class="question-con">
+          A:择机汇平台商家将为您提供全新及二手等多种数码、家电等商品的租赁，您可根据自己的自身需求进行选择。
+        </view>
+      </view>
+      <!-- question -->
+      <view class="question">
+        <view class="question-subTitle">
+           Q.如果在商品使用过程中产生相关问题怎么办？
+        </view>
+        <view class="question-con">
+           A: 商品本身使用问题，建议咨询商品的品牌方；择机汇业务相关问题，可咨询择机汇的电话客服18185907733或在线客服。我们将竭诚为您答疑解惑。
+        </view>
+      </view>
+      <!-- question -->
+      <view class="question">
+        <view class="question-subTitle">
+           Q．怎么能够联系你们？
+        </view>
+        <view class="question-con">
+           A．您可以在支付宝中的择机汇生活号或者择机汇app查看在线客服联系我们，或者拨打客服电话18185907733进行咨询哦。
+        </view>
+      </view>
+    </view>
+</view>

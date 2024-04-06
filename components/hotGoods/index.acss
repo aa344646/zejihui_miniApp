@@ -1,0 +1,99 @@
+.hotContent {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top:20rpx;
+}
+.hotContent .goods {
+  flex: 0 0 50%;
+  width: 50%;
+  height: 520rpx;
+  padding:0;
+}
+.hotContent .goods .img {
+  height: 320rpx;
+}
+.hotContent .goods .img image {
+  width: 100%;
+  height: 100%;
+}
+.hotContent .goods .name {
+  margin-top: 12rpx;
+  width: 100%;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  font-size: 28rpx;
+  line-height: 36rpx;
+  height:36rpx;
+  color: #000;
+  font-family: PingFangSC-Regular;
+}
+.hotContent .goods .price {
+  margin-top: 6rpx;
+  font-size: 24rpx;
+  line-height: 28rpx;
+  color: #9B9B9B;
+  font-family: PingFangSC-Regular;
+}
+.hotContent .goods .price .bigFont {
+  font-size: 36rpx;
+  color: #FF5339;
+  letter-spacing: -0.8rpx;
+  font-family: PingFangSC-Medium;
+}
+.hotContent .goods .totalPrice {
+  margin-top: 6rpx;
+  font-size: 22rpx;
+  line-height: 30rpx;
+  color: #BFC5C9;
+  font-family: PingFangSC-Regular;
+}
+.hotContent .goods .server {
+  margin-top: 12rpx;
+  display: flex;
+}
+.hotContent .goods .server > view {
+  margin-right: 10rpx;
+  font-size: 20rpx;
+  line-height: 24rpx;
+  font-family: PingFangSC-Regular;
+  border-radius: 4rpx;
+  padding: 2rpx 10rpx;
+}
+.hotContent .goods .server .coupon {
+  color: #FF5339;
+  border: 1rpx solid #FF5339;
+}
+.hotContent .goods .server .express {
+  color: #FF873B;
+  border: 1rpx solid #FF873B;
+}
+.hotContent .goods .server .buyOut {
+  color: #3795FF;
+  border: 1rpx solid #3795FF;
+}
+.hotContent .leftGoods,
+.hotContent .leftNoBorderGoods {
+  position: relative;
+  padding-right: 24rpx;
+  border-right: 1rpx solid #efefef;
+  box-sizing:border-box;
+}
+.hotContent .leftGoods:after {
+  content: '';
+  position: absolute;
+  width: 200%;
+  height: 2rpx;
+  left: 0;
+  bottom: 0;
+  background-color: #efefef;
+}
+.hotContent .leftGoods:last-child:after {
+  content: '';
+  width: 0;
+  height: 0;
+}
+.hotContent .rightGoods {
+  padding-left: 24rpx;
+}

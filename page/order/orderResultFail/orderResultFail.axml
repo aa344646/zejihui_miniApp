@@ -1,0 +1,22 @@
+<view class="oreder-fail">
+  <view class='fail-content'>
+    <image class="iconFail" src="/image/icon/icofail.png"></image>
+    <view class='fail-title'>
+      下单失败
+    </view>
+    <view class='fail-text'>
+      {{error_msg}}
+    </view>
+  </view>
+  <view class='sku-btn'>
+    <button class="btn" size="primary" onTap='reset'>重试</button>
+  </view>
+  <!-- <view class='logo-buttom'>
+    <view class='logo'>
+      <image src='{{LogoimageSrc}}' mode="widthFix" />
+    </view>
+    <view class='compotition'>
+      — 本租赁服务由贵州行动数位科技有限公司提供 —
+    </view>
+  </view> -->
+</view>

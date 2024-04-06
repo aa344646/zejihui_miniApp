@@ -1,0 +1,25 @@
+<view class="map-areas {{isIos ? 'isIos' :''}}">
+  <image class="bg-img" mode="widthFix" src="{{img}}"></image>
+  <view class="overlay">
+    <view data-index="{{index}}" catchTap="areaTap" class="map-area" a:for="{{list}}" style="width:{{item.settings.width}}px;height:{{item.settings.height}}px;top:{{item.settings.top ? item.settings.top + 'px': null}};left:{{item.settings.left ? item.settings.left + 'px': null}};right:{{item.settings.right ? item.settings.right + 'px': null}};bottom:{{item.settings.bottom ? item.settings.bottom + 'px': null}};">
+    </view>
+  </view>
+  <pop-up position="middle" ref="confirm" closeHide="{{true}}">
+    <view class="confirm-wp" slot="middle">
+        <view class="title">
+            手机绑定
+        </view>
+        <view class="content">
+            您需要先绑定手机号，建议授权绑定。
+        </view>
+        <view class="footer">
+            <button class="btn right" open-type="getAuthorize" onGetAuthorize="onGetAuthorize" onError="onAuthError" scope='phoneNumber'>
+                授权绑定
+            </button>
+        </view>
+    </view>
+  </pop-up>
+  <adwelcome a:if="{{id==44}}" appId="2021002189690874" planId="757967878379778098" />
+  <adwelcome a:if="{{id==51}}" appId="2021002189690874" planId="760868808746033199" />
+  <adwelcome a:if="{{id==114}}" appId="2021002189690874" planId="776463041947259072" />
+</view>

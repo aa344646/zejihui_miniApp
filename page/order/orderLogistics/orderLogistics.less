@@ -1,0 +1,166 @@
+.logistics-info
+{
+  display: flex;
+  flex-direction: row;
+  padding: 30rpx;
+  font-size: 28rpx;
+  background: #fff;
+  align-items: center;
+
+  .info-icon
+  {
+    display: block;
+    width: 80rpx;
+    height: 80rpx;
+    background: url("/image/icon/icon_express.png") 0 0 no-repeat;
+    background-size: contain;
+    margin-right: 20rpx;
+  }
+
+  .info-text
+  {
+    flex: 1;
+    line-height: 1.5;
+
+    .key
+    {
+      color:#666;
+    }
+  }
+
+  button
+  {
+    display: inline-block;
+    background: #fff;
+    border: 1px solid #2395FF;
+    color:#2395FF;
+    border-radius:  24rpx;
+    width: 120rpx;
+    height: 48rpx;
+    line-height: 48rpx;
+    font-size: 24rpx;
+    box-sizing: content-box;
+  }
+
+}
+
+.logistics-list
+{
+  margin-top: 20rpx;
+  padding: 36rpx 30rpx;
+  background: #fff;
+
+  .item
+  {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    color: #999;
+    line-height: 1.5;
+
+    .datetime
+    {
+      display: inline-flex;
+      width: 140rpx;
+      flex-direction: column;
+      align-items: flex-end;
+
+      .time
+      {
+        font-size: 28rpx;
+      }
+
+      .date
+      {
+        font-size: 22rpx;
+      }
+    }
+
+    .line
+    {
+      position: relative;
+      width: 80rpx;
+      height: 120rpx;
+
+      &:before
+      {
+        position: absolute;
+        content:"";
+        z-index: 1;
+        border: 2rpx solid #eee;
+        top: 0;
+        bottom:0;
+        left: 50%;
+        transform:translate(-50%,0);
+      }
+
+      &:after
+      {
+        position: absolute;
+        z-index: 2;
+        content:"";
+        width: 14rpx;
+        height: 14rpx;
+        border-radius: 50%;
+        top: 50%;
+        left: 50%;
+        background: #eee;
+        transform:translate(-50%,-50%);
+      }
+    }
+
+    .text
+    {
+      flex: 1;
+      font-size: 26rpx;
+    }
+
+
+    &:first-child
+    {
+      color:#666;
+      .time
+      {
+        font-size: 32rpx;
+      }
+
+      .date
+      {
+        font-size: 24rpx;
+      }
+
+      .line
+      {
+        &:after
+        {
+          width: 22rpx;
+          height: 22rpx;
+          background: #2395FF;
+        }
+      }
+
+      .text
+      {
+        color: #222;
+      }
+
+    }
+
+  }
+}
+
+.logistics-list-empty
+{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 100rpx 0;
+}
+
+.page-empty
+{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 100rpx 0;
+}

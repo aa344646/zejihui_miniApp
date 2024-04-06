@@ -1,0 +1,20 @@
+<import-sjs name="filters" from="../../sjs/filter.sjs"/>
+<view class="goods" catchTap="toDetail" data-id = "{{item.id}}">
+    <view class="image">
+        <image src="{{item.imgPro}}"></image>
+        <!-- <view class="type {{item.oldLevelStr=='全新'?'new':'old'}}">
+            {{item.oldLevelStr}}
+        </view> -->
+    </view>
+    <view class="name">
+        <view class="nameText">{{item.goodsName || item.name}}</view>
+    </view> 
+    <view a:if="{{item.discount}}">
+        <view class="price"><text class="unit">￥</text><text class="clBlack bigFont">{{filters.parsePrice(item.displayRent * (item.discount/100))}}</text>/天起</view>
+        <view class="del">{{filters.parsePrice(item.displayRent)}}/天起</view>  
+    </view>
+    <view a:if="{{!item.discount}}">
+        <view class="price"><text class="unit">￥</text><text class="clBlack bigFont">{{item.activityStatus?filters.parsePrice(item.promotionRent):filters.parsePrice(item.displayRent)}}</text>/天起</view>
+        <view class="del" a:if="{{item.activityStatus}}">{{filters.parsePrice(item.displayRent)}}/天起</view>  
+    </view>     
+</view>

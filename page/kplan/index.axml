@@ -1,0 +1,126 @@
+<view class="container {{showPop?'fix':''}}">
+  <image class="bg-image" mode="widthFix" src="https://img.zejihui.com.cn/unicom/5g/bg.png"></image> 
+  <view class="content">
+    <image class="logo" mode="widthFix" src="https://img.zejihui.com.cn/unicom/5g/logo.png"/>
+    <image class="image1" mode="widthFix" a:if="{{goodsImage}}" src="{{goodsImage + '?' + date + '1'}}"/>
+    <image class="image2" mode="widthFix" a:if="{{packageImage}}" src="{{packageImage + '?' + date + '2'}}"/>
+    <view class="phone">
+      <view class="title">
+        <image class="deng" src="https://img.zejihui.com.cn/unicom/5g/111.png"/>以下信息已加密保护，仅用于运营商实名认证
+      </view>
+      <view class="con">
+        <view class="item">
+          <view class="label">
+            号码归属地
+          </view>
+          <view class="select" catchTap="openAddressPop">{{resultValue.length?addressString:'请选择号码归属地'}}</view>
+          <view class="arrow">></view>
+        </view>
+        <view class="item">
+          <view class="label">
+            选择靓号
+          </view>
+          <view class="select" catchTap="openChoosePhone">{{cPhone?cPhone:'请选择靓号'}}</view>
+          <view class="arrow">></view>
+        </view>
+        <view class="item">
+          <view class="label">
+            收货地址
+          </view>
+          <view class="select" catchTap="openShouHuoAddressPop">{{shouhuoResultValue.length?shouhuoAddressString:'请选择收货地址'}}</view>
+          <view class="arrow">></view>
+        </view>
+        <view class="item">
+          <view class="label">
+            详细地址
+          </view>
+          <input class="ipt input" enableNative="{{false}}" onInput="iptAddress" value="{{postAddr}}" placeholder="请输入详细地址" />
+        </view>
+        <!-- <view class="item">
+          <view class="label">
+            收货人姓名
+          </view>
+          <input class="ipt" enableNative="{{false}}" onInput="iptName" value='{{postName}}' class="input" placeholder="请输入收货人姓名" />
+        </view>
+        <view class="item">
+          <view class="label">
+            联系电话
+          </view>
+          <input class="ipt" enableNative="{{false}}" type="number" onInput="iptPhone" value="{{contactNum}}" class="input" placeholder="请输入收货人联系电话" />
+        </view> -->
+      </view>
+      <view class="btn" catchTap="receivePhone">
+        租机专属，免费享用
+      </view>
+      <view class="arg">
+        <view class="img">
+          <image class="select-image" src="https://img.zejihui.com.cn/unicom/5g/select.png"/>
+        </view>
+        <view class="arg-r">
+          我已同意并阅读<text class="argt" catchTap="fuwuxieyi">《中国联通客户入网服务协议》，</text><text class="argt" catchTap="gonggao">《关于客户个人信息收集，使用规则的公告》</text>
+        </view>
+      </view>
+    </view>
+    <text class="text1">多款手机随心用</text>
+    <view class="coll">
+      <view class="collItem" data-id="{{item.id}}" catchTap="goodsClick" a:for="{{collList}}">
+        <image class="collImage" src="{{item.src[0]}}"></image>
+        <view class="collName">{{item.name}}</view>
+      </view>
+    </view>
+    <text class="text2">流量语音超划算</text>
+    <image class="image3" mode="widthFix" src="{{'https://img.zejihui.com.cn/unicom/5g/img3.png?' + date + '3'}}"/>
+    <text class="text3">王卡会员权益</text>
+    <image class="image4" mode="widthFix" src="{{'https://img.zejihui.com.cn/unicom/5g/img4.png?' + date + '4'}}"  catchTap="lingquguize"/>
+    <text class="text4">王卡套餐详情</text>
+   <image class="image5" mode="widthFix" src="{{'https://img.zejihui.com.cn/unicom/5g/img5.png?' + date + '5'}}"/>
+    <image class="image6" mode="widthFix" src="{{'https://img.zejihui.com.cn/unicom/5g/img6.png?' + date + '6'}}" catchTap="zifei"/>
+  </view>
+</view>
+<popup show="{{showPop}}" position="bottom" onClose="onPopupClose">
+  <view class="pop-content">
+    <view class="title">
+      <text catchTap="cityCancel">取消</text>
+      <text catchTap="citySure">确定</text>
+    </view>
+    <picker-view value="{{value}}" onChange="cityChange" class="my-picker">
+      <picker-view-column>
+        <view a:for="{{provinces}}">{{item.name}}</view>
+      </picker-view-column>
+      <picker-view-column>
+        <view a:for="{{citys}}">{{item.name}}</view>
+      </picker-view-column>
+      <picker-view-column>
+        <view a:for="{{areas}}">{{item.name}}</view>
+      </picker-view-column>
+    </picker-view>
+  </view>
+</popup>
+<popup show="{{showShouhuoPop}}" position="bottom" onClose="onShouHuoPopupClose">
+  <view class="pop-content">
+    <view class="title">
+      <text catchTap="shouhuoCityCancel">取消</text>
+      <text catchTap="shouhuoCitySure">确定</text>
+    </view>
+    <picker-view value="{{shouhuoValue}}" onChange="shouhuoCityChange" class="my-picker">
+      <picker-view-column>
+        <view a:for="{{shouhuoProvinces}}">{{item.name}}</view>
+      </picker-view-column>
+      <picker-view-column>
+        <view a:for="{{shouhuoCitys}}">{{item.name}}</view>
+      </picker-view-column>
+      <picker-view-column>
+        <view a:for="{{shouhuoAreas}}">{{item.name}}</view>
+      </picker-view-column>
+    </picker-view>
+  </view>
+</popup>
+<popup show="{{showPops}}" position="bottom" onClose="onPopupCloseMiddle">
+  <view class="phoneTitle">
+    <text catchTap="changePhone">换一批</text>
+    <text catchTap="chooseConfirm">确定</text>
+  </view>
+   <view class="choosePhone">
+    <view data-index="{{index}}" class="phone {{phoneIndex === index?'active':''}}" catchTap="choosePhone" a:for="{{curPhoneList}}">{{item}}</view>
+   </view>
+ </popup>

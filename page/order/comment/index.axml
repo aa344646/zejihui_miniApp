@@ -1,0 +1,79 @@
+<view class="comment">
+    <view class="product-header-normal">
+        <view class="order-product">
+            <view class="img">
+                <image src="{{goodsInfo.goodsImage.indexOf('?x-oss-process=')?goodsInfo.goodsImage:goodsInfo.goodsImage+'?x-oss-process=image/resize,m_lfit,w_'+200+',limit_1/format,jpg/sharpen,100/interlace,1/quality,q_95'}}" class="image"></image>
+            </view>
+            <view class="des">
+                <view class="title">
+                    {{goodsInfo.goodsName}}
+                </view>
+                <view class="param" >
+                    <view class="one-param" a:for="{{goodsInfo.specification}}" a:key="index">
+                        <text>{{item.name}}</text>
+                        <text class="line">|</text>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="pro-rater-wp">
+        <view class="type">
+            <text>商品评价</text>
+        </view>
+        <view class="comment-wp">
+            <block a:if="{{!finish}}">
+                <view class="xx-wp" a:for="{{score}}" catchTap="rate" data-index="{{index+1}}" a:key="index">
+                    <image class="icon" src="/image/icon/ico-comment-light.png"></image>
+                </view>
+                <view class="xx-wp" a:for="{{5-score}}" catchTap="rate" data-index="{{score+index+1}}" a:key="index">
+                    <image class="icon" src="/image/icon/ico-comment.png"></image>
+                </view>
+            </block>
+            <block a:if="{{finish}}">
+                <block a:for="{{score}}" a:key="index">
+                    <image class="icon" src="/image/icon/ico-comment-light.png"></image>
+                </block>
+            </block>
+        </view>
+    </view>
+
+    <view class="pro-comment-wp">
+        <block a:if="{{!finish}}">
+            <view class="type">
+                详细评价
+            </view>
+            <view class="comment-wp">
+                <view class="textarea">
+                    <textarea maxlength="200" placeholder="请添加描述(200字以内)" value="{{content}}" placeholder-class="pc" onInput="setContent"></textarea>
+                </view>
+                <view class="imgcomment">
+                    <block a:for="{{apFilePaths}}" a:key="index">
+                        <view class="image-item" catchTap="previewImage" data-index="{{index}}">
+                            <image src="{{item}}" class="item"></image>
+                            <image class="icon" src="/image/icon/ico-del.png" catchTap="delPhote" data-index="{{index}}"></image>
+                        </view>
+                    </block>
+                    <view class="upload" catchTap="chooseImage" hidden="{{apFilePaths.length>=4}}">
+                        <image class="image" src="/image/icon/ico-add.png"></image>
+                    </view>
+                </view>
+            </view>
+        </block>
+        <block a:else>
+            <view class="comment-cnt">
+                <view class="content">
+                    {{content}}
+                </view>
+                <view class="imgList">
+                    <view class="img" a:for="{{commentImgUrl}}" a:key="index" catchTap="previewImg" data-index="{{index}}">
+                        <image src="{{item.src}}" mode="aspectFill"></image>
+                    </view>
+                </view>
+            </view>
+        </block>
+    </view>
+    <view class="submit" a:if="{{!finish}}">
+        <button catchTap="commentSubmit">提交评价</button>
+    </view>
+</view>

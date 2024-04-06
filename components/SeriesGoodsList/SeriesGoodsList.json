@@ -1,0 +1,6 @@
+{
+  "component": true,
+  "usingComponents": {
+    "series-goods": "/components/SeriesGoods/SeriesGoods"
+  }
+}

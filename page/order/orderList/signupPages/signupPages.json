@@ -1,0 +1,8 @@
+{
+  "defaultTitle": "签署公证",
+  "pullRefresh": false,
+  "usingComponents": {
+    "checkbox": "antd-mini/es/Checkbox/index",
+    "container": "antd-mini/es/Container/index"
+}
+}

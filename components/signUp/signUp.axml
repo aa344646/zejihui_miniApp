@@ -1,0 +1,24 @@
+<view class="handwriting-board {{direction}}">
+  <view class="handle-box">
+    <view class="color-box" a:if="{{showColor}}">
+      <block a:for="{{colors}}">
+        <view class="color-item {{item.active?'active':''}}" style="background:{{item.color}}" data-color="{{item.color}}" onTap="clickColorItem">
+        </view>
+      </block>
+    </view>
+    <view class="clearContent1" onTap="clickReset">清除</view>
+    <view class="clearContent" onTap="clickFinish">确认</view>
+    <button a:if="{{mode === 'two'}}" type="default" onTap="clickOrientation">{{direction === 'horizontal' ? '返回' : '横版'}}</button>
+  </view>
+
+  <view class="board-box">
+    <view class="mask-sign" a:if="{{ showMask }}">
+      在此签名
+    </view>
+    <image catchTap="clickBlack" mode="scaleToFill" src="https://h5-ze-ji-hui.oss-cn-hangzhou.aliyuncs.com/static/img/xx.png" class="board-box-xx" />
+
+    <image a:if="{{filePath}}" src="{{filePath}}" mode="aspectFit" />
+    <canvas a:else id="boardCanvas" class="boardCanvas" width="{{canvasWidth}}" height="{{canvasHeight}}" onTouchStart="onTouchStart" onTouchMove="onTouchMove" onTouchEnd="onTouchEnd">
+    </canvas>
+  </view>
+</view>

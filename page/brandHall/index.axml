@@ -1,0 +1,136 @@
+<view class="p_brand_hall">
+  
+  <view class="p_header">
+    <image mode="scaleToFill" src="https://img.zejihui.com.cn/static/ali/meal-head.webp" class="p_header_img" />
+  </view>
+  <!-- tabbar -->
+  <view class="p_tab">
+    <view a:for="{{ tabItem }}" class="p_tab_item {{ tabIndex === index ? 'active_size' :''}}" onTap="handleClickItem" data-index="{{index}}">
+      {{item}}
+      <view class="p_tab_hr" a:if="{{ tabIndex === index }}">
+      </view>
+    </view>
+  </view>
+  
+  
+  
+  <view class="p_title" id="easy">
+    <image mode="scaleToFill" src="../../image/brandHall/easy-get.webp" class="p_title_img" />
+  </view>
+  <!-- 领券 -->
+  <view class="p_coupon_box">
+    <block a:for="{{ bonusList }}" a:key="index" a:for-item="item">
+      <view class="p_coupon_box_bg {{getFlag === item.id ? 'activeImgT' :'activeImgO'}}" onTap="handleGetRed" data-id="{{item.id}}">
+        <text class="p_coupon_box_bg_text "> ¥{{(item.price/100)}}</text>
+      </view>
+    </block>
+  </view>
+  <!-- 优惠title -->
+  
+  <view class="p_title" id="nopass">
+    <image mode="scaleToFill" src="../../image/brandHall/nopass.webp" class="p_title_img" />
+  </view>
+  
+  <!-- 整点购机 -->
+  
+  <view class="p_buy_block">
+    <image mode="scaleToFill" src="{{youHuiHuoDongList.imgFull}}" onTap="goBuyDeatil" class="p_buy_block_img" data-type={{youHuiHuoDongList.setting.type}} 
+      data-id={{youHuiHuoDongList.setting.dataId}} />
+  </view>
+  <!-- 会员日 -->
+  <view class="p_member_date">
+  </view>
+  
+  
+  <!-- 新品驾到 -->
+  <view class="p_new_block" id="newPro">
+  </view>
+  
+  <!-- 新品驾到content -->
+  
+  <view class="p_new_content">
+    <block a:for="{{gatherList1}}" a:key="index" a:for-item="item" a:for-index="index">
+      <view class="p_new_content_newPro">
+        
+        <image mode="scaleToFill" src="{{item.imgFull[0].url}}" class="p_new_content_newPro_img" />
+        <text class="p_new_content_newPro_txt">
+          {{item.name}}
+        </text>
+        <view class="p_new_content_newPro_tag" a:if="{{  item.labelList.length}}">
+          <text class="tag tag-color1">{{item.labelList[0]}}</text>
+          <text class="tag tag-color2" a:if="{{ item.labelList.length >1 }}">{{item.labelList[1]}}</text>
+          <text class="tag tag-color3" a:if="{{ item.labelList.length >2 }}">{{item.labelList[2]}}</text>
+        </view>
+        
+        <view class="p_new_content_newPro_money">
+          <text class="smallert fuh">¥</text>
+          <text class="number">{{(item.displayRent/100).toFixed(2)}}</text>
+          <text class="smallert pad">/天起</text>
+          <text class="days">7天起租</text>
+        </view>
+        <view class="p_new_content_newPro_money">
+          <button size="default" type="primary" onTap="goBuyDeatil" class="butt" data-id={{item.id}}>立即租赁</button>
+        </view>
+      </view>
+    </block>
+  </view>
+  
+  
+  <!-- 热销榜单 -->
+  <view class="p_hot_sale" id="hotSale">
+  </view>
+  
+  <!-- 热销榜单content -->
+  <view class="p_new_content">
+    <block a:for="{{gatherList2}}" a:key="index" a:for-item="item" a:for-index="index">
+      <view class="p_new_content_newPro">
+        <image mode="scaleToFill" src="{{item.imgFull[0].url}}" class="p_new_content_newPro_img" />
+        <text class="p_new_content_newPro_txt">
+          {{item.name}}
+        </text>
+        <view class="p_new_content_newPro_tag" a:if="{{ item.labelList.length }}">
+          <text class="tag tag-color1" >{{item.labelList[0]}}</text>
+          <text class="tag tag-color2" a:if="{{ item.labelList.length>1 }}">{{item.labelList[1]}}</text>
+          <text class="tag tag-color3" a:if="{{ item.labelList.length >2}}">{{item.labelList[2]}}</text>
+        </view>
+        <view class="p_new_content_newPro_money">
+          <text class="smallert fuh">¥</text>
+          <text class="number">{{(item.displayRent/100).toFixed(2)}}</text>
+          <text class="smallert pad">/天起</text>
+          <text class="days">7天起租</text>
+        </view>
+        <view class="p_new_content_newPro_money">
+          <button size="default" type="primary" onTap="goBuyDeatil" class="butt" data-id={{item.id}}>立即租赁</button>
+        </view>
+      </view>
+    </block>
+  </view>
+  <!-- 人气推荐 -->
+  <view class="p_pop_rec" id="poprec">
+  </view>
+  <!-- 人气推荐content -->
+  <view class="p_pop_rec_content">
+    <block a:for="{{gatherList3}}" a:key="index" a:for-item="item" a:for-index="index">
+      
+      <view class="p_pop_rec_content_box" onTap="goBuyDeatil" data-id={{item.id}}>
+        <image mode="scaleToFill" src="{{item.imgFull[0].url}}" class="p_pop_rec_content_box_img" />
+        <view class="p_pop_rec_content_box_txt">
+          {{item.name}}
+        </view>
+        <view class="p_pop_rec_content_box_price">
+          <text class="smallert fuh">¥</text>
+          <text class="number">{{(item.displayRent/100).toFixed(2)}}</text>
+          <text class="smallert pad">/天起</text>
+        </view>
+      </view>
+    </block>
+  </view>
+  
+  
+  
+  <!-- 页尾图片 -->
+  <view class="p_foo" id='bangdan'>
+    <image mode="scaleToFill" src="https://img.zejihui.com.cn/static/ali/footer_bg.webp" class="p_foo_img" />
+  </view>
+  <!--<view class="page-detail" catchTap="handleToDetail"></view> -->
+</view>

@@ -1,0 +1,155 @@
+.bindPhone {
+  width: 100%;
+  height: 100%;
+  background: #f7f7f7;
+  overflow-y: scroll;
+}
+.bindPhone .scrollview {
+  overflow-y: scroll;
+}
+.bindPhone .header {
+  padding: 28rpx 0;
+  padding-left: 30rpx;
+}
+.bindPhone .header .msg-title {
+  font-size: 28rpx;
+  color: #333333;
+  letter-spacing: 0;
+  text-align: left;
+}
+.bindPhone .header .msg-cont {
+  font-size: 24rpx;
+  color: #ff5339;
+  letter-spacing: 0;
+  margin-top: 10rpx;
+}
+.bindPhone .content {
+  width: 100%;
+  overflow: hidden;
+}
+.bindPhone .content > .main-cont {
+  padding: 0 30rpx;
+  background: #ffffff;
+}
+.bindPhone .content > .main-cont .ipt-more {
+  width: 80%;
+  padding: 0;
+  padding-left: 10rpx;
+  border-bottom: 2rpx solid #a3a3a3;
+  font-size: 28rpx;
+}
+.bindPhone .content > .main-cont .ipt-more::-webkit-input-placeholder {
+  color: #333333;
+  font-size: 28rpx;
+}
+.bindPhone .content > .main-cont .phone-ipt {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  overflow: hidden;
+  padding-top: 50rpx;
+  padding-bottom: 20rpx;
+}
+.bindPhone .content > .main-cont .phone-ipt .title {
+  padding-left: 20rpx;
+  font-size: 26rpx;
+  color: #888888;
+}
+.bindPhone .content > .main-cont .phone-ipt .phone {
+  margin-top: 30rpx;
+  outline: none;
+  font-size: 28rpx;
+  color: #333333;
+}
+.bindPhone .content > .main-cont .verlifica-ipt {
+  display: flex;
+  justify-content: space-between;
+  overflow: hidden;
+  padding-top: 50rpx;
+  padding-bottom: 20rpx;
+}
+.bindPhone .content > .main-cont .verlifica-ipt .main-cont .title {
+  padding-left: 20rpx;
+  font-size: 26rpx;
+  color: #888888;
+}
+.bindPhone .content > .main-cont .verlifica-ipt .main-cont .verlifica {
+  margin-top: 30rpx;
+  outline: none;
+  font-size: 28rpx;
+  color: #333333;
+}
+.bindPhone .content > .main-cont .verlifica-ipt .fr {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.bindPhone .content > .main-cont .verlifica-ipt .fr .getcode {
+  border: 2rpx solid #2395ff;
+  border-radius: 24rpx;
+  color: #2395ff;
+  font-size: 24rpx;
+  padding: 12rpx 16rpx;
+  min-width: 60rpx;
+  text-align: center;
+}
+.bindPhone .content > .main-cont .code-ipt {
+  display: flex;
+  justify-content: space-between;
+  overflow: hidden;
+  align-items: flex-end;
+  padding-top: 50rpx;
+  padding-bottom: 20rpx;
+}
+.bindPhone .content > .main-cont .code-ipt .main-cont .title {
+  padding-left: 20rpx;
+  font-size: 26rpx;
+  color: #888888;
+}
+.bindPhone .content > .main-cont .code-ipt .main-cont .verlificacode {
+  margin-top: 30rpx;
+  outline: none;
+  font-size: 28rpx;
+  color: #333333;
+}
+.bindPhone .content > .main-cont .code-ipt .content {
+  overflow: hidden;
+  width: 248rpx;
+  height: 80rpx;
+}
+.bindPhone .content > .main-cont .code-ipt .content .pic-code {
+  overflow: hidden;
+  width: 248rpx;
+  height: 80rpx;
+}
+.bindPhone .content .main-text {
+  font-size: 24rpx;
+  color: #a3a3a3;
+  letter-spacing: 0;
+  overflow: hidden;
+  margin-top: 20rpx;
+  padding: 0 30rpx;
+  line-height: 34rpx;
+}
+.bindPhone .bottom {
+  margin-top: 60rpx;
+  width: 690rpx;
+  padding: 0 30rpx;
+}
+.bindPhone .bottom .btn {
+  width: 690rpx;
+  height: 100rpx;
+  overflow: hidden;
+  font-size: 36rpx;
+  color: #fff;
+  line-height: 100rpx;
+  background: #2395ff;
+  border-radius: 100rpx;
+}
+.bindPhone .bottom .btn.disabled {
+  background: #efefef;
+  color: #ccc;
+}
+
+/*# sourceMappingURL=index.acss.map */

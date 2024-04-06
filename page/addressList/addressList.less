@@ -1,0 +1,101 @@
+.touch-item {
+  font-size: 14px;
+  display: flex;
+  justify-content: space-between;
+  box-sizing: border-box;
+  width: 100%;
+  overflow: hidden;
+  margin-top: 20rpx;
+}
+
+.content {
+  width: 100%;
+  padding: 30rpx 24px;
+  box-sizing: border-box;
+  line-height: 22px;
+  margin-right:0;
+  display: flex;
+  background-color: #fff;
+  flex-direction: column;
+  -webkit-transition: all 0.4s;
+  transition: all 0.4s;
+  transform: translateX(90px);
+  margin-left: -90px;
+
+  .item1
+  {
+    display: block;
+    font-size: 32rpx;
+    color: #000;
+    line-height:1.3;
+    padding-right: 100rpx;
+  }
+
+  .item2 {
+    margin-top: 4rpx;
+    font-size: 28rpx;
+    color: #000;
+  }
+
+  .item2
+  {
+    font-size: 28rpx;
+    color: #9B9B9B;
+
+    text
+    {
+      padding-right: 20rpx;
+    }
+  }
+
+}
+
+
+.del {
+  background-color: orangered;
+  width: 90px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  -webkit-transform: translateX(90px);
+  transform: translateX(90px);
+  -webkit-transition: all 0.4s;
+  transition: all 0.4s;
+}
+.touch-move-active .content,
+.touch-move-active .del {
+  -webkit-transform: translateX(0);
+  transform: translateX(0);
+}
+.button {
+  position: fixed;
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  bottom: 0rpx;
+  left: 0rpx;
+  width: 100%;
+  height: 88rpx;
+  font-size: 26rpx;
+  color: #3791FF;
+}
+.default {
+  position: absolute;
+  right: 30rpx;
+  bottom: 23rpx;
+  color: #FF5339;
+  font-size: 24rpx;
+}
+.edit {
+  position: absolute;
+  top: 40rpx;
+  right: 50rpx;
+  color: #9B9B9B;
+  font-size: 50rpx;
+}
+.button .icon-jiahao {
+  font-size: 26rpx;
+}

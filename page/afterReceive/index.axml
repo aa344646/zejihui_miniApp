@@ -1,0 +1,4 @@
+<view class="receive">
+  <image src="https://img.zejihui.com.cn/static/ali/receive.jpg" mode="widthFix"/>
+  <view class="btn" catchTap="receiveCoupon">{{btnText}}</view>
+</view>

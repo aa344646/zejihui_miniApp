@@ -1,0 +1,42 @@
+<template name="List">
+    <view class="a-list">
+        <block a:if={{header}}>
+            <view class="a-list-header">{{header}}</view>
+        </block>
+        <view class="header">
+            <view class="avatar">
+                <image class="avatar-img" src="{{uinfo.headImg || '../../image/ic_youke.png'}}"/>   
+            </view>
+            <view class="user">
+                <view class="username">{{uinfo.nickName || '游客'}}</view>
+                <view>{{uinfo.mobile || '***********'}}</view>
+            </view>
+             <!-- <view class="uploadInfo" a:if="{{uinfo.dataUploadCompleted === false}}" catchTap="{{uploadInfo}}">
+                <image class="uploadInfo-img" src="../../image/uploadInfo.png"/>
+                资料上传
+            </view> -->
+        </view>
+        <view a:if={{data}} class="a-list-items">
+            <block a:for={{data}}>
+                <view
+                    class="a-list-item {{index !== (data.length - 1) ? '': 'last'}} am-list-item-{{item.align || 'middle'}}"
+                    hover-class="a-list-item-hover"
+                    onTap="{{onItemTap}}"
+                    data-index="{{index}}"
+                    data-link="{{item.link}}"
+                >
+                <!-- <image class="list-icon" src="{{item.image}}"></image>
+                <text class="a-list-item-content">{{item.title}}</text> -->
+                    <view class="a-list-item-line {{item.textMode ? 'a-list-item-line-' + item.textMode : ''}}">
+                        <image a:if={{item.thumb}} class="a-list-item-thumb" src="{{item.thumb}}" mode="scaleToFill" />
+                        <text class="a-list-item-content">
+                        <image class="text-icon" src="{{item.image}}"></image>{{item.title}}</text>
+                        <view a:if={{item.extra}} class="a-list-item-extra" >{{item.extra}}</view>
+                        <view class="a-list-arrow a-list-arrow-horizontal" />
+                        <view class="a-list-item-bottom" />
+                    </view>
+                </view>
+            </block>
+        </view>
+    </view>
+</template>

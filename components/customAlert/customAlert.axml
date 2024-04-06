@@ -1,0 +1,11 @@
+<template name="customAlert">
+  <view class="customAlert-model-wrapper">
+    <view class="customAlert-model">
+      <view class="title">{{data.title}}</view>
+      <view class="text">
+        {{data.con}}
+      </view>
+    </view>
+    <view class="closeBtn" onTap="closeCustomAlert"></view>
+  </view>
+</template>

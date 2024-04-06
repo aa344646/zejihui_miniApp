@@ -1,0 +1,90 @@
+<import-sjs name="filters" from="/sjs/filter.sjs"/><view>
+
+<view class="wp">
+    <after-service-detail afterServiceDetail="{{afterServiceDetail}}"></after-service-detail>
+    <view class="center_wp" a:if="{{ afterServiceDetail.category == 'exchange' || afterServiceDetail.category == 'return'}}">
+        <view class="title">
+            请在下列原因中选择您{{afterServiceDetail.category == 'exchange'?'换货':'退货'}}理由
+        </view>
+        <view class="choose">
+            <view class="left">
+                <picker range="{{array}}" onChange="bindPickerChange"  range-key="{{'name'}}" value="{{index}}">
+                    <view class="picker">
+                        {{array[index].name?array[index].name:afterServiceDetail.category == 'exchange'?'请选择您换货的原因':'请选择您退货的原因'}}
+                    </view>
+                </picker>
+            </view>
+            <view class="right">
+                <image class="icon-before" src="/image/icon/icon-before.png"></image>
+            </view>
+        </view>
+    </view>
+</view>
+<view class="pro-comment-wp">
+    <view class="type">
+        问题描述
+    </view>
+    <view class="comment-wp">
+        <view class="textarea">
+            <textarea maxlength="200" placeholder="请添加描述(200字以内)" value="{{content}}" placeholder-class="pc" onInput="setContent"></textarea>
+        </view>
+        <view class="imgcomment">
+            <block a:for="{{apFilePaths}}" a:key="index">
+                <view class="image-item" catchTap="previewImage" data-index="{{index}}">
+                    <image src="{{item}}" class="item"></image>
+                    <image class="icon" src="/image/icon/ico-del.png" catchTap="delPhote" data-index="{{index}}"></image>
+                </view>
+            </block>
+            <view class="upload" catchTap="chooseImage" hidden="{{apFilePaths.length>=4}}">
+                <image class="image" src="/image/icon/ico-add.png"></image>
+            </view>
+        </view>
+    </view>
+</view>
+
+<view class="note">
+    <view>注：请添加有效力的凭证</view>
+    <view>订单提交成功后，会有商家、客服与您联系，请保持电话畅通。</view>
+</view>
+    
+
+<view class="submit">
+    <button catchTap="submit">立即提交</button>
+</view>
+<view class="pick-wp" a:if="{{hideModal || hideResult}}" catchTap="hideModal"></view>
+<view class="tipInfo" a:if="{{hideModal}}" animation="{{animationData}}">
+    <view class="noInsurance">
+        <view class="top">
+            <view class="line"></view>
+            <view class="title">报修信息</view>
+            <view class="desc">因你未购买过保险服务，请致电商家询问详细维修细节</view>
+        </view>
+        <view class="center">
+            <view class="title">商家名称</view>
+            <view class="desc">{{afterServiceDetail.shopName}}</view>
+        </view>
+        <view class="bottom">
+            <view class="callPhone" catchTap="callphone">
+                <image class="icon-callPhone" src="/image/icon/contact-phone.png"></image>
+                <text class="text">拨打电话</text>
+            </view>
+            <view class="title">商家电话</view>
+            <view class="desc">{{afterServiceDetail.shopContactNumber.split(',')[0]}}</view>
+        </view>
+        <view class="confirm">
+            <view class="btn" catchTap="hideModal">确定</view>
+        </view>
+    </view>
+</view>
+<view class="tipInfo" a:if="{{hideResult}}" animation="{{animationData}}">
+    <view class="result">
+        <text a:if="{{result}}" class="iconfont icon-ico_payment ico_payment"></text>
+        <text a:else class="iconfont icon-shibaibiaoqing ico_fail"></text>
+        <view class="status">
+            {{afterServiceDetail.category=='repair'?'维修':afterServiceDetail.category=='exchange'?'换货':'退货'}}服务单申请成功
+        </view>
+        <view class="time" a:if="{{result}}">申请时间：{{filters.parseTime(applyTime)}}</view>
+        <view class="type">服务类型：{{afterServiceDetail.category=='repair'?'维修':afterServiceDetail.category=='exchange'?'换货':'退货'}}</view>
+        <view class="return" catchTap="returnOrder">返回我的订单<image class="icon-ico_right1" src="/image/icon/ico_right.png"></image></view>
+    </view>
+</view>

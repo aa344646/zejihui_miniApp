@@ -1,0 +1,39 @@
+.afterService,
+page {
+  height: 100%;
+  background-color: #f7f7f7;
+  box-sizing: border-box;
+}
+.afterService {
+  padding: 20rpx;
+}
+.option {
+  height: 130rpx;
+  margin-bottom: 40rpx;
+  padding-right: 20rpx;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fff;
+  border-radius: 10rpx;
+}
+.option .left {
+  display: flex;
+  align-items: center;
+}
+.option .left image {
+  width: 64rpx;
+  height: 64rpx;
+  margin-left: 32rpx;
+}
+.option .left text {
+  margin-left: 20rpx;
+  font-size: 32rpx;
+  color: #333;
+}
+.option .right {
+  width: 28rpx;
+  height: 28rpx;
+  color: #989898;
+}

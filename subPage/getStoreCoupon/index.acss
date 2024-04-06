@@ -1,0 +1,159 @@
+.scoupon-container {
+  position: relative;
+  width: 750rpx;
+  background: #128dea;
+}
+.scoupon-container .customTitleBar {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  font-size: 36rpx;
+  color: #333333;
+  margin-left: 30rpx;
+}
+.scoupon-container .customTitleBar-bx {
+  margin-left: -20rpx;
+  display: flex;
+  align-items: center;
+}
+.scoupon-container .customTitleBar-bx-arrow {
+  width: 32rpx;
+  height: 32rpx;
+}
+.scoupon-container .customTitleBar-bx-titletxt {
+  color: #333333;
+  font-size: 36rpx;
+  margin-left: 20rpx;
+}
+.scoupon-container .content {
+  width: 750rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.scoupon-container .content-bgimg {
+  width: 684rpx;
+  background: url(../../../image/home/cpbg.png) no-repeat;
+  background-size: 100% 998rpx;
+  margin-top: 212rpx;
+}
+.scoupon-container .content-bgimg-hr {
+  width: 100%;
+  height: 40rpx;
+  background: url(../../../image/home/hr.jpg) no-repeat;
+  background-size: 100% 40rpx;
+  margin-top: 30rpx;
+}
+.scoupon-container .content-bgimg-coulom1 {
+  margin-top: 44rpx;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+.scoupon-container .content-bgimg-coulom1-logo {
+  width: 80rpx;
+  height: 80rpx;
+  background: url(../../../image/home/zjhlogo.png) no-repeat;
+  background-size: 100% 100%;
+  margin-left: 28rpx;
+}
+.scoupon-container .content-bgimg-coulom1-text {
+  color: #333333;
+  font-size: 32rpx;
+  margin-left: 24rpx;
+}
+.scoupon-container .content-bgimg-coulom2 {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 32rpx;
+}
+.scoupon-container .content-bgimg-coulom2-text {
+  color: #333333;
+  font-size: 60rpx;
+}
+.scoupon-container .content-bgimg-button {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 16rpx;
+}
+.scoupon-container .content-bgimg-button-btn {
+  background: #128dea;
+  border-radius: 4rpx;
+  width: 628rpx;
+  height: 96rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.scoupon-container .content-bgimg-button-btn-text {
+  font-size: 40rpx;
+  color: #fff;
+}
+.scoupon-container .content-bgimg-btmtitle {
+  color: #8a8a8a;
+  font-size: 24rpx;
+  width: 100%;
+  text-align: center;
+  margin-top: 12rpx;
+}
+.scoupon-container .content-bgimg-coulom3 {
+  width: 100%;
+  height: 40rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.scoupon-container .content-bgimg-coulom3-box {
+  width: 628rpx;
+  height: 40rpx;
+  margin-top: 34rpx;
+}
+.scoupon-container .content-bgimg-coulom3-box-smallbox {
+  width: 8rpx;
+  height: 40rpx;
+  background: #128DEA;
+  display: inline-block;
+  vertical-align: text-top;
+}
+.scoupon-container .content-bgimg-coulom3-box-txt {
+  color: #333333;
+  font-size: 40rpx;
+  margin-left: 16rpx;
+}
+.scoupon-container .content-bgimg-coulom4 {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50rpx;
+}
+.scoupon-container .content-bgimg-coulom4-txt {
+  width: 628rpx;
+}
+.scoupon-container .content-bgimg-coulom5 {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 48rpx;
+  padding-bottom: 200rpx;
+}
+.scoupon-container .content-bgimg-coulom5-txt {
+  width: 628rpx;
+  font-size: 28rpx;
+  color: #333333;
+}
+.scoupon-container .content-bgimg .footer {
+  width: 628rpx;
+  height: 300rpx;
+}

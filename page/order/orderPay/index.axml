@@ -1,0 +1,55 @@
+<import-sjs name="filters" from="/sjs/filter.sjs"/>
+<view class="orderPay-wp" a:if="{{viewShow}}">
+    <scroll-view class="orderPay" style="height: 100%;" scroll-y="{{true}}">
+        <view class="info-wp">
+            <view class="pay-info">
+                <view class="pay-des">实付金额</view>
+                <view class="pay-price">¥
+                    <text>{{filters.parsePrice(showPrice)}}</text>
+                </view>
+            </view>
+            <view class="rent-info" a:if="{{payType=='relet'||payType=='payment'|| payType=='bill'}}">
+                <view a:if="{{payInfo.orderBillPaymentDetailBean && payInfo.orderBillPaymentDetailBean.billStage}}" class="rent-info-row">
+                    <view>支付账期</view>
+                    <view>{{payInfo.orderBillPaymentDetailBean.billStage}}</view>
+                </view>
+                <view class="rent-info-row">
+                    <view>本期租赁天数</view>
+                    <view>{{payInfo.currentPeriodDays}}天</view>
+                </view>
+                <view class="rent-info-row">
+                    <view>每日租金</view>
+                    <view>{{filters.parsePrice(payInfo.dailyRent)}}元</view>
+                </view>
+                <view class="rent-info-row" a:if="{{payInfo.accidentInsurance>0&&payType=='payment'}}">
+                    <view>租赁保障</view>
+                    <view>{{filters.parsePrice(payInfo.accidentInsurance)}}元</view>
+                </view>
+                <view class="rent-info-row" a:if="{{payInfo.userBonusPrice>0&&payType=='payment'}}">
+                    <view>优惠券</view>
+                    <view>{{filters.parsePrice(payInfo.userBonusPrice)}}元</view>
+                </view>
+                <block a:if="{{payInfo.state == 'pending_pay' && payInfo.deposit}}">
+                    <view class="rent-info-row">
+                        <view>押金</view>
+                        <view>{{filters.parsePrice(payInfo.deposit)}}元</view>
+                    </view>
+                </block>
+                <block a:if="{{payInfo.orderBillPaymentDetailBean && payInfo.orderBillPaymentDetailBean.delayAmount>0}}">
+                    <view class="rent-info-row">
+                        <view>逾期金额</view>
+                        <view>{{filters.parsePrice(payInfo.orderBillPaymentDetailBean.delayAmount)}}元</view>
+                    </view>
+                    <view class="rent-info-row">
+                        <view>逾期天数</view>
+                        <view>{{payInfo.orderBillPaymentDetailBean.delayDay}}天</view>
+                    </view>
+                </block>
+            </view>
+        </view>
+    </scroll-view>
+    <view class="btn-wp">
+        <view class="btn" catchTap="pay">立即支付</view>
+    </view>
+</view>
+<empty a:if="{{emptyShow}}">订单信息有误 ！ 请稍候重试</empty>

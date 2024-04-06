@@ -1,0 +1,42 @@
+<import-sjs name="filters" from="/sjs/filter.sjs"/><view>
+  <view class="content">
+    <block a:if="{{list.length}}">
+      <block a:for="{{list}}" a:key="index">
+        <view class="list" >
+          <view class="top">
+            <view class="top-left" a:if="{{type=='applyResult'}}">{{item.stateStr}}</view>
+            <view class="top-right" a:if="{{type =='applyResult'}}">{{item.category=='repair'?'维修':item.category=='exchange'?'换货':'退货'}}单号: {{item.serviceOrderNumber}}</view>
+            <view class="top-right" a:else>订单号: {{item.orderNumber}}</view>
+          </view>
+          <view class="con" catchTap="goOrderProgress" data-item="{{item}}">
+            <view class="con-left">
+              <view class="img">
+                <image src="{{item.goodsImage}}" mode="aspectFill"></image>
+              </view>
+            </view>
+            <view class="con-right">
+              <view class="name">{{item.goodsName}}</view>
+              <view class="sku">{{item.standard}}</view>
+            </view>
+          </view>
+          <view class="bottom">
+          <view class="left">
+            <view>下单时间 : {{filters.parseTime(item.createTime)}}</view>
+          </view>
+          <view class="right">
+            <view class="button renewal" data-item="{{item}}" catchTap="apply" a:if="{{type!=='applyResult' || item.state == 'pending_check' || item.state == 'pending_send_goods' || item.state == 'pending_exchange' || item.state == 'pending_return'}}">
+                {{ item.state =='pending_send_goods' || item.state == 'pending_exchange' || item.state =='pending_return'?'立即寄回':buttonText}}
+            </view>
+          </view>
+          </view>
+        </view>
+      </block>
+      <view a:if="{{!hasMore}}">
+        <empty>— 没有更多订单了 —</empty>
+      </view>
+    </block>
+    <block a:if="{{list.length<=0}}">
+      <empty>— 暂无售后订单 —</empty>
+    </block>
+  </view>
+</view>

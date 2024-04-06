@@ -1,0 +1,105 @@
+<view class="scoupon-container">
+  <view class="customTitleBar" style="height:{{systemInfo.titleBarHeight + systemInfo.statusBarHeight}}px;padding-top:{{systemInfo.statusBarHeight}}px;">
+    <view class="customTitleBar-bx">
+      <!--<image mode="scaleToFill"  src="../../../image/home/goback.png" class="customTitleBar-bx-arrow" /> -->
+      <text class="customTitleBar-bx-titletxt">
+        领取优惠
+      </text>
+    </view>
+  </view>
+  <view class="content">
+    <view class="content-bgimg">
+
+      <view class="content-bgimg-coulom1">
+        <image mode="scaleToFill" src="../../image/home/zjhlogo.png" class="content-bgimg-coulom1-logo" />
+        <text class="content-bgimg-coulom1-text">
+          择机汇
+        </text>
+      </view>
+      <view class="content-bgimg-hr">
+      </view>
+      <view class="content-bgimg-coulom2">
+        <text class="content-bgimg-coulom2-text">
+          首月0元-折扣券
+        </text>
+      </view>
+      <view class="content-bgimg-button" catchTap="receiveCoupon">
+        <view class="content-bgimg-button-btn">
+          <view class="content-bgimg-button-btn-text">
+
+
+
+            <get-coupon
+              onGetCouponSuccess="onGetCouponSuccess"
+              onGetCouponFail="onGetCouponFail"
+              onUseImmediately="onUseImmediately"
+              onClose="onClose"
+              params="{{params}}"
+              senderMerchantId="{{senderMerchantId}}"
+              dialogBtnType="2"
+              dialogBtnStyle="{{dialogBtnStyle}}"
+              zIndex="{{9998}}"
+              extraData="{{'Any Data'}}"
+            >
+              <!-- 内部为自定义代码，「按钮」代码写在这里 -->
+              <view class="text-button">
+
+                {{btnTxt}}
+              </view>
+            </get-coupon>
+
+
+
+
+          </view>
+        </view>
+      </view>
+      <view class="content-bgimg-btmtitle">
+        此券为商家自行发放，仅限发券商家处使用
+      </view>
+      <view class="content-bgimg-hr">
+      </view>
+      <view class="content-bgimg-coulom3">
+        <view class="content-bgimg-coulom3-box">
+          <view class="content-bgimg-coulom3-box-smallbox">
+          </view>
+          <text class="content-bgimg-coulom3-box-txt">
+            有效期限
+          </text>
+        </view>
+      </view>
+      <view class="content-bgimg-coulom4">
+        <view class="content-bgimg-coulom4-txt">
+          2022-12-09至2022-12-3
+        </view>
+      </view>
+      <view class="content-bgimg-hr">
+      </view>
+      <view class="content-bgimg-coulom3">
+        <view class="content-bgimg-coulom3-box">
+          <view class="content-bgimg-coulom3-box-smallbox">
+          </view>
+          <text class="content-bgimg-coulom3-box-txt">
+            使用规则
+          </text>
+        </view>
+      </view>
+      <view class="content-bgimg-coulom5">
+        <view class="content-bgimg-coulom5-txt">
+          1.本券不可兑换现金，不可找零。
+        </view>
+        <view class="content-bgimg-coulom5-txt">
+          1.本券不可兑换现金，不可找零。
+        </view>
+        <view class="content-bgimg-coulom5-txt">
+          1.本券不可兑换现金，不可找零。
+        </view>
+        <view class="content-bgimg-coulom5-txt">
+          1.本券不可兑换现金，不可找零。
+        </view>
+      </view>
+      <view class="footer">
+      </view>
+    </view>
+  </view>
+</view>

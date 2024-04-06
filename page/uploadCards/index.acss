@@ -1,0 +1,246 @@
+.container {
+  width: 100%;
+  min-height: 100vh;
+  background: #F5F5F5;
+  overflow-x: hidden;
+}
+.top-wrapper {
+  background: #fff;
+  border-radius: 16rpx;
+  margin: 24rpx;
+  padding: 24rpx 0;
+}
+.main {
+  padding-top: 24rpx;
+  padding-bottom: 154rpx;
+  overflow-x: hidden;
+}
+.main .license-wrapper {
+  margin: 0 24rpx;
+  padding: 24rpx 0 24rpx 24rpx;
+  background: #fff;
+  border-radius: 16rpx;
+}
+.main .license-wrapper.sec {
+  margin-top: 24rpx;
+}
+.main .license-wrapper.scc {
+  margin-top: 24rpx;
+  padding: 24rpx;
+}
+.main .license-info-wrapper {
+  background: #fff;
+  border-radius: 16rpx;
+  margin: 24rpx;
+  padding: 24rpx;
+}
+.icon-question {
+  width: 28rpx;
+  height: 28rpx;
+  margin-left: 16rpx;
+  font-size: 36rpx;
+}
+.upload-tip {
+  height: 40rpx;
+  line-height: 40rpx;
+  margin-top: 8rpx;
+  font-size: 26rpx;
+  color: #ff834c;
+}
+.check-info {
+  margin-top: 14rpx;
+}
+.check-info .h3 {
+  margin-bottom: 8rpx;
+  font-size: 28rpx;
+}
+.check-info .form-input-card-tips {
+  font-size: 26rpx;
+  color: #999999;
+  padding-top: 20rpx;
+}
+.check-info .check-info-tips {
+  font-family: PingFangSC-Medium;
+  font-size: 34rpx;
+  color: #333;
+}
+.form-input-item {
+  display: flex;
+  align-items: center;
+  border-bottom: 1rpx solid #d8d8d8;
+  font-size: 32rpx;
+  padding: 26rpx 0;
+}
+.form-input-item .name {
+  min-width: 200rpx;
+  color: #333;
+}
+.form-input-item .value {
+  flex: 1;
+  color: #333333;
+  text-align: right;
+}
+.form-input-item .value input {
+  padding: 0;
+  font-size: 32rpx;
+  width: 356rpx;
+  padding-left: 40rpx;
+  line-height: 45rpx;
+  text-align: right;
+  color: #999;
+}
+.form-input-item .value .value-item {
+  padding: 0;
+  font-size: 32rpx;
+  width: 356rpx;
+  min-height: 32rpx;
+  padding-left: 40rpx;
+  line-height: 45rpx;
+  text-align: right;
+  color: #999;
+  display: inline-block;
+}
+.form-input-item .mini-value {
+  width: 104rpx;
+}
+.form-input-item .mini-value input {
+  width: 106rpx;
+  padding-left: 28rpx;
+}
+.form-input-item .name-label {
+  font-size: 32rpx;
+}
+.form-input-item .error-tip {
+  color: #ff3b30;
+  font-size: 26rpx;
+  line-height: 37rpx;
+}
+.form-input-item-read {
+  justify-content: space-between;
+}
+.form-input-item-read .value {
+  flex: 1;
+  color: #999999;
+  text-align: right;
+}
+.form-input-item-read .value .value-item {
+  padding: 0;
+  font-size: 32rpx;
+  width: 456rpx;
+  padding-left: 40rpx;
+  line-height: 45rpx;
+}
+.picker-value {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.icon-arrow {
+  margin-right: 32rpx;
+  width: 48rpx;
+  height: 26rpx;
+  background: url("https://gw.alipayobjects.com/zos/basement_prod/f3babc86-5a56-4106-8e8e-02ff85850b65.svg") no-repeat center / 16rpx 29rpx;
+}
+.ali-tip {
+  display: flex;
+  flex-direction: column;
+  height: 37rpx;
+  margin-top: 55rpx;
+  color: #999;
+  font-size: 26rpx;
+}
+.ali-tip .tips {
+  display: flex;
+  align-items: center;
+  margin-top: 32rpx;
+}
+.ali-tip .tips image {
+  width: 29rpx;
+  height: 32rpx;
+  margin-right: 8rpx;
+}
+.bottom {
+  position: fixed;
+  z-index: 10;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: #fff;
+  height: 146rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 32rpx;
+}
+.bottom .bottom-cancel-img {
+  width: 95rpx;
+  height: 70rpx;
+}
+.bottom .confirm-btn {
+  width: 700rpx;
+  height: 88rpx;
+  border-radius: 8rpx;
+}
+.upload-info-uploadtext {
+  font-family: PingFangSC-Medium;
+  font-size: 30rpx;
+  color: #333333;
+  letter-spacing: 0;
+}
+
+.camera_avatar {
+  width: 319rpx;
+  height: 200rpx;
+  margin: 24rpx 15rpx 0 0;
+}
+.connect-title {
+  margin-bottom: 40rpx;
+}
+.connect-item {
+  margin-bottom: 40rpx;
+}
+.connect-item.last {
+  margin-bottom: 0;
+}
+.connect-name, .connect-phone {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 60rpx;
+  line-height: 60rpx;
+  border-bottom: 1px solid #eee;
+  margin-bottom: 8rpx;
+}
+.connect-label {
+  color: #333;
+}
+.connect-text {
+  color: #888888;
+}
+.add-connect {
+  margin-top: 40rpx;
+  text-align: center;
+  color: #888;
+  cursor: pointer;
+}
+.image-container {
+  position: relative;
+  width: 319rpx;
+  height: 200rpx;
+  margin: 24rpx 15rpx 0 0;
+}
+.image-container .camera_avatar {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}
+.image-container .close {
+  position: absolute;
+  z-index: 100;
+  right: 4rpx;
+  top: 4rpx;
+}
+.image-container .close .closeImage{
+  width: 48rpx;
+  height: 48rpx;
+}

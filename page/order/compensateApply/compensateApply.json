@@ -1,0 +1,6 @@
+{
+  "defaultTitle": "维权申诉",
+  "usingComponents": {
+    "after-service-detail":"/components/afterServiceCommon/index"
+  }
+}

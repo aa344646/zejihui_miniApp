@@ -1,0 +1,283 @@
+.p_brand_hall {
+  width: 750rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background: #edf7ff;
+}
+.p_brand_hall .p_header {
+  width: 750rpx;
+  height: 700rpx;
+}
+.p_brand_hall .p_header_img {
+  width: 100%;
+  height: 700rpx;
+}
+.p_brand_hall .p_tab {
+  width: 100%;
+  height: 200rpx;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-top: 20rpx;
+}
+.p_brand_hall .p_tab_item {
+  color: #7f7f7f;
+  font-size: 28rpx;
+}
+.p_brand_hall .p_tab .active_size {
+  font-size: 40rpx;
+  font-weight: 600;
+  color: #000;
+}
+.p_brand_hall .p_tab_hr {
+  border: 2px solid #553bec;
+  border-radius: 3rpx;
+  width: 70%;
+  margin-left: 20rpx;
+  margin-top: 10rpx;
+}
+.p_brand_hall .p_title {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 48rpx;
+}
+.p_brand_hall .p_title_img {
+  width: 518rpx;
+  height: 66rpx;
+}
+.p_brand_hall .p_coupon_box {
+  width: 686rpx;
+  background: #ffead9;
+  margin-top: 24rpx;
+}
+.p_brand_hall .p_coupon_box_bg {
+  width: 204rpx;
+  height: 148rpx;
+  margin-top: 20rpx;
+  margin-left: 20rpx;
+  display: inline-block;
+  background-size: 100% 100%;
+  overflow: hidden;
+}
+.p_brand_hall .p_coupon_box_bg_text {
+  font-size: 40rpx;
+  color: #ffedce;
+  margin-left: 18rpx;
+  line-height: 85rpx;
+}
+.p_brand_hall .p_coupon_box .activeImgO {
+  background: url(../../image/brandHall/red-coubg.webp) no-repeat;
+}
+.p_brand_hall .p_coupon_box .activeImgT {
+  background: url(../../image/brandHall/received.webp) no-repeat;
+}
+.p_brand_hall .p_member_date {
+  width: 686rpx;
+  height: 182rpx;
+  background: url(../../image//brandHall/member.png) no-repeat;
+  background-size: 100% 100%;
+  margin-top: 48rpx;
+}
+.p_brand_hall .p_buy_block {
+  width: 686rpx;
+  height: 300rpx;
+  background-size: 100% 100%;
+  margin-top: 24rpx;
+}
+.p_brand_hall .p_buy_block_img {
+  width: 686rpx;
+  height: 300rpx;
+}
+.p_brand_hall .p_new_block {
+  width: 314rpx;
+  height: 66rpx;
+  background: url(../../image//brandHall/new-pro.webp) no-repeat;
+  background-size: 100% 100%;
+  margin-top: 48rpx;
+}
+.p_brand_hall .p_pop_rec_content {
+  width: 700rpx;
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 24rpx;
+  justify-content: space-between;
+}
+.p_brand_hall .p_pop_rec_content_box {
+  width: 160rpx ;
+  margin-top: 16rpx;
+  display: flex;
+  flex-direction: column;
+}
+.p_brand_hall .p_pop_rec_content_box_img {
+  width: 160rpx;
+  height: 160rpx;
+  display: block;
+  margin-top: 24rpx;
+  border-radius: 16rpx;
+}
+.p_brand_hall .p_pop_rec_content_box_txt {
+  font-size: 22rpx;
+  color: #333333;
+  margin-top: 12rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  display: block;
+  height: 53rpx;
+  word-break: break-all;
+}
+.p_brand_hall .p_pop_rec_content_box_price {
+  font-size: 20rpx;
+  display: flex;
+  align-items: center;
+  margin-top: 4rpx;
+}
+.p_brand_hall .p_pop_rec_content_box_price .fuh {
+  font-size: 18rpx;
+  color: #c70000;
+  margin-top: 4rpx;
+}
+.p_brand_hall .p_pop_rec_content_box_price .number {
+  color: #c70000;
+  font-size: 30rpx;
+}
+.p_brand_hall .p_pop_rec_content_box_price .pad {
+  color: #ccc;
+  margin-top: 3rpx;
+}
+.p_brand_hall .p_pop_rec {
+  width: 314rpx;
+  height: 66rpx;
+  background: url(../../image//brandHall/pop-rec.webp) no-repeat;
+  background-size: 100% 100%;
+  margin-top: 48rpx;
+}
+.p_brand_hall .p_hot_sale {
+  width: 314rpx;
+  height: 66rpx;
+  background: url(../../image//brandHall/hot-sale.webp) no-repeat;
+  background-size: 100% 100%;
+}
+.p_brand_hall .p_new_content {
+  width: 700rpx;
+  margin-top: 24rpx;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+.p_brand_hall .p_new_content_newPro {
+  margin-bottom: 20rpx;
+  margin-left: 5rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background: #fff;
+  border-radius: 16rpx 16rpx;
+}
+.p_brand_hall .p_new_content_newPro_img {
+  display: block;
+  width: 268rpx;
+  height: 268rpx;
+  margin-top: 24rpx;
+}
+.p_brand_hall .p_new_content_newPro .size {
+  height: 500rpx;
+}
+.p_brand_hall .p_new_content_newPro_txt {
+  width: 292rpx;
+  font-size: 28rpx;
+  margin-top: 24rpx;
+  height: 80rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-height: 40rpx;
+  word-break: break-all;
+}
+.p_brand_hall .p_new_content_newPro_tag {
+  width: 320rpx;
+  font-size: 18rpx;
+  display: flex;
+  align-items: center;
+  margin-top: 10rpx;
+}
+.p_brand_hall .p_new_content_newPro_money {
+  margin-top: 10rpx;
+}
+.p_brand_hall .p_new_content_newPro_money .days {
+  flex: 1;
+  text-align: right;
+  font-size: 22rpx;
+  font-weight: 300;
+  color: #999;
+}
+.p_brand_hall .p_new_content_newPro_money .smallert {
+  color: #999;
+}
+.p_brand_hall .p_new_content_newPro_money .number {
+  color: #c70000;
+}
+.p_brand_hall .p_new_content_newPro_money .fuh {
+  font-size: 18rpx;
+  color: #c70000;
+}
+.p_brand_hall .p_new_content_newPro_money .pad {
+  margin-right: 66rpx;
+  font-size: 20rpx;
+}
+.p_brand_hall .p_new_content_newPro_money .butt {
+  width: 138rpx;
+  height: 48rpx;
+  background-image: linear-gradient(0deg, #5534ea, #5373f5);
+  border-radius: 28rpx;
+  line-height: 48rpx;
+  font-size: 20rpx;
+  letter-spacing: 1rpx;
+  margin-left: 160rpx;
+  margin-bottom: 20rpx;
+  border: none;
+}
+.p_brand_hall .p_new_content_newPro .tag {
+  padding: 4rpx 10rpx;
+  border-radius: 4rpx;
+  display: block;
+}
+.p_brand_hall .p_new_content_newPro .tag-color1 {
+  color: #3572d6;
+  background: #d7e5f8;
+}
+.p_brand_hall .p_new_content_newPro .tag-color2 {
+  color: #ff9433;
+  background: #ffead4;
+  margin-left: 8rpx;
+}
+.p_brand_hall .p_new_content_newPro .tag-color3 {
+  color: #ff4444;
+  background: #ffe0e0;
+  margin-left: 8rpx;
+}
+.p_brand_hall .p_new_content_newPro .tag-color4 {
+  color: #1491a6;
+  background: #d3f0f0;
+  margin-left: 8rpx;
+}
+.p_brand_hall .p_foo {
+  width: 100%;
+  height: 522rpx;
+  position: relative;
+  bottom: 0;
+}
+.p_brand_hall .p_foo_img {
+  width: 100%;
+  height: 522rpx;
+}

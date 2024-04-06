@@ -1,0 +1,55 @@
+<view>
+
+  <block a:if="{{logisticsInfo}}">
+    <view class="logistics-info">
+      <view class="info-icon"></view>
+      <view class="info-text">
+        <view a:if="{{logisticsInfo.logisticsCompany}}">
+          <text class="key">物流公司：</text>
+          <text class="value">{{logisticsInfo.logisticsCompany}}</text>
+        </view>
+        <view a:if="{{logisticsInfo.expressNo}}">
+          <text class="key">物流单号：</text>
+          <text class="value">{{logisticsInfo.expressNo}}</text>
+        </view>
+      </view>
+      <button catchTap="handleCopy">复制</button>
+    </view>
+
+    <block a:if="{{logisticsInfo && logisticsInfo.info.length > 0}}">
+      <view class="logistics-list">
+
+        <scroll-view scroll-y="{{true}}">
+
+          <view class="item" a:for="{{logisticsInfo.info}}" a:for-index="idx" a:for-item="item">
+            <view class="datetime">
+              <text class="time">{{item.hhmmss}}</text>
+              <text class="date">{{item.yymmdd}}</text>
+            </view>
+            <view class="line">
+            </view>
+            <view class="text">
+              <text>{{item.context}}</text>
+            </view>
+          </view>
+
+        </scroll-view>
+
+
+      </view>
+    </block>
+
+    <block a:else>
+      <view class="logistics-list-empty">
+        <text>暂无物流详情</text>
+      </view>
+    </block>
+  </block>
+
+  <block a:else>
+    <view class="page-empty">
+      <text>暂无物流信息</text>
+    </view>
+  </block>
+
+</view>

@@ -1,0 +1,128 @@
+<view class="search-page">
+  <view class="search-header {{list.length>0?'fixed':''}}">
+    <view class="view-search-input">
+      <view class="search-input">
+        <!-- <text class="iconfont icon-sousuo icon-search"></text> -->
+        <image class="search" src="/image/search.png"/>
+        <input class="input" type="text" value="{{inputValue}}" confirm-type="search" onInput="doInput" onConfirm="inputSearch" 
+          placeholder-class="placeholder" placeholder="{{placeholder}}" />
+        <text class="clean" catchTap="doClean">
+          <text class="iconfont icon-ico-qingchu"></text>
+        </text>
+      </view>
+      <view class="search-button" catchTap="inputSearch">搜索</view>
+    </view>
+    
+    <view a:if="{{hotWords.length && list.length===0}}" class="view-hot-search">
+      <view class="title">热门搜索</view>
+      <view class="content">
+        <block a:for="{{hotWords}}" a:key="{{index}}">
+          <text class="item" catchTap="hotSearch" data-value="{{item.speech}}">{{item.speech}}</text>
+        </block>
+      </view>
+    </view>
+    
+    <view a:if="{{list.length}}" class="view-result-header">
+      <view class="result-header">
+        <view class="item {{orderBy==='putaway_time'?'active':''}}" catchTap="sortSearch" data-sort="putaway_time">
+          <text>上架时间</text>
+          <block a:if="{{orderBy!=='putaway_time'}}">
+            <image src="../../../image/common/price.png"></image>
+          </block>
+          <block a:if="{{orderBy==='putaway_time'}}">
+            <image a:if="{{!desc}}" src="../../../image/common/priceup.png"></image>
+            <image a:if="{{desc}}" src="../../../image/common/pricedown.png"></image>
+          </block>
+        </view>
+        <view class="item {{orderBy==='display_rent'?'active':''}}" catchTap="sortSearch" data-sort="display_rent">
+          <text>价格</text>
+          <block a:if="{{orderBy!=='display_rent'}}">
+            <image src="../../../image/common/price.png"></image>
+          </block>
+          <block a:if="{{orderBy==='display_rent'}}">
+            <image a:if="{{!desc}}" src="../../../image/common/priceup.png"></image>
+            <image a:if="{{desc}}" src="../../../image/common/pricedown.png"></image>
+          </block>
+        </view>
+      </view>
+    </view>
+    
+  </view>
+  
+  <view class="view-result {{list.length>0?'fill':''}}">
+    <view a:if="{{list.length}}" class="jieguolist {{col==2?'flex':''}} {{darkBg?'darkbg':''}}">
+      <view a:for="{{list}}" a:key="{{item.id}}" class="forWp">
+        <view class="product-wp {{col==1?'oneCol':''}} {{col==2?'twoCol':''}} {{col==3?'threeCol':''}}" catchTap="goodsClick" 
+          data-id="{{item.id}}">
+          <view class="product">
+            <view class="img {{darkBg?'darkbg':''}}">
+              <image src="{{item.src[0].indexOf('?x-oss-process=')?item.src[0]:item.src[0]+'?x-oss-process=image/resize,m_lfit,w_'+ width +',limit_1/format,jpg/sharpen,100/interlace,1/quality,q_95'}}" 
+                class="image"></image>
+            </view>
+            <view class="detail">
+            <view class="top">
+              <view class="title jiacu">{{item.name}}</view>
+              
+               <view class="tag" a:if="{{item.labelList&&item.labelList.length}}">
+                  <view class="tag-item blue" a:if="{{item.labelList[0]}}">
+                      {{item.labelList[0]}}
+                  </view>
+                  <view class="tag-item orange" a:if="{{item.labelList[1]}}">
+                      {{item.labelList[1]}}
+                  </view>
+                  <view class="tag-item red" a:if="{{item.labelList[2]}}">
+                      {{item.labelList[2]}}
+                  </view>
+                  <view class="tag-item green" a:if="{{item.labelList[3]}}">
+                      {{item.labelList[3]}}
+                  </view>
+              </view>
+              </view>
+              <view class="bottom">
+              <view class="jiage">
+                <view a:if="{{item.discount}}">
+                  <view class="price">
+                    <text class="mon">￥</text>
+                    <text class="clRed bigFont">{{((item.displayRent * (item.discount/100))/100).toFixed(2)}}</text>
+                    <text class="unit">/天起</text></view>
+                </view>
+                <view a:if="{{!item.discount}}">
+                  <view class="price">
+                    <text class="mon">￥</text>
+                    <text>{{item.activityStatus?(item.promotionRent/100).toFixed(2):(item.displayRent/100).toFixed(2)}}</text>
+                    <text class="unit">/天起</text></view>
+                </view>
+              </view>
+              <view class="oldjiage" a:if="{{item.activityStatus && showOldPrice}}">
+                <text class="price">{{(item.displayRent/100).toFixed(2)}}/天</text>
+              </view>
+              <view class="merchant" a:if="{{col==1 && !fromMerchant}}">
+                <view class="name">
+                  <text class="merchantName">{{item.shopName}}</text>
+                  <text class="city">{{item.city}}</text>
+                </view>
+                <!--<view class="jindian" catchTap="toStore" data-id="{{item.merchantId}}">进店<text class="iconfont icon-ico_back-copy"></text></view> -->
+              </view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class="empty-container" a:if="{{!hasMore}}">
+        <view class="info">
+          <text>— 宝贝虽有底线，生活无限可能 —</text>
+        </view>
+      </view>
+    </view>
+    <view class="view-empty" a:if="{{!list.length}}">
+      <view class="empty-container">
+        <image class="emptyImage" src="/image/empty.png" />
+        <view class="info">
+          什么都没有
+        </view>
+      </view>
+    </view>
+    <view a:if="{{inputValue === '测试啊'}}">
+      {{globalQuery}}
+    </view>
+  </view>

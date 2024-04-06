@@ -1,0 +1,29 @@
+<import-sjs name="filters" from="../../sjs/filter.sjs"/>
+<view class="hotContent">
+     <block a:for="{{goods}}" a:key="index">
+        <view class="goods {{index%2==0?index==goods.length-2?'leftNoBorderGoods':'leftGoods':'rightGoods'}}" catchTap="toDetail" data-id="{{item.id}}">  
+            <view class="img">
+                <image src="{{item.imgFull[0].url}}"></image>
+            </view>
+            <view class="name">{{[item.oldLevelStr]}} {{item.goodsName}}</view> 
+
+
+            <view a:if="{{item.discount}}">
+                <view class="price"><text class="clRed bigFont">{{filters.parsePrice(item.displayRent * (item.discount/100))}}</text> 元/天</view>
+                <view class="del">{{filters.parsePrice(item.displayRent)}} 元/天</view>  
+                <view class="totalPrice">约{{filters.parsePrice(item.displayRent * (item.discount/100) *30)}}元/月</view>
+            </view>
+            <view a:if="{{!item.discount}}">
+                <view class="price"><text class="clRed bigFont">{{filters.parsePrice(item.displayRent)}}</text> 元/天</view>
+                <view class="totalPrice">约{{filters.parsePrice(item.displayRent*30)}}元/月</view>
+            </view>
+            <!-- <view class="price"><text class="clRed bigFont">{{filters.parsePrice(item.displayRent)}}</text> 元/天</view> -->
+            <!-- <view class="totalPrice">约{{filters.parsePrice(item.displayRent*30)}}元/月</view> -->
+            <view class="server">
+                <view class="coupon">礼券</view>
+                <view class="express">{{item.delivery}}</view>
+                <view class="buyOut" a:if="{{item.buyout}}">可买断</view>
+            </view>        
+        </view>
+    </block>
+</view>

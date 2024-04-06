@@ -1,0 +1,101 @@
+<view class="orderResult" a:if="{{showPage}}">
+    <block a:if="{{!error}}">
+        <view class="resultTop">
+            <text class="iconfont icon-ico_select_pre Icon"></text>
+            <view class="title">恭喜你下单成功</view>
+            <view class="detail">我们将在72小时内为您发货</view>
+            <view class="tip">若商家超时发货或其它原因订单可能会被取消 </view>
+            <!--芝麻信用 免押金图片-->
+            <!-- <view class='zfblogoview' a:if="{{creditAmount>0}}"> 
+                <image class="zfblogo" src="{{ZfblogoimageSrc}}" mode="aspectFit"></image>
+            </view> -->
+        </view>
+        <!-- <view class="rentShow">
+            <view class="rents">
+                <text>总租金</text>
+                <text>
+                    <text class="sign-rent">￥</text>{{cost}}
+                </text>
+            </view>
+            <view class="rents">
+                <text>租金</text>
+                <text>
+                    <text class="sign-rent">￥</text>{{dailyRent}}/天
+                </text>
+            </view>
+            <view class="rents">
+                <text>租期</text>
+                <text>共{{leaseDay}}天</text>
+            </view>
+            <view class="rents" a:if="{{bonusPrice>0}}">
+                <text class="pay-title">优惠券</text>
+                <text class="goods-pay-data">
+                    - ￥<text class="goods-price">{{bonusPrice}}</text>
+                </text>
+            </view>
+            <view class='rents' a:if="{{accidentInsurance>0}}">
+                <text class="pay-title">保险金额</text>
+                <text class="goods-pay-data">
+                    ￥{{accidentInsurance}}
+                </text>
+            </view>
+            <view class="rents">
+                <text class="pay-title">买断尾款</text>
+                <block a:if="{{buyoutMoney}}">
+                    <text class="goods-pay-data">
+                        ￥{{buyoutMoney}}
+                    </text>
+                </block>
+                <block a:else>
+                    <text class="goods-pay-data">此商品不支持买断</text>
+                </block>
+            </view>
+            <view class="desc">
+                租期大于30天时,月租金将于次月通过支付宝免密支付的方式还款
+            </view>
+        </view>
+        <view class="depositShow">
+            <view class="desposit">
+                <text>总押金</text>
+                <text>
+                    <text class="sign-rent">￥</text>{{deposit}}
+                </text>
+            </view>
+            <view class="desposit" a:if='{{creditAmount>0}}'>
+                <text>芝麻信用免押金</text>
+                <text>
+                    <text class="sign-rent">-￥</text>{{creditAmount}}
+                </text>
+            </view>
+            <view class="desposit">
+                <text>已冻结押金</text>
+                <text>
+                    <text class="sign-rent">￥</text>{{freezingDeposit}}
+                </text>
+            </view>
+
+        </view> -->
+        <view class="buttons">
+            <button class="gotoorder" onTap="gotoorder">
+                查看订单
+            </button>
+            <button class="gotolease" onTap='backTop'>
+                返回首页
+            </button>
+        </view>
+        <view class='logo'>
+            <image src='{{LogoimageSrc}}' mode="widthFix" />
+        </view>
+        <view class='compotition'>
+            — 本租赁服务由贵州行动数位科技有限公司提供 —
+        </view>
+    </block>
+
+    <block a:else>
+        <view class="resultTop">
+            <text class="iconfont icon-ico-shibai Icon"></text>
+            <view class="title">出错了</view>
+            <view class="detail">{{errorMsg}}</view>
+        </view>
+    </block>
+</view>

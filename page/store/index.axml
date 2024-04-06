@@ -1,0 +1,170 @@
+<import-sjs name="filters" from="../../sjs/filter.sjs"/>
+  <scroll-view class="store-wp" scroll-y="{{true}}" style="height: {{scrollHeight}}px;" onScroll='scrollTopFun' scroll-top="{{scroll_top}}" scroll-with-animation="true" a:if="{{viewShow}}">
+    <!--头部-->
+    <view class="store-header">
+      <view class="header-wp" style="background-image: url('{{merchantInfo.backgroundPicture}}')">
+        <view class="header">
+          <view class="avater">
+            <view>
+              <image src="{{merchantInfo.shopLogo}}"></image>
+            </view>
+          </view>
+          <view class="storeInfo">
+            <view class="left">
+              <view class="title">{{merchantInfo.shopName}}</view>
+              <view class="rentnum">
+                <text>在租商品：</text>
+                <text class="num">{{merchantInfo.goodsNumberOnShelf}}</text>
+                <text>件</text>
+              </view>
+            </view>
+            <view class="right">    
+                <view class="share" catchTap="callPhone">
+                    <image class="gtImage" src="/image/icon/gt.png"></image>
+                    <view class="text">
+                      联系商家
+                    </view>
+                </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="tab-header {{gudingdingwei?'fixed':''}}">
+      <view class="item {{activeTab=='a'?'active':''}}" catchTap="tabClick" data-name="a">店铺首页</view>
+      <view class="item {{activeTab=='b'?'active':''}}" catchTap="tabClick" data-name="b">全部商品</view>
+      <view class="item {{activeTab=='c'?'active':''}}" catchTap="tabClick" data-name="c">店铺动态</view>
+    </view>
+    <!--tab-content-->
+    <view class="tab-content {{gudingdingwei?'fixed':''}}">
+      <view class="index" a:if="{{activeTab=='a'}}">
+        <view class="banner-wp" a:if="{{bannerList.length}}">
+          <view class="swiper-wp">
+            <swiper class="banner-swiper" autoplay="{{swiper.autoplay}}" circular="{{swiper.circular}}"
+                    interval="{{swiper.interval}}" duration="{{swiper.duration}}" onChange="swiperChange">
+              <block a:for="{{bannerList}}" a:key="index">
+                <swiper-item class="banner-item">
+                  <view class="img-wp" catchTap="bannerClick" data-item="{{item}}">
+                    <image src="{{item.src}}"></image>
+                  </view>
+                </swiper-item>
+              </block>
+            </swiper>
+            <view class="dots">
+              <text a:for="{{bannerList}}" class="{{index == swiper.index ? ' active' : ''}}"
+                    a:key="index">
+              </text>
+            </view>
+          </view>
+        </view>
+        <view class="recommend">
+          <view class="title">
+            {{hot.title}}
+          </view>
+
+          <view class="list-wp">
+            <scroll-view scroll-x="true" style="width: 100%" onScrollToUpper="left" onScrollToLower="right"
+            onScroll="scroll" class="goodlist">
+              <view class="item" a:for="{{hot.goodsList}}" a:key="{{item.id}}" catchTap="goodsClick"
+                    data-id="{{item.id}}">
+                <view class="img">
+                  <image src="{{item.src}}"></image>
+                </view>
+
+                <view class="info">
+                  <view class="name">
+                    {{item.name}}
+                  </view>
+
+                  <view class="tag-wp">
+                    <text class="tag tag_o" a:if="{{item.delivery=='包邮'}}">包邮</text>
+                    <text class="tag {{item.oldLevelStr=='全新'?'tag_b':'tag_g'}}">{{item.oldLevelStr=='全新'?'':'非'}}全新</text>
+                  </view>
+
+                  <view class="jiage">
+                    <text class="price">{{item.activityStatus?filters.parsePrice(item.promotionRent):filters.parsePrice(item.displayRent)}}</text>
+                    <text class="unit"> 元/天</text>
+                  </view>
+
+                  <view class="oldjiage" a:if="{{item.activityStatus}}">
+                    <text class="price">{{filters.parsePrice(item.displayRent)}}元/天</text>
+                  </view>
+
+                </view>
+              </view>
+            </scroll-view>
+          </view>
+        </view>
+
+        <view class="goodsPutAway">
+          <view class="title">
+            {{newly.title}}
+          </view>
+
+          <view class="goods-wp">
+            <goods-list col='2' list="{{newly.goodsList}}" showOldPrice="true"
+                        darkBg="true"></goods-list>
+          </view>
+
+          <view class="more" catchTap="toAll">
+            查看更多商品
+            <image class="iconLower" src="/image/icon/ico-lower.png"></image>
+            
+          </view>
+        </view>
+
+      </view>
+
+      <view class="list" a:if="{{activeTab==='b'}}">
+        <view class="orderbtn {{paixudingwei?'fixed':''}} ">
+          <view class="item time {{orderByTime?'active':''}}" catchTap="setOrderByTime">
+            上架时间
+          </view>
+          <view class="item jiage {{!orderByTime?'active':''}}" catchTap="setOrderByPrice">
+            <text class="price">价格</text>
+            <image src="../../image/common/price.png" a:if="{{orderByTime}}" class="icon"></image>
+            <image src="../../image/common/priceup.png" a:if="{{!orderByTime && !priceUp}}"
+                   class="icon"></image>
+            <image src="../../image/common/pricedown.png" a:if="{{!orderByTime && priceUp}}"
+                   class="icon"></image>
+          </view>
+        </view>
+
+        <view class="goodslist-wp {{paixudingwei?'fixed':''}}">
+          <scroll-view scroll-y onScrollToLower="lower" lower-threshold="70"
+                       scroll-top="{{top}}" style="height:{{goodsListWpHeight}}px">
+            <goods-list col='2' list="{{list}}" showOldPrice="true">
+            </goods-list>
+            <view style="margin-bottom: 88rpx;">
+              <empty a:if="{{!hasMore && hide}}">
+                <text>— 宝贝虽有底线，生活无限可能 —</text>
+              </empty>
+            </view>
+
+          </scroll-view>
+          <block a:if="{{!list.length && hide}}">
+            <empty>
+              <text>没有任何商品~</text>
+            </empty>
+          </block>
+        </view>
+      </view>
+      <view class="dongtai" a:if="{{activeTab==='c'}}">
+        <empty>
+          <text>暂无消息~</text>
+        </empty>
+      </view>
+    </view>
+  </scroll-view>
+<view class="footer-wp">
+  <view class="footer-btn">
+    <view class="left">
+      <view class="item" catchTap="toSearch">
+        <text class="iconfont icon-sousuo icon-search"></text>
+        <text>搜索商品</text>
+      </view>
+    </view>
+  </view>
+</view>
+
+

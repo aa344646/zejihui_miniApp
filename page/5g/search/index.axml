@@ -1,0 +1,50 @@
+<import-sjs name="filters" from="/sjs/filter.sjs" />
+<view class="sea">
+  <view class="sea-input">
+    <view class="sea-input-box">
+       <image mode="scaleToFill" class="sea-input-box-imgs" src="/image/search.png" />
+    <input type="number" onFocus="showBtn" onBlur="closeBtn" onConfirm="Confirmss" value="{{searchValue}}" placeholder="靓号搜索" class="sea-input-box-inputs" onInput="updateData" />
+      <image a:if="{{ searchValue }}" catchTap="clearSearchValue" mode="scaleToFill" src="../../../image/chahao.png" class="sea-input-box-cha"/>
+    </view>
+   
+    <view class="sea-input-com" catchTap="handleSearch">
+      搜索
+    </view>
+  </view>
+
+  <view class="sea-main">
+    <view class="sea-main-nophone" a:if="{{ !showPhoneArr.length }}">
+      “目前没有相关的靓号哦”
+    </view>
+    <block
+      a:for="{{ filters.formatData(showPhoneArr)   }}"
+      a:for-index="index"
+      a:for-item="item"
+    >
+      <view
+        class="sea-main-item {{selectId === index ? 'selectIdClass' :'noSelectIdClass'}} "
+        catchTap="handleSelectNumber"
+        data-Id="{{index}}"
+        data-number="{{item}}"
+      >
+        {{item}}
+      </view>
+    </block>
+
+  </view>
+  <view class="sea-btn" a:if="{{ flagBtn }}">
+    <view class="sea-btn-change sea-btn-btnbus" catchTap="toReplace">
+      换一批
+    </view>
+    <view
+      a:if="{{ selectPhoneNumber }}"
+      class="sea-btn-confirm sea-btn-btnbus "
+      catchTap="goKplan"
+    >
+      确认
+    </view>
+    <view a:else class="sea-btn-confirm sea-btn-btnbus button-nouse">
+      确认
+    </view>
+  </view>
+</view>

@@ -1,0 +1,28 @@
+<view>
+  <block a:if="{{addressList.length>0}}">
+    <view a:for="{{addressList}}" a:key="{{index}}" class="touch-item {{item.isTouchMove ? 'touch-move-active' : ''}}" data-index="{{index}}"
+          catchTouchStart="touchstart" catchTouchMove="touchmove" data-id="{{item.id}}" catchTap="selectAdd">
+      <view class="content">
+        <text class="item1">{{item.text}}</text>
+        <text class="item2">{{item.provice}}-{{item.city}}-{{item.regoin}}</text>
+        <view class="item3">
+          <text>{{item.name}}</text>
+          <text>{{item.phone}}</text>
+        </view>
+        <text class="default" a:if="{{item.defaulted}}">[当前默认地址]</text>
+        <text class="iconfont icon-ico-bianji edit" catchTap="edit" data-item="{{item}}"></text>
+      </view>
+      <view class="del" catchTap="del" data-item="{{item}}" data-index="{{index}}">删除</view>
+    </view>
+  </block>
+  <block a:if="{{addressList.length<=0}}">
+    <empty>暂无地址</empty>
+  </block>
+  <view class="button" catchTap="newAddress">
+    <text class="iconfont icon-jiahao"></text>
+    <text class="add_address">添加收货地址</text>
+  </view>
+</view>
+
+
+

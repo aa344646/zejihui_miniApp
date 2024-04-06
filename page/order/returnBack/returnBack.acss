@@ -1,0 +1,149 @@
+.marign-r10 {
+    margin-right:10rpx;
+}
+.parting-line {
+    width: 100%;
+    height: 10rpx;
+    background-image: linear-gradient(46deg, #009FEE 0%, #00EDCC 100%);
+    margin-bottom: 24rpx;
+}
+/* 商品描述 */
+.chooseDescribe {
+    background: #fff;
+}
+.chooseDescribe .item-con {
+  box-sizing: border-box;
+  padding: 40rpx 30rpx 30rpx;
+  display: flex;
+  border-bottom:1px solid #efefef;
+}
+.chooseDescribe .item-con-left {
+  width: 80rpx;
+  height: 80rpx;
+  overflow: hidden;
+  margin-right:20rpx;
+}
+.chooseDescribe .item-con-left image {
+  width: 80rpx;
+}
+.chooseDescribe .item-con-right {
+  width: 590rpx;
+}
+.chooseDescribe .item-con-right .title {
+  font-size: 28rpx; 
+  line-height: 40rpx;
+  color: #333333;
+  margin-bottom: 12rpx;
+  display: -webkit-box;    
+  -webkit-box-orient: vertical;    
+  -webkit-line-clamp: 2;    
+  overflow: hidden;
+}
+.chooseDescribe .item-con-right .sku {
+  font-size: 24rpx;
+  color: #999999;
+  margin-bottom: 12rpx;
+}
+/* 收货人信息 */
+.personInfo {
+    box-sizing: border-box;
+    padding:40rpx 30rpx;
+    background: #fff;
+}
+.personInfo-row1 {
+    font-size: 32rpx;
+    color: #0A0A0A;
+    margin-bottom: 10rpx;
+}
+.personInfo-row1 .name {
+    display: inline;
+    margin-right: 40rpx;
+}
+.personInfo-row1 .tel {
+    display: inline;
+}
+.personInfo-row2 {
+    font-size: 28rpx;
+    color: #888888;
+    line-height: 40rpx;
+    display: flex;
+    justify-content: space-between;
+    align-items:center;
+}
+.personInfo-row2 .iconAddress{
+  font-size:28rpx;
+}
+.personInfo-row2 .addr-con {
+    width: 660rpx;
+    display: flex;
+    align-items: center;
+}
+.return-tips {
+    font-size: 24rpx;
+    color: #1F84FA;
+    margin-top:16rpx;
+}
+/* 选择器 */
+.row {
+  display: flex;
+  align-items: center;
+  padding: 0 30rpx;
+  background: #fff;
+  border-top: 1px solid #efefef;
+  border-bottom: 1px solid #efefef;
+}
+.row-title {
+  flex: 1;
+  padding-top: 28rpx;
+  padding-bottom: 28rpx;
+  font-size: 32rpx;
+  color: #333;
+}
+.row-extra {
+  flex-basis: initial;
+  font-size: 32rpx;
+  color: #333; 
+}
+.row-arrow {
+  width: 32rpx;
+  height: 32rpx; 
+  margin-left: 16rpx;
+}
+.row-label {
+  width: 170rpx;
+  font-size: 32rpx;
+  text-align: left;
+  color: #333;
+  padding-top: 28rpx;
+  padding-bottom: 28rpx;
+}
+.row-content {
+  flex: 1;
+}
+.row-content input {
+  font-size: 32rpx;
+  color: #333; 
+}
+.return-mode {
+    margin-bottom: 20rpx;
+}
+.return-delivery .row {
+    border-bottom: 0;
+}
+/* 提交订单 */
+.submit-area {
+    margin-top: 60rpx;
+    display: flex;
+    justify-content: center;
+}
+.submit-area button {
+    width: 690rpx;
+    height:88rpx;
+    line-height: 88rpx;
+    opacity: 0.4;
+    border-radius: 100px;
+    font-size: 36rpx;
+}
+.submit-area button.active {
+    opacity: 1;
+}
